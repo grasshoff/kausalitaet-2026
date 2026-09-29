@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suzie and Billy · Kausalität 2026</title>
+  <meta name="description" content="Regularity and single case: the active cluster decides which throw broke the bottle.">
+  <meta name="author" content="Gerd Graßhoff">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,460;0,9..144,560;1,9..144,460&family=Source+Sans+3:ital,wght@0,400;0,560;0,650;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,560;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/kausal.css?v=20260929195806">
+</head>
+<body>
+  <a class="skip" href="#inhalt">Skip to content</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <p class="brand"><a href="../"><span>Kausalität</span> 2026</a></p>
+      <nav aria-label="Pages">
+        <a href="../">Home</a>
+        <a href="../#faelle">Cases</a>
+        <a href="../#baende">Volumes</a>
+        <span class="lang-switch"><a href="../../suzie-billy/" hreflang="de">DE</a><a href="../../en/suzie-billy/" hreflang="en" aria-current="true">EN</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <div class="wrap">
+      <section class="story-hero">
+        <p class="kicker">Narrative · The single case</p>
+        <h1>Suzie <em>and Billy</em></h1>
+        <div class="lead"><p>Both throw a stone, Suzie's hits first. Both throws are causally relevant to the shattering, but only one brought it about in this case.</p></div>
+        <ol class="toc"><li><a href="#k1"><span class="n">1</span>Two throws, one bottle</a></li><li><a href="#k2"><span class="n">2</span>At the level of regularities</a></li><li><a href="#k3"><span class="n">3</span>The single case</a></li><li><a href="#k4"><span class="n">4</span>Without a counterfactual assumption</a></li></ol>
+      </section>
+      <section class="chapter" id="k1" data-scene="preempt"><div class="chapter-text"><p class="chapter-num">Chapter 1</p><h2>Two throws, one bottle</h2><div class="step" data-step="0"><p>Suzie and Billy both throw a stone at a bottle. Suzie's stone arrives first, the bottle shatters, and Billy's stone flies through empty air. Who broke the bottle? Intuition is unambiguous: Suzie. The example is a standard case in the literature on causation in the single case.</p>
+<div class="key"><p><b>S</b> Suzie throws · <b>B</b> Billy throws · <b>ST</b> Suzie's stone hits · <b>BT</b> Billy's stone hits · <b>E</b> the bottle shatters.</p></div></div><div class="step" data-step="1"><p>The regularities about these kinds of events are simple. If Suzie throws, her stone hits. If Billy throws, his stone hits the bottle only if Suzie's stone has not already hit it. If either of the two stones hits, the bottle shatters.</p>
+<div class="fm">S ⇒ ST &nbsp;·&nbsp; B * ¬ST ⇒ BT &nbsp;·&nbsp; ST + BT ⇒ E<span class="rd">S is causally relevant to ST; (B and not ST) are causally relevant to BT; ST or BT are causally relevant to E.</span></div></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"nodes": ["S", "B", "E"], "clusters": []}, {"clusters": ["st", "bt", "eS", "eB"]}]</script></section><section class="chapter" id="k2" data-scene="preempt"><div class="chapter-text"><p class="chapter-num">Chapter 2</p><h2>At the level of regularities</h2><div class="step" data-step="0"><p>At the level of regularities both throws are causally relevant to the shattering: Suzie's throw via her hit, Billy's throw via his. The theory must name both, for it speaks about kinds of events, and on other days, when Suzie does not throw, Billy's stone breaks the bottle.</p>
+<p>All arrowheads are hollow. A hollow arrowhead stands for a causal regularity over kinds of events, not yet for what happened on a particular day.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 1</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["st", "bt", "eS", "eB"], "focus": ["S", "B"]}]</script></section><section class="chapter" id="k3" data-scene="preempt"><div class="chapter-text"><p class="chapter-num">Chapter 3</p><h2>The single case</h2><div class="step" data-step="0"><p>On this day both throw. The shaded nodes are present in the case: Suzie's throw, Billy's throw, Suzie's hit, the shattering. Billy's hit is not present; its node is dashed.</p></div><div class="step" data-step="1"><p>A cluster is <strong>fired</strong> in a case when all its conjuncts are present. Suzie's throw fires her hit, her hit fires the shattering. The heads of these arrows are filled: they show the <strong>active cluster</strong>, the instantiated regularity of this case.</p></div><div class="step" data-step="2"><p>Billy's cluster requires two things: that Billy throws and that Suzie's stone has not already hit. The second conjunct is missing, for Suzie's hit is present, so the cluster is not fired, and Billy's hit does not occur. Billy's throw is causally relevant to the shattering, but in this case it lies on no active cluster. He did not break the bottle.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 3</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["st", "bt", "eS", "eB"], "token": {"S": 1, "B": 1, "ST": 1, "BT": 0, "E": 1}}, {"clusters": ["st", "bt", "eS", "eB"], "token": {"S": 1, "B": 1, "ST": 1, "BT": 0, "E": 1}, "active": ["st", "eS"]}, {"clusters": ["st", "bt", "eS", "eB"], "token": {"S": 1, "B": 1, "ST": 1, "BT": 0, "E": 1}, "active": ["st", "eS"], "focus": ["bt"]}]</script></section><section class="chapter no-figure" id="k4"><div class="chapter-text"><p class="chapter-num">Chapter 4</p><h2>Without a counterfactual assumption</h2><div class="step" data-step="0"><p>The counterfactual analysis runs into difficulties with this case: had Suzie not thrown, the bottle would still have shattered, through Billy's stone. The shattering therefore does not depend counterfactually on Suzie's throw, and yet her throw brought it about.</p>
+<p>Volume III treats the case as late preemption: Billy's process is cut off by the effect itself, by the shattering that Suzie's stone has already brought about (Baumgartner 2013). The regularity theory does not need the counterfactual assumption. It asks which clusters are fired in this case and follows the active cluster from the cause to the effect. Baumgartner calls this the active causal route; here it is called the active cluster. The diagram shows the distinction between what holds of kinds of events and what happens in a case by the fill of the arrowheads <span class="cite">(Vol. III, §4.2)</span>.</p></div></div></section>
+    </div>
+    <div class="wrap next-case"><a href="../">Back to overview</a><a href="../weiche/">Next case: The switch →</a></div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <p>Kausalität 2026</p>
+        <p>Gerd Graßhoff, Humboldt-Universität zu Berlin, Research Institute of the Deutsches Museum</p>
+      </div>
+      <div>
+        <p>Regularity theory of causal relevance after Graßhoff and May (2001)</p>
+        <p>Text CC BY 4.0 · <a href="../../data/manifest.json">Data manifest</a> · Built 29 September 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/vendor/d3.v7.min.js?v=20260929195806"></script>
+  <script src="../../data/scenes.js?v=20260929195806"></script>
+  <script src="../../assets/js/cvl-stage.js?v=20260929195806"></script>
+  <script src="../../assets/js/scrolly.js?v=20260929195806"></script>
+</body>
+</html>

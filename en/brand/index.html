@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The warehouse fire · Kausalität 2026</title>
+  <meta name="description" content="Neither sufficient nor necessary, and still a cause: the short circuit as part of a cluster.">
+  <meta name="author" content="Gerd Graßhoff">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,460;0,9..144,560;1,9..144,460&family=Source+Sans+3:ital,wght@0,400;0,560;0,650;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,560;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/kausal.css?v=20260929195806">
+</head>
+<body>
+  <a class="skip" href="#inhalt">Skip to content</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <p class="brand"><a href="../"><span>Kausalität</span> 2026</a></p>
+      <nav aria-label="Pages">
+        <a href="../">Home</a>
+        <a href="../#faelle">Cases</a>
+        <a href="../#baende">Volumes</a>
+        <span class="lang-switch"><a href="../../brand/" hreflang="de">DE</a><a href="../../en/brand/" hreflang="en" aria-current="true">EN</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <div class="wrap">
+      <section class="story-hero">
+        <p class="kicker">Narrative · Cluster and minimal theory</p>
+        <h1>The warehouse <em>fire</em></h1>
+        <div class="lead"><p>A short circuit causes a fire although it is neither sufficient nor necessary for the fire. What it is instead is what the definition of causal relevance says.</p></div>
+        <ol class="toc"><li><a href="#k1"><span class="n">1</span>A fire and a question</a></li><li><a href="#k2"><span class="n">2</span>The cluster</a></li><li><a href="#k3"><span class="n">3</span>A second cluster</a></li><li><a href="#k4"><span class="n">4</span>The minimal theory</a></li></ol>
+      </section>
+      <section class="chapter" id="k1" data-scene="fire"><div class="chapter-text"><p class="chapter-num">Chapter 1</p><h2>A fire and a question</h2><div class="step" data-step="0"><p>A warehouse burns down. The expert names a short circuit as the cause. The statement sounds simple. It becomes difficult as soon as one asks what it claims.</p>
+<div class="key"><p><b>SC</b> short circuit · <b>FI</b> fire. Each letter stands for a <em>factor</em>: a kind of event that is present or absent in a case; the table writes one or zero for this.</p></div></div><div class="step" data-step="1"><p>The short circuit is not <strong>sufficient</strong> for the fire. The table on the right records nine test situations. In situation 5 there is a short circuit but no oxygen, and there is no fire. The short circuit would be sufficient only if a fire followed it in every situation <span class="cite">(Vol. III, §7.1)</span>.</p></div><div class="step" data-step="2"><p>Nor is it <strong>necessary</strong>. In situation 3 there is a fire without a short circuit: there a combustible liquid, a spark and oxygen come together. The short circuit would be necessary only if there were never a fire without it <span class="cite">(Vol. III, §7.1)</span>.</p>
+<p>Neither sufficient nor necessary, and yet we rightly say that it caused the fire. The following chapters show what it is instead.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 3</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"nodes": ["SC", "FI"], "clusters": ["sc"], "table": false}, {"nodes": ["SC", "OX", "FL", "SP", "FI"], "clusters": ["sc"], "rows": [5], "mark": {"5": "no"}, "cols": ["SC", "FI"]}, {"nodes": ["SC", "OX", "FL", "SP", "FI"], "clusters": ["sc"], "rows": [3], "mark": {"3": "no"}, "cols": ["SC", "FI"]}]</script></section><section class="chapter" id="k2" data-scene="fire"><div class="chapter-text"><p class="chapter-num">Chapter 2</p><h2>The cluster</h2><div class="step" data-step="0"><p>The short circuit is sufficient together with oxygen. In every situation in which both are present (1 and 2), there is a fire <span class="cite">(Vol. III, §7.1)</span>.</p>
+<div class="key"><p><b>OX</b> oxygen. In the diagram a separate arrow leads from each factor to the effect; a golden <em>arc</em> over the arrows binds the factors that are sufficient only together.</p></div></div><div class="step" data-step="1"><p>Neither of the two parts may be missing. Without oxygen (situation 5) there is no fire despite the short circuit, without a short circuit (situation 6) none despite the oxygen. The combination is therefore <strong>minimally sufficient</strong>: sufficient, and none of its parts can be removed without its ceasing to be sufficient <span class="cite">(Vol. III, §7.1)</span>.</p></div><div class="step" data-step="2"><p>Such a minimally sufficient condition is here called a <strong>cluster</strong>. In formulas it is written <span class="f">SC * OX</span>; the star reads “and”. The short circuit is an indispensable part of this cluster. That is the first half of what makes up its causal relevance.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 3</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["c1"], "rows": [1, 2], "mark": {"1": "ok", "2": "ok"}, "cols": ["SC", "OX", "FI"]}, {"clusters": ["c1"], "rows": [5, 6], "mark": {"5": "no", "6": "no"}, "cols": ["SC", "OX", "FI"]}, {"clusters": ["c1"], "focus": ["c1"], "rows": [1, 2, 5, 6], "mark": {"1": "ok", "2": "ok", "5": "no", "6": "no"}, "cols": ["SC", "OX", "FI"]}]</script></section><section class="chapter" id="k3" data-scene="fire"><div class="chapter-text"><p class="chapter-num">Chapter 3</p><h2>A second cluster</h2><div class="step" data-step="0"><p>Situation 3 has shown that there can be a fire without a short circuit, too. A combustible liquid, a spark and oxygen are sufficient together: where all three are present (2 and 3), there is a fire <span class="cite">(Vol. III, §7.1)</span>.</p>
+<div class="key"><p><b>FL</b> combustible liquid · <b>SP</b> spark.</p></div></div><div class="step" data-step="1"><p>Here too every part is indispensable. Situation 7 has liquid and oxygen without a spark, situation 8 a spark and oxygen without liquid, situation 9 liquid and a spark without oxygen. In none of them is there a fire. <span class="f">FL * SP * OX</span> is a second cluster, an alternative to the first. Alternatives are shown in the diagram by separate arcs, in the formula by the plus, which reads “or” <span class="cite">(Vol. III, §7.1)</span>.</p>
+<p>Oxygen belongs to both clusters. It is a partner in every way in which a fire comes about here.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["c1", "c2"], "focus": ["c2"], "rows": [2, 3], "mark": {"2": "ok", "3": "ok"}, "cols": ["FL", "SP", "OX", "FI"]}, {"clusters": ["c1", "c2"], "focus": ["c2"], "rows": [7, 8, 9], "mark": {"7": "no", "8": "no", "9": "no"}, "cols": ["FL", "SP", "OX", "FI"]}]</script></section><section class="chapter" id="k4" data-scene="fire"><div class="chapter-text"><p class="chapter-num">Chapter 4</p><h2>The minimal theory</h2><div class="step" data-step="0"><p>Together the two clusters cover every fire in the table: situation 1 through the first, situation 3 through the second, situation 2 through both. The disjunction of the clusters is therefore <strong>necessary</strong> for the fire <span class="cite">(Vol. III, §7.1)</span>.</p>
+<div class="fm">SC * OX + FL * SP * OX ⇒ FI<span class="rd">(SC and OX) or (FL and SP and OX) are causally relevant to FI.</span></div></div><div class="step" data-step="1"><p>And it is <strong>minimally necessary</strong>: neither of the two clusters can be removed. Without the first, the fire in situation 1 would remain uncovered; without the second, the one in situation 3. A disjunction of minimally sufficient conditions that is minimally necessary in this sense is called a <strong>minimal theory</strong> of the effect (Graßhoff and May 2001) <span class="cite">(Vol. III, §7.1)</span>.</p></div><div class="step" data-step="2"><p>Now the expert's question can be answered. A factor is <strong>causally relevant</strong> to an effect if it is an indispensable part of a cluster of a minimal theory of that effect and remains so however far the set of recorded factors is extended. The short circuit meets the first condition in this table; the second, stability under extension, is the test to which every further survey subjects it.</p>
+<p>The definition needs neither counterfactual assumptions nor interventions nor probabilities. It requires regularities between kinds of events and a double minimisation: of the clusters and of their disjunction. The case of the Manchester hooters shows how important the second half is.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 3</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["c1", "c2"], "rows": [1, 2, 3], "mark": {"1": "ok", "2": "ok", "3": "ok"}}, {"clusters": ["c1", "c2"], "rows": [1, 3], "mark": {"1": "key", "3": "key"}}, {"clusters": ["c1", "c2"], "focus": ["SC"]}]</script></section>
+    </div>
+    <div class="wrap next-case"><a href="../">Back to overview</a><a href="../eiscreme/">Next case: Ice cream and drowning →</a></div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <p>Kausalität 2026</p>
+        <p>Gerd Graßhoff, Humboldt-Universität zu Berlin, Research Institute of the Deutsches Museum</p>
+      </div>
+      <div>
+        <p>Regularity theory of causal relevance after Graßhoff and May (2001)</p>
+        <p>Text CC BY 4.0 · <a href="../../data/manifest.json">Data manifest</a> · Built 29 September 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/vendor/d3.v7.min.js?v=20260929195806"></script>
+  <script src="../../data/scenes.js?v=20260929195806"></script>
+  <script src="../../assets/js/cvl-stage.js?v=20260929195806"></script>
+  <script src="../../assets/js/scrolly.js?v=20260929195806"></script>
+</body>
+</html>
