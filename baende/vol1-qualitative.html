@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gerd Graßhoff">
+<meta name="dcterms.date" content="2026-09-29">
+<meta name="keywords" content="causal regularity theory, minimal theories, INUS conditions, coincidence analysis, causal hypergraphs, homogeneity condition, fallacy detection, qualitative causal inference">
+
+<title>Causal Regularity Theory I: Qualitative Inference</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="libs/clipboard/clipboard.min.js"></script>
+<script src="libs/quarto-html/quarto.js" type="module"></script>
+<script src="libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="libs/quarto-html/popper.min.js"></script>
+<script src="libs/quarto-html/tippy.umd.min.js"></script>
+<script src="libs/quarto-html/anchor.min.js"></script>
+<link href="libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="libs/bootstrap/bootstrap.min.js"></script>
+<link href="libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light"><style id="ka-bar-css">
+#ka-bar{font:600 14px/1.3 "Source Sans 3","Avenir Next","Segoe UI",sans-serif;background:#00152e;color:#f4efe4;border-bottom:3px solid #c4a15a;
+  display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:baseline;justify-content:space-between;padding:.6rem 1.2rem;position:relative;z-index:1100}
+#ka-bar a{color:#f4efe4;text-decoration:none}
+#ka-bar a:hover{color:#c4a15a}
+#ka-bar .ka-brand span{color:#c4a15a}
+#ka-bar .ka-vols a{margin-left:.9rem}
+#ka-bar .ka-vols a[aria-current="true"]{color:#c4a15a;border-bottom:2px solid #c4a15a}
+#ka-up{position:fixed;left:1rem;bottom:1rem;z-index:1100;font:650 13px/1 "Source Sans 3","Avenir Next","Segoe UI",sans-serif;
+  background:#002147;color:#f4ead0;text-decoration:none;padding:.55rem .85rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,21,46,.3)}
+#ka-up:hover{color:#c4a15a}
+@media print{#ka-bar,#ka-up{display:none}}
+</style>
+<div id="ka-bar">
+  <a class="ka-brand" id="ka-home" href="../#card-vol1"><span>Kausalität</span> 2026 · <span id="ka-home-label">Volumes</span></a>
+  <span>Volume I · Qualitative theory · <a href="../files/vol1-qualitative.pdf">PDF</a></span>
+  <span class="ka-vols" id="ka-vols"><a href="vol1-qualitative.html" aria-current="true">I</a><a href="vol2-experimental.html">II</a><a href="vol3-casebook.html">III</a></span>
+</div>
+<a id="ka-up" href="../#card-vol1">↑ Kausalität 2026</a>
+<script>
+(function () {
+  var from = new URLSearchParams(location.search).get('from') === 'en' ? 'en' : 'de';
+  var base = from === 'en' ? '../en/' : '../';
+  var de = {label: 'Bände', up: '↑ Zur Karte auf der Startseite'};
+  var en = {label: 'Volumes', up: '↑ Back to the card on the home page'};
+  var t = from === 'en' ? en : de;
+  document.getElementById('ka-home').href = base + '#card-vol1';
+  document.getElementById('ka-home-label').textContent = t.label;
+  var up = document.getElementById('ka-up'); up.href = base + '#card-vol1'; up.textContent = t.up;
+  document.querySelectorAll('#ka-vols a').forEach(function (a) { a.href = a.getAttribute('href').split('?')[0] + '?from=' + from; });
+})();
+</script>
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../files/vol1-qualitative.pdf"><i class="bi bi-file-pdf"></i>Typst (arxivai)</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Causal Regularity Theory I: Qualitative Inference</h1>
+<p class="subtitle lead">Minimal Theories, Homogeneity, Causal Hypergraphs, and Scientific Reasoning</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Gerd Graßhoff <a href="mailto:gerd.grasshoff@hu-berlin.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4450-357X" class="quarto-title-author-orcid" aria-label="ORCID profile for Gerd Graßhoff"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Humboldt-Universität zu Berlin
+          </p>
+        <p class="affiliation">
+            Forschungsinstitut des Deutschen Museums
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 29, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>A short circuit causes a fire although it is neither sufficient for fire nor necessary for it; ice-cream sales predict drownings and cause none. This volume develops the one definition that separates the two cases and then refuses to add a second. A factor is <em>causally relevant</em> to an outcome when it is an indispensable part of one of the sufficient combinations that bring the outcome about — a <em>cluster</em>, in the language of the theory — and when it stays indispensable however far the record is widened. That is permanent membership in a cluster of a <em>minimal theory</em>, in the sense of Graßhoff and May (2001), and it is stated without counterfactuals, interventions, or probability. From it follow, in order: the homogeneity condition that licenses reading a theory off a table of cases — a far weaker and more useful condition than Mill’s demand that all else be equal; the deductive schema that carries a hypothesis from premisses to verdict; the causal hypergraph that stores the result; and a normative registry of what a verdict licenses and what it does not. Every structure is drawn as well as written, in a diagram language whose marks correspond one-to-one with the formulae. Volume II extends the definition to replicated experimental data; Volume III tests it against the case repertoire of the tradition.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>causal regularity theory, minimal theories, INUS conditions, coincidence analysis, causal hypergraphs, homogeneity condition, fallacy detection, qualitative causal inference</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Causal Regularity Bundle — Volume I.</strong> Companion volumes: II (experimental inference), III (casebook). Formal calculus: <code>models.qmd</code>. Terms are used in the senses of the LWgrammar register <em>causal-regularity</em>.</p>
+</div>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<div class="callout callout-style-default callout-tip callout-titled" title="The claim of this volume">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The claim of this volume
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A factor <em>caused</em> an outcome, in the only sense this volume defends, when it was an indispensable part of a sufficient combination of conditions — and when every other sufficient combination was also genuinely needed to account for all the cases — and when this stays so however far the record of cases is widened. The next three sections build this claim from one concrete example; the rest of the volume derives its consequences.</p>
+</div>
+</div>
+<section id="a-fire-and-a-question-that-only-looks-easy" class="level2">
+<h2 class="anchored" data-anchor-id="a-fire-and-a-question-that-only-looks-easy">A fire, and a question that only looks easy</h2>
+<p>A warehouse burns down. The investigator’s report names a cause: a short circuit in the wiring behind the north wall. Nobody disputes that the short circuit happened, and nobody disputes that the fire happened. The disputed word is the one in between — <em>caused</em>.</p>
+<p>What would make the report right? The obvious answers both fail immediately.</p>
+<p>The short circuit was not <strong>sufficient</strong> for the fire. Short circuits occur in that building several times a year and burn nothing; the wiring arcs, a fuse trips, an electrician is called. Nor was it <strong>necessary</strong>. A warehouse of that kind can be lost to a spark near the solvent store with the wiring in perfect order. So the cause named in the report is neither sufficient nor necessary for the effect it is said to have produced.</p>
+<p>And yet the report is very probably correct. Whatever “caused” means here, it is not “sufficient”, not “necessary”, and — as the next paragraph shows — not “reliably associated” either.</p>
+<p>Consider a second report. In a coastal town, ice-cream sales and drownings rise and fall together, year after year, with a correlation an epidemiologist would envy. No investigator would write that ice-cream causes drowning. The association is as constant as any in the fire case; what is missing is something the correlation itself cannot supply.</p>
+<p>Two claims, then, that look alike in the data and differ completely in their standing. A theory of causation earns its keep by saying, precisely and without appeal to intuition, what the difference is.</p>
+</section>
+<section id="what-the-available-tools-say" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-available-tools-say">What the available tools say</h2>
+<p>The methods in daily use answer this question in incompatible ways. Statistical inference speaks of probability-raising and needs causal assumptions the data cannot check. Qualitative comparative analysis (QCA) looks for patterns in which conditions are simply present or absent but stops short of a principled account of causal direction and of what a comparison must hold steady. A researcher who runs both has not obtained a convergent answer; they have obtained two answers resting on two sets of premisses, which is not the same as being twice as sure.</p>
+<p>What is missing is a <strong>single definition of causal relevance</strong> that (a) can be applied to observable data, (b) yields the familiar experimental designs as special cases rather than as a separate topic, and (c) states exactly what a verdict licenses — and what it does not.</p>
+</section>
+<section id="one-definition" class="level2">
+<h2 class="anchored" data-anchor-id="one-definition">One definition</h2>
+<p>Return to the fire. The short circuit was not sufficient on its own — but a short circuit <em>in the presence of oxygen</em> was. That combination is sufficient, and neither of its two parts can be dropped: remove the oxygen and nothing burns; remove the short circuit and, on that night, nothing ignites it. The combination is therefore sufficient and contains nothing idle. Call such a combination a <strong>cluster</strong>.</p>
+<p>The short circuit was not necessary either, because the solvent store offers another way in: flammable liquid, a spark, and again oxygen. That is a second cluster. Between them the two clusters cover every fire in the record, and neither can be struck out without leaving fires unaccounted for.</p>
+<p>The whole causal claim is now one line:</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> SC = short circuit · OX = oxygen present · FL = flammable liquid · SP = spark · FI = fire. The symbol <code>*</code> reads <em>and</em>; <code>+</code> reads <em>or</em>; <code>=&gt;</code> reads <em>exactly when</em> (biconditional in the causally oriented direction).</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\text{SC} * \text{OX} \quad + \quad \text{FL} * \text{SP} * \text{OX}
+\quad \Rightarrow \quad \text{FI}
+\]</span></p>
+<p><em>Reading.</em> A fire breaks out exactly when either a short circuit occurs with oxygen present, or flammable liquid meets a spark with oxygen present — and in no other way recorded in this field.</p>
+<div id="fig-fire-key" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fire-key-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-fire.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fire-key-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The same claim as a diagram. Two arcs, two clusters; the formula and the picture say exactly the same thing.
+</figcaption>
+</figure>
+</div>
+<p>The verdict on the report follows from where the short circuit stands in the formula: SC is one of the parts of one of the clusters, and it is not a spare part. That, and nothing more, is what “the short circuit caused the fire” asserts.</p>
+<p>The fire example has used a handful of terms, and they carry all the weight.</p>
+<p>Each letter of the key names a <em>factor</em>: a kind of condition — a short circuit, oxygen being present — that in any one case is either present or absent (<a href="#sec-ontology" class="quarto-xref">Section&nbsp;3.1</a> gives the exact account). A <em>literal</em> is a factor together with its sign: either “was present” or “was absent”. A <em>conjunction</em> is an <em>and</em>-combination of literals, a <em>disjunction</em> an <em>or</em>-combination of such conjunctions.</p>
+<p>A <em>cluster</em> is what the formulae write as a minimally sufficient condition (MSC): a conjunction of literals that is sufficient for the outcome and from which no conjunct can be dropped without loss of sufficiency <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 94</a>)</span>. An <strong>INUS condition</strong> in Mackie’s sense <span class="citation" data-cites="mackie1965">(<a href="#ref-mackie1965" role="doc-biblioref">1965</a>)</span> — an Insufficient but Non-redundant part of an Unnecessary but Sufficient condition — is one conjunct of such a cluster, not the cluster itself. A <em>minimal theory</em> is the disjunction of those clusters, itself minimally necessary for the outcome: no cluster can be removed without leaving positive cases uncovered <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 96</a>)</span>. A <em>factor set</em> <span class="math inline">\(\mathcal{F}\)</span> is the explicit finite list of factors, the outcome included, whose joint values constitute the rows of the table of cases — the <em>coincidence table</em>. These terms are defined with their tests in <a href="#sec-mt" class="quarto-xref">Section&nbsp;3.2</a>; they are used in those senses only.</p>
+<p>The register <em>causal-regularity</em> records the remaining vocabulary of this volume — <em>causal field</em>, <em>homogeneity</em> (three senses, of which only two are operative), <em>background bundle</em>. When a sense matters for an inference, the sense label is cited.</p>
+<p>This volume takes the definition from Graßhoff and May <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">2001, 100</a>)</span>. A factor <span class="math inline">\(A\)</span> is <strong>causally relevant</strong> to outcome <span class="math inline">\(E\)</span> if and only if, for every factor set <span class="math inline">\(\mathcal{F}'\)</span> that contains both <span class="math inline">\(A\)</span> and <span class="math inline">\(E\)</span>, there is a minimal theory of <span class="math inline">\(E\)</span> over <span class="math inline">\(\mathcal{F}'\)</span> in which a literal of <span class="math inline">\(A\)</span> is a non-droppable conjunct of some cluster. Causal relevance is Boolean — yes or no — not a degree.</p>
+<p>The clause about <em>every</em> factor set is what disposes of the ice-cream. As long as the record contains only ice-cream sales and drownings, ice-cream sales do appear in a cluster: the pattern is there. Add the summer heat to the record and the sales drop out — every drowning is accounted for without them, and the cluster that contained them is no longer needed. A factor that dissolves when the record is widened was never causally relevant; it was standing in for something else. Causal relevance is <em>permanent</em> membership, and that is why causal knowledge stays open to revision by the next study.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition — causal relevance">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition — causal relevance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A factor is <strong>causally relevant</strong> to an outcome when it belongs to at least one cluster for that outcome and cannot be dropped from it, and when this holds under every widening of the record. The answer is yes or no; nothing is slightly causally relevant.</p>
+<p><strong>Stated exactly.</strong> Factor <span class="math inline">\(A\)</span> is causally relevant to outcome <span class="math inline">\(E\)</span> if and only if: for every factor set <span class="math inline">\(\mathcal{F}'\)</span> containing both <span class="math inline">\(A\)</span> and <span class="math inline">\(E\)</span>, there is a minimal theory of <span class="math inline">\(E\)</span> over <span class="math inline">\(\mathcal{F}'\)</span> in which a literal of <span class="math inline">\(A\)</span> — either <span class="math inline">\(A\)</span> or <span class="math inline">\(\neg A\)</span> — is a non-droppable part of some cluster.</p>
+<p><strong>Example.</strong> The short circuit is causally relevant to the warehouse fire: it belongs to the cluster <span class="math inline">\(\text{SC}*\text{OX}\)</span> and cannot be dropped from it, however many further conditions are added to the record. Ice-cream sales are not causally relevant to drowning: widen the record to include summer heat and no minimal theory of drowning contains ice-cream sales in any cluster (Volume III, Cases A-01 and A-11).</p>
+</div>
+</div>
+</section>
+<section id="sec-reading-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="sec-reading-diagrams">How to read the pictures</h2>
+<p>Everything in this volume can be drawn, and the reader who learns one graphical convention now will be able to read every diagram that follows. It is worth the two minutes, because the convention is not decoration: each mark in a diagram stands for one thing in the formulae, and nothing appears in a diagram that has no counterpart in them. The language is specified in full in the companion document <code>causal-visuals.qmd</code>; what follows is all that is needed to read Volume I.</p>
+<p>Arrows run from causes to the effect, left to right. The one thing to learn is what it means when arrows are <strong>tied together by an arc</strong>.</p>
+<div id="fig-or-vs-and" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-or-vs-and-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-or-vs-and.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-or-vs-and-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The only distinction the reader has to learn. On the left, two arrows arrive separately: <span class="math inline">\(A\)</span> is enough by itself, and so is <span class="math inline">\(B\)</span> — two independent clusters producing the same outcome, which is what the “<span class="math inline">\(+\)</span>” in a formula means. On the right, the same two arrows are tied by an arc: now <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two parts of a single cluster, and neither does anything without the other — the “<span class="math inline">\(*\)</span>” of a formula. Arc means <em>and</em>; no arc means <em>or</em>.
+</figcaption>
+</figure>
+</div>
+<p>Arc and no arc, together with the arrows that combine the causes into the effect, are the core of the grammar. Two further marks complete what the cases need: negation, which belongs to the elementary set, and the fill of the arrowhead, which marks the level of the claim.</p>
+<div id="fig-negation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-negation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-negation.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-negation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Left: a single negation mark, a small box with the sign ¬ on the shaft near the factor, says that the <em>absence</em> of that factor is what does the work. The plant dies because it was warm and <em>not</em> watered — the watering that did not happen is part of the cause, and the diagram says so without needing a special kind of arrow. Right: a <em>hollow</em> arrowhead marks the level of a causal regularity — a claim about kinds of events (event types, <a href="#sec-ontology" class="quarto-xref">Section&nbsp;3.1</a>), not about one particular occasion. Arrowheads all have the same shape; only their fill changes, and a filled head marks the cluster that fired in a concrete case (<a href="#fig-fire-token" class="quarto-xref">Figure&nbsp;5</a>).
+</figcaption>
+</figure>
+</div>
+<p>The fire theory of the previous section is now a picture rather than a formula, and the two say exactly the same thing:</p>
+<div id="fig-fire" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-fire.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The warehouse fire as a diagram. Two arcs, so two clusters: a short circuit with oxygen, or flammable liquid with a spark and oxygen. Reading the picture back into a formula is mechanical — the arrows under one arc are joined by “<span class="math inline">\(*\)</span>”, and separate clusters are joined by “<span class="math inline">\(+\)</span>” — which is why diagrams in this framework can be computed with rather than merely looked at.
+</figcaption>
+</figure>
+</div>
+<p>Diagrams so far describe <em>types</em> of situation. A diagram can also record what happened on one particular night, by shading the factors that were in fact present:</p>
+<div id="fig-fire-token" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fire-token-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-fire-token.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fire-token-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: The same structure carrying a token story: an instantiated regularity. Filled boxes are the factors that occurred, dashed ones the factors that did not. The upper cluster is active — both SC and OX were present — and its arrowheads are filled; the lower cluster stayed idle and its heads remain hollow. This is what it means to say that on this occasion the fire was caused by the short circuit, rather than by the solvent store.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="The four-step reading rule">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The four-step reading rule
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Find the effect.</strong> It is the node the arrows point at.</li>
+<li><strong>Look for arcs.</strong> Arrows tied by an arc are parts of <em>one</em> cause.</li>
+<li><strong>Count the clusters.</strong> Each untied arrow is a cluster by itself; each arc-tied group of arrows is one cluster together. Several clusters mean the effect is <em>equifinal</em> — reachable in more than one way.</li>
+<li><strong>Check the marks.</strong> A ¬ mark on a shaft, near the factor, means an absence is doing the work. The arrowhead’s fill gives the level: a hollow head marks a type-level causal regularity; a filled head marks the active cluster in a concrete instantiation.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="theoretical-lineage" class="level2">
+<h2 class="anchored" data-anchor-id="theoretical-lineage">Theoretical lineage</h2>
+<p>The regularity tradition develops in four stages. <strong>Hume</strong> <span class="citation" data-cites="hume1739">(<a href="#ref-hume1739" role="doc-biblioref">1739</a>)</span> established causation as constant conjunction. <strong>Mill</strong> <span class="citation" data-cites="mill1843">(<a href="#ref-mill1843" role="doc-biblioref">1843</a>)</span> introduced the method of difference, whose demand that the compared instances have every circumstance in common save one is the <em>totality condition</em>, and took the cause to be the entire set of conditions on which the effect follows. <strong>Mackie</strong> <span class="citation" data-cites="mackie1965 mackie1974cement">(<a href="#ref-mackie1965" role="doc-biblioref">1965</a>, <a href="#ref-mackie1974cement" role="doc-biblioref">1974</a>)</span> showed that a single effect can have several sufficient clusters, so that no cluster need be necessary, and that a cause is an INUS condition. <strong>Graßhoff and May</strong> <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">2001</a>)</span> completed the account by adding <em>minimal necessity</em> of the disjunction and the persistence of causal relevance under every expansion of the factor set; the bundle-level homogeneity condition that replaces Mill’s unsatisfiable totality clause belongs to the same programme (<a href="#sec-gm" class="quarto-xref">Section&nbsp;3.2.2</a>, novelty 6). <strong>Baumgartner and Graßhoff</strong> <span class="citation" data-cites="baumgartner-grasshoff2004">(<a href="#ref-baumgartner-grasshoff2004" role="doc-biblioref">2004</a>)</span> gave the systematic reconstruction; <strong>Baumgartner</strong> <span class="citation" data-cites="baumgartner2008 baumgartner2009inus">(<a href="#ref-baumgartner2008" role="doc-biblioref">2008</a>, <a href="#ref-baumgartner2009inus" role="doc-biblioref">2009</a>)</span> extended it to multi-outcome structures; <strong>Baumgartner and Falk</strong> <span class="citation" data-cites="baumgartner-falk2023">(<a href="#ref-baumgartner-falk2023" role="doc-biblioref">2023</a>)</span> added the elimination of structural redundancies and the assumption of causal uniqueness.</p>
+<p>This volume implements the Graßhoff/May position. Coincidence analysis (CNA) and related Boolean methods are treated as developments inside that tradition.</p>
+<p>The same definition is the contract for three audiences — scholars, practitioners who evaluate claims in clinical or legal settings, and agents that must assess such claims in natural language — because the warrants and inhibitors are the same in each case. Volume II extends the definition to replicated experimental data; Volume III tests it against the case repertoire of the tradition.</p>
+</section>
+<section id="contributions-of-this-volume" class="level2">
+<h2 class="anchored" data-anchor-id="contributions-of-this-volume">Contributions of this volume</h2>
+<p>The volume argues for four theses, each of which can be disagreed with.</p>
+<ol type="1">
+<li><strong>One definition suffices.</strong> Cluster-membership in a minimal theory over an explicit factor set and a homogeneous field generates the qualitative apparatus without borrowing from a rival account (<a href="#sec-mt" class="quarto-xref">Section&nbsp;3.2</a>, <a href="#sec-hypergraph" class="quarto-xref">Section&nbsp;4</a>).</li>
+<li><strong>Bundle-level homogeneity replaces Mill’s totality.</strong> The operative condition is not that every background factor be identical — a demand no real field meets — but that each latent background bundle have constant truth-value across the field. That condition is falsifiable by a contradictory configuration (1).</li>
+<li><strong>Causal inference is deductive.</strong> From stated premisses and causal principles, the validity of a hypothesis follows by valid steps. Inductive risk is relocated into the premisses, where it is empirically controllable (<a href="#sec-deduction" class="quarto-xref">Section&nbsp;3.4</a>).</li>
+<li><strong>The normative standard is one registry.</strong> Eleven inference warrants (INF-01–11), ten fallacy inhibitors (FALL-01–10), and eight standard rules (STD-1–8) are defined once; the engine, the skill file, and this volume’s tables are generated from that registry or checked against it (<a href="#sec-reasoning" class="quarto-xref">Section&nbsp;5</a>).</li>
+</ol>
+</section>
+</section>
+<section id="sec-part1" class="level1">
+<h1>The qualitative theory</h1>
+<p>The following sections state the definitions, the homogeneity condition, the deductive schema, and the hypergraph. Volume II takes up the replicated, noisy regime.</p>
+</section>
+<section id="the-regularity-theory-of-causal-relevance" class="level1">
+<h1>The Regularity Theory of Causal Relevance</h1>
+<section id="sec-ontology" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ontology">What kinds of things are factors?</h2>
+<p>Before stating definitions it is necessary to say what the variables in them stand for.</p>
+<p>A <strong>factor</strong> represents an <em>event type</em> — a repeatable kind of condition or occurrence. “Short circuit in the wiring”, “oxygen present”, “warehouse on fire” are event types. A causal claim about them is a claim about kinds: it says that conditions of one kind bring about conditions of another kind, whenever the right combination of them is present. This is type-level causation — the subject of Volumes I and II.</p>
+<p>In any one <em>case</em> — one episode, one trial, one observation — an event type is either present or absent. The particular short circuit that occurred behind the north wall on the night of 14 March is a <em>token</em> of the type “short circuit”. The table of cases records, for each case, which types were instantiated in it. A factor takes value 1 when its type is instantiated in that case, and 0 when it is not. Everything in this framework is <em>yes or no, with no intermediate degrees</em> — in the language of logic, every factor is <strong>Boolean</strong>. A causal verdict is the same: a factor is either causally relevant to an outcome or it is not.</p>
+<p>Volume III goes further and asks, case by case, which particular cluster was actually instantiated in that specific episode — this is <em>token causation</em> or <em>actual causation</em>. The type-level regularity is established first; the token-level verdict identifies which of the theory’s clusters did the work in the case under examination.</p>
+<p>The theory is stated in a notation that is used unchanged for the rest of the volume and in the engine’s own output, so that a formula in a figure and a formula in a returned verdict can be read as the same object.</p>
+<div id="tbl-notation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-notation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Notation used throughout. The engine’s textual forms <code>*</code>, <code>+</code>, <code>~</code>, and <code>=&gt;</code> correspond one-to-one with the typeset symbols.
+</figcaption>
+<div aria-describedby="tbl-notation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Reads</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(E\)</span></td>
+<td>factor, taking a positive or negative value</td>
+<td><span class="math inline">\(E\)</span> = fire</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\neg A\)</span></td>
+<td>the negative value of factor <span class="math inline">\(A\)</span>, written <code>~A</code> in the engine</td>
+<td><span class="math inline">\(\neg\text{OX}\)</span> = no oxygen</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A * B\)</span></td>
+<td>conjunction, written <code>A*B</code> in the engine</td>
+<td><span class="math inline">\(\text{SC} * \text{OX}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X + Y\)</span></td>
+<td>disjunction of clusters</td>
+<td><span class="math inline">\(\text{SC} * \text{OX} + \text{FL} * \text{SP} * \text{OX}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(X \Rightarrow E\)</span></td>
+<td>a minimal theory: <span class="math inline">\(X\)</span> is sufficient and disjunctively necessary for <span class="math inline">\(E\)</span>, written in the causally oriented direction</td>
+<td><span class="math inline">\(\text{SC}*\text{OX} + \text{FL}*\text{SP}*\text{OX} \Rightarrow \text{FI}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X \leftrightarrow E\)</span></td>
+<td>material equivalence: <span class="math inline">\(X\)</span> and <span class="math inline">\(E\)</span> take the same value in every case, with no direction claimed</td>
+<td><span class="math inline">\(c \leftrightarrow s*r\)</span> holds in <span class="math inline">\(\delta\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{F}\)</span></td>
+<td>the factor set, every factor named, the outcome included</td>
+<td><span class="math inline">\(\mathcal{F} = \{\text{SC}, \text{OX}, \text{FL}, \text{SP}, \text{FI}\}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta\)</span></td>
+<td>the coincidence table: the observed test situations of the field</td>
+<td>the nine rows of Volume III, Case A-01</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_E\)</span></td>
+<td>the number of contradictory configurations for outcome <span class="math inline">\(E\)</span></td>
+<td><span class="math inline">\(C_E = 0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B_E\)</span></td>
+<td>the contradiction burden: the smallest share of rows that must go for <span class="math inline">\(E\)</span> to be constant within every observed configuration</td>
+<td><span class="math inline">\(B_E = 0.197\)</span> (Volume III, Case B-16)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-mt" class="level2">
+<h2 class="anchored" data-anchor-id="sec-mt">From Mackie’s INUS conditions to minimal theories</h2>
+<section id="mackies-causal-field-and-inus-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="mackies-causal-field-and-inus-conditions">Mackie’s causal field and INUS conditions</h3>
+<p>Mackie <span class="citation" data-cites="mackie1965 mackie1974cement">(<a href="#ref-mackie1965" role="doc-biblioref">1965</a>, <a href="#ref-mackie1974cement" role="doc-biblioref">1974</a>)</span> articulates the structure of causal regularities with two innovations that the present framework inherits. The first is the <em>causal field</em>: causation is always relative to “a background against which the causing goes on” <span class="citation" data-cites="mackie1974cement">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 63</a>)</span>. In Mackie’s usage, this background consists of standing conditions treated as given, excluded from the causal question. The causal field is not a universal constant but an explicit choice; changing it can change which factors count as causes.</p>
+<p>The second innovation is the identification of the logical structure of a single cause. One and the same effect can have many distinct <em>clusters</em> — conjunctions of positive and negative factors — each sufficient to bring about the effect in the given causal field. No single cluster need be necessary: the effect can occur via another. A complex regularity has the form:</p>
+<p><span class="math display">\[
+C_{1,1} * \ldots * C_{1,n} + \ldots + C_{k,1} * \ldots * C_{k,m} \Rightarrow E.
+\]</span></p>
+<p><em>Reading.</em> Outcome <span class="math inline">\(E\)</span> occurs exactly when at least one of the <span class="math inline">\(k\)</span> clusters fires — meaning that all the conjuncts of that cluster are satisfied. Each <span class="math inline">\(C_{i,j}\)</span> is a single literal — a factor or its absence; the subscript <span class="math inline">\(i\)</span> identifies the cluster and <span class="math inline">\(j\)</span> the position within it.</p>
+<div id="fig-schematic-mt" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schematic-mt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-schematic-mt.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-mt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: The general form diagrammed: <span class="math inline">\(k\)</span> clusters, each tied by its arc, any one sufficient.
+</figcaption>
+</figure>
+</div>
+<p>A cluster is <em>minimally sufficient</em>: sufficient because every test situation satisfying it has <span class="math inline">\(E\)</span>, and minimal because each of its conjuncts is necessary for that sufficiency — no conjunct is redundant <span class="citation" data-cites="mackie1974cement">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 62</a>)</span>. A single factor <span class="math inline">\(C_{i,j}\)</span> within such a cluster is an <strong>INUS condition</strong> for <span class="math inline">\(E\)</span>: an <em>Insufficient but Non-redundant part of an Unnecessary but Sufficient condition</em> <span class="citation" data-cites="mackie1965">(<a href="#ref-mackie1965" role="doc-biblioref">Mackie 1965</a>)</span>.</p>
+<p>Mackie’s account does not, however, impose any minimality requirement on the <em>disjunction</em> of clusters <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 96</a>)</span>, leaving the disjunction free to contain redundant clusters arising from correlations among the effect’s causes. Nor does it resolve the direction of causation. Graßhoff and May <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">2001</a>)</span> supply exactly what is missing.</p>
+</section>
+<section id="sec-gm" class="level3">
+<h3 class="anchored" data-anchor-id="sec-gm">Graßhoff and May: the six novelties of minimal theories</h3>
+<p>Graßhoff and May <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">2001</a>)</span> introduced the <em>minimal theory</em> as the analysans of causal relevance, developing Mackie’s account while keeping its reductive character — avoiding possible worlds, interventions, and causal primitives. A minimal theory adds six components that Mackie’s complex regularity lacks.</p>
+<ol type="1">
+<li><strong>Relativisation to an explicit factor set.</strong> All causal claims are relative to a set <span class="math inline">\(\mathcal{F}\)</span> of observed factors. Sufficiency and necessity hold relative to <span class="math inline">\(\mathcal{F}\)</span>, and the definition specifies what happens when <span class="math inline">\(\mathcal{F}\)</span> is expanded.</li>
+<li><strong>Minimal sufficiency of every cluster.</strong> Every cluster must be <em>minimally</em> sufficient: each conjunct is necessary for the cluster’s sufficiency <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 94</a>)</span>. This is shared with Mackie but stated precisely relative to the factor set.</li>
+<li><strong>Minimal necessity of the disjunction — the decisive innovation.</strong> No cluster may be dropped without the disjunction ceasing to be necessary for <span class="math inline">\(E\)</span> <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 96</a>)</span>. Mackie minimises inside a cluster but never between clusters, and the gap is not a technicality: it is what lets a mere symptom pass as a cause. The next subsection works the case through.</li>
+<li><strong>Stability under factor-set expansion.</strong> A factor qualifies as causally relevant only if it remains non-redundant under every suitable expansion of the factor set. Causal relevance is permanently, not merely locally, non-redundant — Graßhoff and May’s “Principle of Persistent Relevance” <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 99–100</a>)</span>.</li>
+<li><strong>Direction from structural non-symmetry.</strong> Any single cluster is sufficient for <span class="math inline">\(E\)</span>, whereas <span class="math inline">\(E\)</span> determines only the complete disjunction, not which cluster was instantiated. With at least two alternatives, this non-symmetry grounds direction without temporal order, agency, or intervention <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 97–99</a>)</span>.</li>
+<li><strong>Minimal homogeneity instead of Mill’s totality of conditions.</strong> The background assumption that licenses causal inference from a causal field is not the constancy of every causally relevant unmeasured factor — a demand never satisfied by any real field — but the far weaker condition that every latent rival cluster be <em>switched off</em>, which a single shared absent conjunct achieves for an entire cluster. The 2001 paper does not yet state the condition in this form; it speaks of a ceteris-paribus clause under which “other blocking factors are prohibited” <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 99–100</a>)</span>. The bundle-level formulation used in this volume is given in
+<ol class="example" type="1">
+<li>This replacement of Mill’s totality clause by cluster-level blocking is what makes controlled experimentation possible and efficient.</li>
+</ol></li>
+</ol>
+</section>
+<section id="sec-hooters-vol1" class="level3">
+<h3 class="anchored" data-anchor-id="sec-hooters-vol1">The Manchester hooters: what minimal necessity does</h3>
+<p>Of the six, the third is the one that changes verdicts, and Mackie’s own example, here in a simplified reconstruction, shows why <span class="citation" data-cites="mackie1974cement grasshoff2001causal">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 81–86</a>; <a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 101–4</a>)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> M = Manchester hooters sound · L = Londoners go home · T = knocking-off time (five o’clock) · B = foreman’s early dismissal · D = hooters sounded off-schedule (drill or fault). The symbol <span class="math inline">\(\neg D\)</span> (engine: <code>~D</code>) means the hooters were <em>not</em> sounded off-schedule; <code>+</code> means <em>or</em>; <code>*</code> means <em>and</em>.</p>
+</div>
+</div>
+</div>
+<p>Every workday at five o’clock the hooters sound in the Manchester factories (<span class="math inline">\(M\)</span>), and a moment later the workers of London put down their tools and go home (<span class="math inline">\(L\)</span>). The regularity is perfect. It has held for years. Nobody in London can hear the hooters.</p>
+<p>What is going on is plain enough: knocking-off time (<span class="math inline">\(T\)</span>) is five o’clock in both cities. It sounds the hooters in Manchester and it sends the Londoners home, and the two effects of that one cause are therefore found together without either causing the other. The hooters are a <em>symptom</em> of five o’clock, not a cause of anything in London.</p>
+<p>The task for a theory of causation is to <em>derive</em> that verdict rather than assert it. Mackie’s cannot. Write <span class="math inline">\(B\)</span> for the alternative cause that also sends Londoners home — the foreman’s early dismissal — and <span class="math inline">\(\neg D\)</span> for the record that the hooters were not sounded off-schedule, by a drill or a fault. Then <span class="math inline">\(M * \neg D\)</span> is a genuine minimally sufficient condition for <span class="math inline">\(L\)</span>: whenever the hooters sound and they were not sounded off-schedule, the Londoners do go home; and neither conjunct can be dropped, since off-schedule hooters are followed by nobody going anywhere, and the mere absence of an off-schedule sounding holds at every hour of the day. Mackie’s test is passed, and the hooters are admitted into the causal structure:</p>
+<div id="fig-hooters-before" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hooters-before-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-hooters-before.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hooters-before-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: What Mackie’s test admits. The hooters cluster <span class="math inline">\(M * \neg D\)</span> is minimally sufficient for <span class="math inline">\(L\)</span> and is therefore certified — the arc ties <span class="math inline">\(M\)</span> to the absence of an off-schedule trigger, and the cluster joins knocking-off time and the foreman’s dismissal as a third way for Londoners to go home.
+</figcaption>
+</figure>
+</div>
+<p>Minimal necessity asks a question Mackie never asks: is this cluster <em>needed</em>? Strike it out and see whether anything goes unexplained. Nothing does. Every occasion on which the Londoners go home is already an occasion on which either knocking-off time or the foreman’s dismissal obtains — <span class="math inline">\(T + B\)</span> is by itself necessary for <span class="math inline">\(L\)</span>. The hooters cluster never has to do any work, because the hooters sound only when it is five o’clock, and five o’clock is in the theory already. The cluster is a free rider, and minimal necessity removes it:</p>
+<div id="fig-hooters-after" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hooters-after-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-hooters-after.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hooters-after-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: What minimal necessity removes. The disjunction <span class="math inline">\(T + B\)</span> is already necessary for <span class="math inline">\(L\)</span>, so the hooters cluster can be struck out without leaving a single case unaccounted for. Rule (MN) deletes it, arc and arrows together.
+</figcaption>
+</figure>
+</div>
+<p>The theory that survives is <span class="math inline">\(T + B \Rightarrow L\)</span>.</p>
+<p><em>Reading.</em> The Londoners go home exactly when either knocking-off time arrives or the foreman dismisses them early — and in no other way in this record. The letter <span class="math inline">\(M\)</span> does not occur in it. By the definition of <a href="#sec-mt" class="quarto-xref">Section&nbsp;3.2</a>, the Manchester hooters are therefore not causally relevant to the Londoners going home — not because a rule was invented to exclude them, but because the requirement that a disjunction carry no idle disjunct removed them on its own. The same move disposes of every joint effect of a common cause: the falling barometer and the storm, the yellowed fingers and the lung cancer, the ice-cream and the drowning. Each is a symptom riding on a cause that is already in the theory <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 104</a>)</span>. The full derivation, line by line, with its coincidence table, is given in the companion document <code>models.qmd</code>.</p>
+</section>
+<section id="formal-definitions" class="level3">
+<h3 class="anchored" data-anchor-id="formal-definitions">Formal definitions</h3>
+<p>The definitions that follow are given in the order in which each is needed by the next, and the sequence is short. A causal claim has to say <em>about which cases</em> it is made — the field. Those cases are described by a fixed list of yes/no factors — the factor set — each of which may be present or absent in a case — the literals. Conjunctions of literals that suffice for the outcome and contain nothing idle are clusters; the disjunction of the clusters that are genuinely needed is the minimal theory; and membership in it is causal relevance. Every term is used in this volume in the sense fixed here and nowhere in a looser one.</p>
+<section id="definition-causal-field" class="level4">
+<h4 class="anchored" data-anchor-id="definition-causal-field">Definition: causal field</h4>
+<p><em>(Register: <strong>causal field</strong>, I.1; <strong>background conditions</strong>, I.1.)</em></p>
+<p>Causal claims are not made about the universe. They are made about a range of cases — this population, this period, these measured conditions — and the same factor may be relevant in one range and irrelevant in another. Oxygen is not mentioned as a cause of ordinary house fires because it is present in all of them; in a sealed laboratory chamber it is the first thing one would name. The field is the explicit statement of the range, and it is required precisely because leaving it implicit is how causal claims become unfalsifiable.</p>
+<p>A <em>causal field</em> is the <em>set of test situations</em> observed under the factor set <span class="math inline">\(\mathcal{F}\)</span>: the finite collection of cases in which all factors and the outcome are recorded, together with the population, time frame, and measured conditions that delimit it. Causal claims are made relative to a field and are elliptical without one, which is what Standard Rule 1 (STD-1) requires them to state.</p>
+<p>The <em>background conditions</em> of a causal analysis are the factors of the process that are not elements of <span class="math inline">\(\mathcal{F}\)</span> — unrepresented factors, not recorded in the coincidence table. They are not individually required to be constant or identical across test situations. They enter the analysis only collectively, through <em>background bundles</em>: once clusters are defined (below), the background bundle <span class="math inline">\(L_j\)</span> of a cluster <span class="math inline">\(C_j\)</span> is the conjunction of those of its literals that are not recorded — its latent part. (When the factor under test <span class="math inline">\(T\)</span> is the only recorded cause factor, as in a two-arm comparison, these are exactly the literals of <span class="math inline">\(C_j\)</span> that do not involve <span class="math inline">\(T\)</span>.) The homogeneity condition (1) requires only that the truth-value of each such bundle be constant across the field — a condition achievable by a single commonly absent conjunct, without demanding uniformity of any individual background factor.</p>
+</section>
+<section id="definition-factor-and-factor-set" class="level4">
+<h4 class="anchored" data-anchor-id="definition-factor-and-factor-set">Definition: factor and factor set</h4>
+<p><em>(Register: <strong>factor</strong>, I.1; <strong>factor set</strong>, I.1.)</em></p>
+<p>A <em>factor</em> <span class="math inline">\(F \in \mathcal{F}\)</span> is a Boolean variable representing an event type: it takes value <span class="math inline">\(1\)</span> when that event type is instantiated in a case, and <span class="math inline">\(0\)</span> when it is absent. It is not the event itself but the type of event — a repeatable kind of condition that may occur many times across the causal field. The <em>factor set</em> <span class="math inline">\(\mathcal{F}\)</span> is an explicitly specified finite set of such variables; it contains the outcome <span class="math inline">\(E\)</span> as well as the factors that may cause it. A <em>configuration</em> is a complete assignment <span class="math inline">\(c : \mathcal{F} \to
+\{0,1\}\)</span>, recording which event types were instantiated in one particular case. The <em>coincidence table</em> <span class="math inline">\(\delta\)</span> is the list of the configurations observed in the causal field, one entry per test situation; identical configurations from different test situations are listed, and counted, separately.</p>
+</section>
+<section id="definition-literal" class="level4">
+<h4 class="anchored" data-anchor-id="definition-literal">Definition: literal</h4>
+<p><em>(Register: <strong>literal</strong>, I.1.)</em></p>
+<p>A <em>literal</em> <span class="math inline">\(\ell\)</span> is a signed factor: either <span class="math inline">\(F\)</span> (positive) or <span class="math inline">\(\neg F\)</span> (negative). The literal <span class="math inline">\(F\)</span> is satisfied in <span class="math inline">\(c\)</span> if <span class="math inline">\(c(F) = 1\)</span>; <span class="math inline">\(\neg F\)</span> is satisfied if <span class="math inline">\(c(F) = 0\)</span>.</p>
+</section>
+<section id="definition-cluster-minimally-sufficient-condition" class="level4">
+<h4 class="anchored" data-anchor-id="definition-cluster-minimally-sufficient-condition">Definition: cluster / minimally sufficient condition</h4>
+<p>Two requirements meet in this definition, and both are needed. <em>Sufficiency</em> alone is too cheap: the conjunction “short circuit and oxygen and the night watchman was humming” is perfectly sufficient for the fire, and no one wants the humming in the theory. <em>Minimality</em> is what throws the humming out — drop it and the remainder is still sufficient, so it was carrying nothing. What survives both requirements is a conjunction that is enough on its own and contains no passengers — it is a cluster. A merely sufficient conjunction that retains the watchman’s humming is not a cluster; nor is an INUS <em>factor</em>, which is one non-droppable part of a cluster, not the cluster itself. In the diagrams, one cluster is exactly one group of arrows tied by an arc — or a single untied arrow when the cluster has only one conjunct.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition — cluster (minimally sufficient condition)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition — cluster (minimally sufficient condition)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>cluster</strong> is a conjunction of factor-literals that is sufficient for the outcome and from which nothing can be dropped. Sufficiency means every case instantiating it is a case in which the outcome is present; minimality means that removing any one literal breaks sufficiency. In formulae, a cluster is written MSC or <span class="math inline">\(M_i\)</span>; in prose, <em>cluster</em>.</p>
+<p><strong>Stated exactly.</strong> A conjunction <span class="math inline">\(M = \ell_1 * \cdots * \ell_k\)</span> of literals is a cluster for outcome <span class="math inline">\(E\)</span> relative to coincidence table <span class="math inline">\(\delta\)</span> if: (i) every configuration in <span class="math inline">\(\delta\)</span> satisfying <span class="math inline">\(M\)</span> has <span class="math inline">\(E = 1\)</span> (sufficiency), and (ii) no proper sub-conjunction of <span class="math inline">\(M\)</span> is sufficient for <span class="math inline">\(E\)</span> (minimality) <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 94</a>)</span>.</p>
+<p><strong>Example.</strong> <span class="math inline">\(\text{SC}*\text{OX}\)</span> is a cluster for fire: every row with short circuit and oxygen has fire, and neither conjunct alone suffices. Removing either conjunct breaks sufficiency and so both are indispensable (Volume III, Case A-01).</p>
+</div>
+</div>
+</section>
+<section id="definition-minimal-theory" class="level4">
+<h4 class="anchored" data-anchor-id="definition-minimal-theory">Definition: minimal theory</h4>
+<p>The same two-sided discipline is now applied one level up. A cluster was required to be sufficient and to contain no idle <em>conjunct</em>; the disjunction of clusters is required to be necessary and to contain no idle <em>disjunct</em>. The first requirement was Mackie’s; the second is the one he omitted, and <a href="#sec-hooters-vol1" class="quarto-xref">Section&nbsp;3.2.3</a> has shown what it costs to omit it. A theory that satisfies both is minimal in both directions at once: nothing can be removed from a cluster, and no cluster can be removed from the theory.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition — minimal theory">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition — minimal theory
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>minimal theory</strong> for outcome <span class="math inline">\(E\)</span> is a disjunction of clusters that is both necessary and stripped of redundancy: every positive case of <span class="math inline">\(E\)</span> is covered by at least one cluster, and no cluster can be dropped without leaving positive cases uncovered.</p>
+<p><strong>Stated exactly.</strong> A disjunction <span class="math inline">\(M_1 + \cdots + M_k \Rightarrow E\)</span> is a minimal theory of <span class="math inline">\(E\)</span> over coincidence table <span class="math inline">\(\delta\)</span> if: (i) each <span class="math inline">\(M_i\)</span> is a cluster for <span class="math inline">\(E\)</span>, (ii) every positive case in <span class="math inline">\(\delta\)</span> satisfies at least one <span class="math inline">\(M_i\)</span> (necessity), and (iii) no <span class="math inline">\(M_i\)</span> can be removed while preserving necessity — minimal necessity (MN) <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 96</a>)</span>.</p>
+<p>A factor <span class="math inline">\(A\)</span> is causally relevant to <span class="math inline">\(E\)</span> <em>relative to</em> <span class="math inline">\(\delta\)</span> if and only if <span class="math inline">\(A\)</span> or <span class="math inline">\(\neg A\)</span> is a non-droppable literal in some <span class="math inline">\(M_i\)</span> of this disjunction. Causal relevance without qualification demands in addition that this hold for every factor set containing <span class="math inline">\(A\)</span> and <span class="math inline">\(E\)</span> (the definition above).</p>
+<p><strong>Example.</strong> <span class="math inline">\(\text{SC}*\text{OX} + \text{FL}*\text{SP}*\text{OX} \Rightarrow
+\text{FI}\)</span> is a minimal theory of warehouse fire: both clusters are needed because each alone leaves some fire cases uncovered. The Manchester hooters fail the test of minimal necessity — the hooters cluster can be dropped without leaving any going-home event unaccounted for — and so a theory that contains the hooters cluster is not minimal (<a href="#sec-hooters-vol1" class="quarto-xref">Section&nbsp;3.2.3</a>; the line-by-line derivation is in <code>models.qmd</code>).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Worked example — Minimal Theory of Warehouse Fire">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Worked example — Minimal Theory of Warehouse Fire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider a warehouse fire outcome <span class="math inline">\(\text{FI}\)</span>. Factor set <span class="math inline">\(\mathcal{F} = \{\text{SC}, \text{OX}, \text{FL}, \text{SP}, \text{FI}\}\)</span>, where SC = short circuit, OX = oxygen, FL = flammable liquid, SP = spark, FI = fire.</p>
+<ol type="1">
+<li><strong>Test the first candidate cluster</strong> <span class="math inline">\(M_1 = \text{SC} * \text{OX}\)</span>.
+<ul>
+<li><em>Sufficiency:</em> Every observed row where SC <span class="math inline">\(= 1\)</span> and OX <span class="math inline">\(= 1\)</span> has FI <span class="math inline">\(= 1\)</span>.</li>
+<li><em>Minimality:</em> Neither SC alone nor OX alone suffices: a row with a short circuit but no oxygen has no fire, and so does a row with oxygen but no short circuit. So <span class="math inline">\(M_1\)</span> is a cluster.</li>
+</ul></li>
+<li><strong>Test the second candidate cluster</strong> <span class="math inline">\(M_2 = \text{FL} * \text{SP} * \text{OX}\)</span>.
+<ul>
+<li><em>Sufficiency:</em> every row with flammable liquid, a spark, and oxygen has FI <span class="math inline">\(= 1\)</span>.</li>
+<li><em>Minimality:</em> no two of the three suffice. For <span class="math inline">\(\text{FL}*\text{SP}\)</span> this needs a row with flammable liquid and a spark but no oxygen and no fire — a sealed chamber. Without such a row, oxygen cannot be shown to be indispensable in this cluster, and (MS) returns <span class="math inline">\(\text{FL}*\text{SP}\)</span> instead; row 9 of Volume III, Case A-01 is this sealed chamber.</li>
+</ul></li>
+<li><strong>Apply minimal necessity (MN).</strong> <span class="math inline">\(M_1 + M_2 \Rightarrow \text{FI}\)</span>: every fire satisfies either <span class="math inline">\(M_1\)</span> or <span class="math inline">\(M_2\)</span>, and neither cluster can be dropped without leaving fire cases uncovered. The disjunction is minimally necessary.</li>
+<li><strong>Causal relevance verdict.</strong> Relative to this factor set, SC, OX, FL, SP are all causally relevant to FI: each appears as a non-droppable literal in one of the clusters of the minimal theory.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="definition-atomic-minimal-theory" class="level4">
+<h4 class="anchored" data-anchor-id="definition-atomic-minimal-theory">Definition: atomic minimal theory</h4>
+<p><em>(Register: <strong>atomic minimal theory</strong>, I.1.)</em></p>
+<p>An <em>atomic minimal theory</em> — abbreviated asf, the engine’s label, from the coincidence-analysis term “atomic solution formula” — is a minimal theory for a single outcome <span class="math inline">\(E\)</span> that is permanently redundancy-free: no literal becomes redundant under any admissible expansion of the factor set. An asf with two or more clusters is self-orienting by structural non-symmetry (novelty 5 above). An asf with exactly one cluster is oriented by process order (temporal or mechanistic precedence of the cause-factors) when that order is known; otherwise the engine reports the status <code>UNORIENTABLE</code> — the dependency is real but the structure alone cannot establish which direction is causal (see switch and subcause in the casebook). <code>UNORIENTABLE</code> is a report about orientation only; it has no grapheme of its own, and the fill of an arrowhead marks the level of a claim, never its orientation status (<a href="#sec-reading-diagrams" class="quarto-xref">Section&nbsp;1.4</a>).</p>
+</section>
+</section>
+</section>
+<section id="sec-homogeneity" class="level2">
+<h2 class="anchored" data-anchor-id="sec-homogeneity">The homogeneity condition</h2>
+<section id="the-problem-homogeneity-solves" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-homogeneity-solves">The problem homogeneity solves</h3>
+<p>A table of cases does not wear its causal structure on its face. Two patients receive the drug and recover; a third receives it and does not. Has the regularity failed, or did something else happen to the third patient that the table does not record? Nothing <em>in</em> the table can answer that, and yet the whole enterprise of reading causal structure off comparisons depends on the answer. Homogeneity is the premiss that closes the gap: it is the assumption under which a comparison between cases is a comparison of the thing one is interested in, rather than of everything at once.</p>
+<p>The obvious way to state it is also the ruinous one. <strong>Mill</strong> asked that the compared cases have “every circumstance in common save one” <span class="citation" data-cites="mill1843">(<a href="#ref-mill1843" role="doc-biblioref">1843, bk. III</a>, ch.&nbsp;8)</span>. Taken literally that is a demand no field has ever met. Two patients differ in age, genotype, diet, sleep, gut flora, and several thousand other respects, and if causal inference required those to be identical, no clinical trial ever conducted would have licensed a conclusion. Worse, the demand is not merely unattainable but <em>unnecessary</em> — and a methodological standard that forbids sound inferences is not a strict standard, it is a mistaken one.</p>
+<p>The regularity-theoretic condition is far weaker, and the reason it can be weaker is structural. What has to be prevented is not that background factors <em>vary</em> but that a rival cluster <em>fires differentially</em> — that some other sufficient condition switches on in one case and off in another, so that the comparison reflects its coming and going rather than the factor under test. And a whole cluster can be shut down by a single one of its parts. A cluster is a conjunction: if one conjunct is reliably absent, the conjunction is false, and every other conjunct in it may vary as wildly as it likes without any effect whatever.</p>
+<div id="fig-homogeneity-cvl" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-homogeneity-cvl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-homogeneity.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homogeneity-cvl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Blocking a rival cluster does not require holding its factors constant. Left: two clusters leading to recovery — the drug with absorption, or spontaneous remission with a competent immune response. Right: exclude patients in spontaneous remission and the lower cluster is dead, whatever the immune response does. One absent conjunct switches off an entire cluster. This is the whole difference between an attainable homogeneity condition and Mill’s unattainable one.
+</figcaption>
+</figure>
+</div>
+<p>The practical consequence is the one that matters for experimental design. The goal is not to hold as much as possible constant — that is expensive, usually impossible, and often unnecessary. The goal is to find, for each rival cluster, the <em>one</em> conjunct that is cheapest to keep absent. Minimising the homogeneity demand is not a concession to practical limits; it is what makes efficient experimentation possible at all.</p>
+</section>
+<section id="the-three-senses" class="level3">
+<h3 class="anchored" data-anchor-id="the-three-senses">The three senses</h3>
+<p>The register records three senses of the term; only two are used in proofs, and the first is recorded precisely so that it cannot be smuggled back in.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition — homogeneity (three senses)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition — homogeneity (three senses)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>homogeneity condition</strong> is the assumption under which a comparison between cases is a comparison of the thing under study rather than of everything at once. It has three forms; only the second and third are used in proofs — the first is recorded as the error this framework refuses.</p>
+<p><strong>I.1 †Mill’s totality (not used, marked as error).</strong> Every causally relevant unmeasured factor has the same value in every test situation — the demand that the compared instances have “every circumstance in common save one” <span class="citation" data-cites="mill1843">(<a href="#ref-mill1843" role="doc-biblioref">Mill 1843, bk. III</a>, ch.&nbsp;8)</span>. Called <em>HC-strong</em> below. Unsatisfiable in any real field.</p>
+<p><strong>II.1 Bundle-level</strong> <em>(operative for sufficiency-reading; Gate A in Volume II)</em>. Each latent background bundle — the conjunction of the unmeasured conjuncts of one cluster — has constant truth-value across the field. Individual factors inside a bundle may vary freely as long as the bundle’s truth-value stays constant. Falsified by a contradictory configuration.</p>
+<p><strong>III.1 Contrastive bundle</strong> <em>(operative for difference-tests; Gate B in Volume II)</em>. No rival background bundle fires differentially with the factor under test <span class="math inline">\(T\)</span>. Enabling partners of the <span class="math inline">\(T\)</span>-cluster are balanced or uniformly present across arms. Does not require II.1: <span class="math inline">\(C_E &gt; 0\)</span> is expected in a difference-test (Volume II).</p>
+<p><strong>Note.</strong> One shared absent conjunct switches an entire rival cluster off; nothing further is required of the other conjuncts. This is why the homogeneity demand can always be minimised — and why Mill’s totality condition asks for far more than sound causal inference requires.</p>
+</div>
+</div>
+<p>The two operative senses differ in what they are good for, and the difference is worth holding onto. II.1 licenses reading a <em>theory</em> off a table, and it is falsified the moment a contradictory configuration turns up. III.1 licenses a <em>single contrast</em> — the difference test that an experiment performs — and it tolerates contradictions elsewhere in the table, because an experiment is not trying to explain every case, only to isolate one factor.</p>
+<p><strong>The framework uses II.1 for all sufficiency-readings and III.1 for all difference-tests. I.1 is recorded as the error and is never used in a proof.</strong></p>
+</section>
+<section id="worked-example-fire" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-fire">Worked example (fire)</h3>
+<p>Take the complete theory <span class="math inline">\(\text{SC*OX} + \text{FL*SP*OX} \Rightarrow \text{FI}\)</span> and suppose an investigator records SC and OX only, treating FL and SP as latent. HC-strong would demand that FL <em>and</em> SP each be constant across all test situations — gratuitously, since their cluster fires only jointly. Minimal homogeneity demands only that the cluster FL*SP*OX be off, and one shared absence suffices: exclude sparks (SP <span class="math inline">\(= 0\)</span> throughout), and flammable material may be present, absent, or varying in every test situation without any effect on FI or on homogeneity. Alternatively, the field OX <span class="math inline">\(= 0\)</span> switches off <em>both</em> clusters at once — which is why no difference test for SC can be run in an oxygen-free field: every cluster is off, <span class="math inline">\(E\)</span> is constant, and relevance claims are correctly suspended relative to that field. The full treatment of the fire case with coincidence table is in Volume III, Case A-01.</p>
+</section>
+<section id="worked-example-clinical-trial" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-clinical-trial">Worked example (clinical trial)</h3>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> T = treatment administered · ABS = absorption of the drug · SPON = spontaneous remission tendency · IMM = competent immune response · R = recovery. <code>*</code> reads <em>and</em>; <code>+</code> reads <em>or</em>.</p>
+</div>
+</div>
+</div>
+<p>Suppose recovery R has the complete theory <span class="math inline">\(\text{T*ABS} + \text{SPON*IMM}
+\Rightarrow \text{R}\)</span> — treatment with absorption, or spontaneous remission with a competent immune response — and the trial measures only T. HC-strong would demand constancy of ABS, SPON, and IMM across all patients: unattainable. Minimal homogeneity requires (i) the enabling partner ABS uniformly present (achieved by administration protocol and adherence monitoring), and (ii) the rival cluster switched off or balanced between the arms so that its firing is statistically independent of T. This is what randomisation is for: it is the device of choice exactly for those latent clusters that possess no accessible blocking point. The statin trial worked example applying this protocol is in Volume III, Case B-ST.</p>
+</section>
+<section id="definition-contradictory-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="definition-contradictory-configuration">Definition: contradictory configuration</h3>
+<p>Two test situations <span class="math inline">\(c, c' \in \delta\)</span> form a <em>contradictory configuration</em> iff they agree on all factors in <span class="math inline">\(\mathcal{F} \setminus \{E\}\)</span> but disagree on <span class="math inline">\(E\)</span>.</p>
+</section>
+<section id="proposition-operational-homogeneity-test" class="level3">
+<h3 class="anchored" data-anchor-id="proposition-operational-homogeneity-test">Proposition: operational homogeneity test</h3>
+<p><strong>Direct implication.</strong> If <span class="math inline">\(\delta\)</span> is homogeneous for <span class="math inline">\(E\)</span> in the bundle-level sense II.1 and <span class="math inline">\(E\)</span> is causally determined (premiss P3, <a href="#sec-deduction" class="quarto-xref">Section&nbsp;3.4</a>), then <span class="math inline">\(\delta\)</span> contains no contradictory configuration.</p>
+<p><em>Proof.</em> Let <span class="math inline">\(c, c' \in \delta\)</span> agree on all factors in <span class="math inline">\(\mathcal{F} \setminus
+\{E\}\)</span>. We show that <span class="math inline">\(c(E) = 1\)</span> implies <span class="math inline">\(c'(E) = 1\)</span>. By (P3), if <span class="math inline">\(c(E) = 1\)</span> then some sufficient condition of <span class="math inline">\(E\)</span> fires in <span class="math inline">\(c\)</span>, and with it a cluster <span class="math inline">\(S\)</span> of the complete structure contained in it. Decompose <span class="math inline">\(S\)</span> into its measured part <span class="math inline">\(S_{\mathcal{F}}\)</span> (its literals of factors in <span class="math inline">\(\mathcal{F}\)</span>) and its background bundle <span class="math inline">\(L\)</span> (its latent conjuncts). Since <span class="math inline">\(S\)</span> fires in <span class="math inline">\(c\)</span>, both <span class="math inline">\(S_{\mathcal{F}}\)</span> and <span class="math inline">\(L\)</span> are true in <span class="math inline">\(c\)</span>. By (II.1), the truth-value of <span class="math inline">\(L\)</span> is constant across <span class="math inline">\(\delta\)</span>, so <span class="math inline">\(L\)</span> is true in <span class="math inline">\(c'\)</span> as well. Since <span class="math inline">\(c\)</span> and <span class="math inline">\(c'\)</span> agree on all measured factors other than <span class="math inline">\(E\)</span>, and <span class="math inline">\(S_{\mathcal{F}}\)</span> contains no literal of <span class="math inline">\(E\)</span>, <span class="math inline">\(S_{\mathcal{F}}\)</span> is also true in <span class="math inline">\(c'\)</span>. Therefore <span class="math inline">\(S\)</span> fires in <span class="math inline">\(c'\)</span>, and by sufficiency <span class="math inline">\(c'(E) = 1\)</span>. Exchanging the roles of <span class="math inline">\(c\)</span> and <span class="math inline">\(c'\)</span> gives the converse, so <span class="math inline">\(c(E) = c'(E)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Contrapositive.</strong> Given (P3) and a correct record, every contradictory configuration proves that some latent background bundle changed its truth-value — a latent alternative cluster fired in one test situation but not in the other (the bundle was not kept false), or a latent enabling partner of the cluster under study was not uniform (the bundle was true in one situation and false in the other). The contradictory pair localises the inhomogeneity, although it does not by itself name the bundle (see “Meaning and repair of a violation” below), and the repair is correspondingly local: restore bundle-constancy by design (block the differentially firing bundle via one absent conjunct), or expand the factor set by a conjunct of the offending bundle so that its firing becomes measured.</p>
+</section>
+<section id="the-exact-contradiction-test" class="level3">
+<h3 class="anchored" data-anchor-id="the-exact-contradiction-test">The exact contradiction test</h3>
+<p>The operational test is outcome-specific. Let <span class="math inline">\(X = \mathcal{F}\setminus\{E\}\)</span> and let <span class="math inline">\(x\)</span> denote one complete assignment of the measured factors in <span class="math inline">\(X\)</span>. For every observed <span class="math inline">\(x\)</span>, count</p>
+<p><span class="math display">\[
+n_x^+ = \#\{c\in\delta:c|_X=x,\ c(E)=1\}, \qquad
+n_x^- = \#\{c\in\delta:c|_X=x,\ c(E)=0\}.
+\]</span></p>
+<p>Define the contradiction indicator and the number of contradictory configurations:</p>
+<p><span class="math display">\[
+I_x = \mathbf{1}(n_x^+&gt;0 \land n_x^-&gt;0), \qquad
+C_E = \sum_x I_x.
+\]</span></p>
+<p>The exact operational decision rule is:</p>
+<ul>
+<li><strong><span class="math inline">\(C_E&gt;0\)</span> — homogeneity violated for outcome <span class="math inline">\(E\)</span>.</strong> At least one identical measured configuration has both outcomes. Given causal determination, reliable measurement, and a single causal field, some latent background bundle changed its truth-value.</li>
+<li><strong><span class="math inline">\(C_E=0\)</span> — homogeneity not falsified.</strong> This is not proof of homogeneity. If every measured configuration is observed only once, the test has no opportunity to find a contradiction. A clean report must therefore be read as <em>no detected violation in these data</em>, not as confirmation that every rival cluster is blocked.</li>
+</ul>
+<p>For graded reporting, define the <strong>contradiction burden</strong></p>
+<p><span class="math display">\[
+B_E = \frac{1}{|\delta|}\sum_x \min(n_x^+,n_x^-).
+\]</span></p>
+<p><span class="math inline">\(B_E\)</span> is the minimum fraction of rows that must be removed or reclassified to make <span class="math inline">\(E\)</span> constant within every observed configuration; an added factor that separates the contradictory rows repairs the same rows. The implementation reports both <span class="math inline">\(C_E\)</span> and <span class="math inline">\(B_E\)</span> through <code>assess_homogeneity(cases, outcomes=[E])</code>. In the kidney-stone data of Volume III, Case B-16, the four measured configurations all carry both outcomes, so <span class="math inline">\(C_E = 4\)</span>, and <span class="math inline">\(B_E = (6 + 71 + 36 + 25)/700 = 0.197\)</span>.</p>
+</section>
+<section id="meaning-and-repair-of-a-violation" class="level3">
+<h3 class="anchored" data-anchor-id="meaning-and-repair-of-a-violation">Meaning and repair of a violation</h3>
+<p>A contradiction does not by itself identify its source. Four possibilities must be distinguished:</p>
+<ol type="1">
+<li><strong>Unblocked rival cluster:</strong> a latent minimally sufficient condition fired in some test situations and not in others — no shared blocking conjunct held it off — or a latent enabling partner of the cluster under study was not uniform.</li>
+<li><strong>Mixed causal fields:</strong> cases governed by different minimal theories have been pooled.</li>
+<li><strong>Measurement or coding error:</strong> a factor or the outcome was recorded inconsistently.</li>
+<li><strong>Inappropriate discretisation:</strong> a continuous difference-maker was collapsed into the same Boolean category.</li>
+</ol>
+<p>The repair protocol is correspondingly ordered:</p>
+<ol type="1">
+<li>check the contradictory rows and their provenance;</li>
+<li>correct measurement or coding errors;</li>
+<li>stratify cases that belong to distinct causal fields;</li>
+<li>block the differentially firing cluster by design, or expand the factor set;</li>
+<li>rerun the contradiction test before searching for a minimal theory.</li>
+</ol>
+<div id="fig-homogeneity" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-homogeneity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-homogeneity.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homogeneity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: The homogeneity condition. Left: a minimally homogeneous field — every latent cluster is switched off or uniform, measured factors fix the outcome, and sufficiency/necessity can be read off the table. Right: a contradictory configuration (same factor values, opposite outcome) proves a latent cluster through <span class="math inline">\(L\)</span> fired differentially — the repair is to block that cluster by design or to expand the factor set.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-deduction" class="level2">
+<h2 class="anchored" data-anchor-id="sec-deduction">The deductive path to the causal hypothesis</h2>
+<p>Causal inference is normally described as inductive, and the description carries a familiar resignation with it: one can never be certain, the data underdetermine the conclusion, and the gap between evidence and causal claim is simply the human condition of empirical science.</p>
+<p>The regularity-theoretic tradition rejects the resignation without denying the gap <span class="citation" data-cites="baumgartner-grasshoff2004">(<a href="#ref-baumgartner-grasshoff2004" role="doc-biblioref">Baumgartner and Graßhoff 2004</a>)</span>. Properly reconstructed, the inference is <strong>deductive</strong>: given the table, given that the field is homogeneous, and given that the outcome is causally determined, the causal conclusion <em>follows</em>. There is no leap at the end.</p>
+<p>The uncertainty has not been conjured away — it has been <em>moved</em>. It now sits in the premisses, and that is a considerable gain, because a premiss can be stated, examined, tested, and if necessary rejected, whereas a leap can only be taken or refused. When a causal conclusion is wrong under this reconstruction, one can say which premiss failed. The homogeneity premiss in particular is testable against the very table it is a premiss about (1), which is why so much of this volume is spent on it.</p>
+<section id="the-causal-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="the-causal-hypothesis">The causal hypothesis</h3>
+<p>The claim under test always has the canonical form:</p>
+<blockquote class="blockquote">
+<p><span class="math inline">\(H\)</span>: factor <span class="math inline">\(A\)</span> is causally relevant to outcome <span class="math inline">\(E\)</span> relative to factor set <span class="math inline">\(\mathcal{F}\)</span> and causal field <span class="math inline">\(\delta\)</span>.</p>
+</blockquote>
+</section>
+<section id="premisses" class="level3">
+<h3 class="anchored" data-anchor-id="premisses">Premisses</h3>
+<ul>
+<li><strong>(P1) Evidence.</strong> The coincidence table <span class="math inline">\(\delta\)</span>: the observed test situations.</li>
+<li><strong>(P2) Homogeneity (HC, the homogeneity condition).</strong> <span class="math inline">\(\delta\)</span> is a homogeneous causal field for <span class="math inline">\(E\)</span> — in the bundle-level sense II.1 for a sufficiency-reading, in the contrastive sense III.1 for a difference-test (1).</li>
+<li><strong>(P3) Causal determination (PD, the principle of determination).</strong> <span class="math inline">\(E\)</span> is causally determined: every instantiation of <span class="math inline">\(E\)</span> is brought about by the instantiation of some sufficient condition of <span class="math inline">\(E\)</span>.</li>
+<li><strong>(P4) Causal uniqueness (CU).</strong> Every complete Humean mosaic — every complete coincidence table of the domain — corresponds to one determinate causal structure <span class="citation" data-cites="baumgartner-falk2023">(<a href="#ref-baumgartner-falk2023" role="doc-biblioref">Baumgartner and Falk 2023, sec. 5</a>)</span>: residual ambiguity is always evidential, never ontological.</li>
+</ul>
+</section>
+<section id="rules" class="level3">
+<h3 class="anchored" data-anchor-id="rules">Rules</h3>
+<p>The derivation applies the rule calculus of the companion document <code>models.qmd</code>: (SUF) read sufficiency off the table; (MS) minimise conjunctions; (NEC) form the necessary disjunction; (MN) minimise the disjunction; (CPLX) orient the biconditional by the asymmetry of determination when there are at least two clusters, or by a known process order when there is only one; (PERM) retain only components that survive factor-set expansion.</p>
+</section>
+<section id="proposition-deductive-validity-of-the-difference-test" class="level3">
+<h3 class="anchored" data-anchor-id="proposition-deductive-validity-of-the-difference-test">Proposition: deductive validity of the difference test</h3>
+<p>Let <span class="math inline">\(c_1, c_2 \in \delta\)</span> agree on all factors in <span class="math inline">\(\mathcal{F} \setminus \{A, E\}\)</span>, with <span class="math inline">\(A = 1\)</span> in <span class="math inline">\(c_1\)</span> and <span class="math inline">\(A = 0\)</span> in <span class="math inline">\(c_2\)</span>, and <span class="math inline">\(E = 1\)</span> in <span class="math inline">\(c_1\)</span> and <span class="math inline">\(E = 0\)</span> in <span class="math inline">\(c_2\)</span>. Then, given (P2) in the bundle-level sense II.1 and (P3), the positive literal <span class="math inline">\(A\)</span> is a non-redundant part of a minimally sufficient condition for <span class="math inline">\(E\)</span> relative to <span class="math inline">\(\delta\)</span>.</p>
+<p><em>Proof.</em> By (P3), some sufficient condition of <span class="math inline">\(E\)</span> fires in <span class="math inline">\(c_1\)</span>, and with it a cluster <span class="math inline">\(S\)</span> of the complete structure, over recorded and latent factors alike. Write <span class="math inline">\(S = S_{\mathcal{F}} * L\)</span>, where <span class="math inline">\(S_{\mathcal{F}}\)</span> is the conjunction of the literals of <span class="math inline">\(S\)</span> whose factors are in <span class="math inline">\(\mathcal{F}\)</span> and <span class="math inline">\(L\)</span> is its background bundle, the latent conjuncts (an empty part counts as true). Neither part contains a literal of <span class="math inline">\(E\)</span>, and both are true in <span class="math inline">\(c_1\)</span>. By (P2) in sense II.1, <span class="math inline">\(L\)</span> has one truth-value across <span class="math inline">\(\delta\)</span>; being true in <span class="math inline">\(c_1\)</span>, it is true in every test situation of <span class="math inline">\(\delta\)</span>. Hence <span class="math inline">\(S_{\mathcal{F}}\)</span> is sufficient for <span class="math inline">\(E\)</span> relative to <span class="math inline">\(\delta\)</span>: every configuration in <span class="math inline">\(\delta\)</span> that satisfies <span class="math inline">\(S_{\mathcal{F}}\)</span> also satisfies <span class="math inline">\(L\)</span>, hence <span class="math inline">\(S\)</span>, hence <span class="math inline">\(E\)</span>. Apply (MS) to <span class="math inline">\(S_{\mathcal{F}}\)</span> relative to <span class="math inline">\(\delta\)</span> — drop conjuncts as long as sufficiency relative to <span class="math inline">\(\delta\)</span> is preserved. The result is a minimally sufficient sub-conjunction <span class="math inline">\(S^{*}\)</span> of <span class="math inline">\(S_{\mathcal{F}}\)</span>, and <span class="math inline">\(S^{*}\)</span> is true in <span class="math inline">\(c_1\)</span> because <span class="math inline">\(S_{\mathcal{F}}\)</span> is. Suppose <span class="math inline">\(S^{*}\)</span> contained no literal of <span class="math inline">\(A\)</span>. Then all its literals would be literals of factors in <span class="math inline">\(\mathcal{F} \setminus \{A, E\}\)</span>, on which <span class="math inline">\(c_2\)</span> agrees with <span class="math inline">\(c_1\)</span>; so <span class="math inline">\(S^{*}\)</span> would be true in <span class="math inline">\(c_2\)</span>, and by its sufficiency <span class="math inline">\(E = 1\)</span> in <span class="math inline">\(c_2\)</span> — contrary to the choice of <span class="math inline">\(c_2\)</span>. Hence <span class="math inline">\(S^{*}\)</span> contains a literal of <span class="math inline">\(A\)</span>. That literal is the positive <span class="math inline">\(A\)</span>, since <span class="math inline">\(S^{*}\)</span> is true in <span class="math inline">\(c_1\)</span>, where <span class="math inline">\(A = 1\)</span>; and it cannot be dropped, since <span class="math inline">\(S^{*}\)</span> is minimal. As <span class="math inline">\(S^{*}\)</span> is part of <span class="math inline">\(S\)</span>, <span class="math inline">\(A\)</span> is also a conjunct of the cluster <span class="math inline">\(S\)</span> of the complete structure. <span class="math inline">\(\square\)</span></p>
+<p><strong>Scope: which homogeneity the proof uses.</strong> The proof uses (P2) in the bundle-level sense II.1 — Gate A of Volume II: the background bundle <span class="math inline">\(L\)</span> of the firing cluster has one truth-value across <span class="math inline">\(\delta\)</span>, so that <span class="math inline">\(L\)</span> being true in <span class="math inline">\(c_1\)</span> makes it true in <span class="math inline">\(c_2\)</span>. A single randomised contrast does not supply that. It supplies only contrastive homogeneity (sense III.1, Gate B): a latent bundle may fire in some units and not in others, provided it fires equally often in both arms, so the two rows of a difference pair need not share their latent bundles. That case is not covered by this proof. It is covered by the proposition on MSC-membership that Volume II derives from the firing-rate identity (Volume II, “The firing-rate identity”). There <span class="math inline">\(\Delta = p_1 - p_0\)</span> is the difference between the outcome rates of the treated and the untreated arm, and <span class="math inline">\(U = 0\)</span> states that no cluster containing <span class="math inline">\(\neg T\)</span> fires — being untreated is not itself part of a sufficient condition for <span class="math inline">\(E\)</span>. Under Gate B and <span class="math inline">\(U = 0\)</span>, <span class="math inline">\(\Delta &gt; 0\)</span> licenses membership of the positive literal <span class="math inline">\(T\)</span> in an MSC for <span class="math inline">\(E\)</span>, and <span class="math inline">\(\Delta &lt; 0\)</span> licenses membership of <span class="math inline">\(T\)</span> in an MSC for <span class="math inline">\(\neg E\)</span>.</p>
+<p><strong>Note on scope.</strong> This proposition establishes that <span class="math inline">\(A\)</span> is a non-redundant literal in some MSC for <span class="math inline">\(E\)</span> — the first step toward causal relevance. Establishing <em>full</em> causal relevance additionally requires applying (NEC) and (MN) to the whole coincidence table, showing that the resulting disjunction is minimally necessary, and (PERM), showing that the membership survives expansion of the factor set. A single difference pair warrants MSC-membership; an atomic minimal theory requires the complete evidential base. In particular, an RCT (randomised controlled trial) that supplies one contrast does not by itself yield a minimal theory — but it can be combined with the full table via the rest of the rule calculus.</p>
+</section>
+<section id="worked-instance-fire" class="level3">
+<h3 class="anchored" data-anchor-id="worked-instance-fire">Worked instance: fire</h3>
+<p>Rows <span class="math inline">\(c_1 = (\text{SC}=1, \text{OX}=1, \text{FL}=0, \text{SP}=0; \text{FI}=1)\)</span> and <span class="math inline">\(c_2 = (\text{SC}=0, \text{OX}=1, \text{FL}=0, \text{SP}=0; \text{FI}=0)\)</span> constitute exactly such a difference pair (rows 1 and 6 of Volume III, Case A-01). Given HC in sense II.1 and PD, SC is deductively a non-redundant part of an MSC for FI. The remaining rows determine the rest by (MS), (NEC), and (MN). On the nine rows of Case A-01 they yield the full theory <span class="math inline">\(\text{SC*OX} +
+\text{FL*SP*OX} \Rightarrow \text{FI}\)</span>; row 9, a sealed chamber with flammable liquid and a spark but no oxygen and no fire, is the row that shows oxygen to be indispensable in the second cluster. The canonical Manchester Factory Hooters derivation, solved line-by-line by rule (MN), is given in <code>models.qmd</code>; Volume III, Case A-01 contains the fire table.</p>
+<div id="fig-deductive-path" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-deductive-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-deductive-path.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deductive-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: The deductive path from assumptions and causal principles to the validity of the causal hypothesis. Inductive risk is not eliminated but relocated into the premisses, where it is empirically controllable. The probabilistic cover (Volume II) grades the epistemic quality of each premiss under noisy data.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="where-induction-lives" class="level3">
+<h3 class="anchored" data-anchor-id="where-induction-lives">Where induction lives</h3>
+<p>The deductive reconstruction relocates inductive risk rather than eliminating it <span class="citation" data-cites="baumgartner-grasshoff2004">(<a href="#ref-baumgartner-grasshoff2004" role="doc-biblioref">Baumgartner and Graßhoff 2004</a>)</span>. Homogeneity (P2) is testable — its violation is detected by contradictory configurations. The completeness of the evidence (P1) with respect to all alternative causal clusters cannot be justified from <span class="math inline">\(\delta\)</span> itself, which is why permanence makes causal knowledge inherently diachronic. (P4) is a metaphysical assumption that converts residual ambiguity into an evidential problem. Volume II develops the probabilistic cover for these premisses under noisy, fragmented data.</p>
+</section>
+</section>
+<section id="sec-csf" class="level2">
+<h2 class="anchored" data-anchor-id="sec-csf">Complex minimal theories</h2>
+<p>Multi-outcome causal structures arise when factors are both causes and effects within the same system. Baumgartner <span class="citation" data-cites="baumgartner2009inus baumgartner2008">(<a href="#ref-baumgartner2009inus" role="doc-biblioref">2009</a>; see also <a href="#ref-baumgartner2008" role="doc-biblioref">2008</a>)</span> developed the <em>complex minimal theory</em> — abbreviated csf in the engine, from the coincidence-analysis term “complex solution formula” — as a conjunction of atomic minimal theories linked by shared endogenous factors, extending the Graßhoff/May framework to chains, common causes, and cycles.</p>
+<section id="definition-endogenous-factor" class="level3">
+<h3 class="anchored" data-anchor-id="definition-endogenous-factor">Definition: endogenous factor</h3>
+<p>A factor <span class="math inline">\(F\)</span> is <em>endogenous</em> if it appears as the outcome of some asf and as a cause-literal in at least one MSC of another asf within the same structure.</p>
+</section>
+<section id="definition-complex-minimal-theory-csf" class="level3">
+<h3 class="anchored" data-anchor-id="definition-complex-minimal-theory-csf">Definition: complex minimal theory (csf)</h3>
+<p>A <em>complex minimal theory</em> is a conjunction of atomic minimal theories <span class="math inline">\((M_1^{(1)} + \cdots \Rightarrow E_1) \land \cdots \land
+(M_1^{(n)} + \cdots \Rightarrow E_n)\)</span> — the sign <span class="math inline">\(\land\)</span> joins whole theories, as <code>*</code> joins literals — where:</p>
+<ul>
+<li>every <span class="math inline">\(E_i\)</span> is the outcome of exactly one constituent asf;</li>
+<li>each asf is independently a minimal theory in the sense above;</li>
+<li>the conjunction is <em>permanently redundancy-free</em>: substituting the cause-expression of any endogenous factor for that factor in another constituent asf must not yield a formula simplifiable to one of the other constituents.</li>
+</ul>
+<p>This ensures each atomic theory in the csf adds genuine causal information — a strengthening of Graßhoff and May’s permanence requirement to the multi-outcome setting.</p>
+</section>
+</section>
+<section id="sec-demarcation" class="level2">
+<h2 class="anchored" data-anchor-id="sec-demarcation">Demarcation from Pearl’s framework</h2>
+<p>The Causal-Architect framework takes an explicit principled position: Pearl’s interventionist Structural Causal Model (SCM) framework is not compatible with the regularity-theoretic position and is therefore not adopted, even partially.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Why regularity theory and interventionism are incompatible">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Why regularity theory and interventionism are incompatible
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Pearl’s framework <span class="citation" data-cites="pearl2009causality">(<a href="#ref-pearl2009causality" role="doc-biblioref">Pearl 2009</a>)</span>, the causal claim <span class="math inline">\(A \rightarrow E\)</span> means that an intervention <span class="math inline">\(\text{do}(A = a)\)</span> — a hypothetical operation that sets <span class="math inline">\(A\)</span> while leaving all other equations unchanged — changes the distribution of <span class="math inline">\(E\)</span>. This definition is <em>interventionist</em>: it is essentially about hypothetically manipulated worlds, not observed patterns. The regularity-theoretic definition is <em>extensional</em>: <span class="math inline">\(A\)</span> is causally relevant to <span class="math inline">\(E\)</span> iff <span class="math inline">\(A\)</span> is a literal in some MSC of the minimally necessary disjunction for <span class="math inline">\(E\)</span> in the actual causal field. No manipulation, no possible world, no structural equation.</p>
+<p>The two definitions diverge. A factor may be regularity-theoretically relevant but not manipulable, and vice versa. Three further differences follow:</p>
+<ul>
+<li>the do-operator requires <em>modularity</em>, which regularity theory does not assume;</li>
+<li>the arrows of a directed acyclic graph (DAG) do not natively distinguish conjunctivity from equifinality;</li>
+<li>discovery from conditional independences may miss INUS structure when its factors are marginally independent.</li>
+</ul>
+<p>Mixing the positions therefore produces an incoherent hybrid.</p>
+<p>Standard experimental statistics (RCT, cohort, meta-analysis) are <em>not</em> rejected — they are <em>reinterpreted</em> as difference-tests under contrastive homogeneity, sense III.1 (Volume II, difference-tests), grounded in the same method-of-difference intuition that underlies minimal-theory search, not in interventionist semantics.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-hypergraph" class="level1">
+<h1>Causal Hypergraphs</h1>
+<section id="why-the-arrow-is-the-wrong-unit" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-arrow-is-the-wrong-unit">Why the arrow is the wrong unit</h2>
+<p>The reason this framework does not draw ordinary arrow diagrams is the reason <a href="#fig-or-vs-and" class="quarto-xref">Figure&nbsp;2</a> had to be the first figure in the volume. Draw the fire with plain arrows — one from SC to FI, one from OX, one from FL, one from SP — and the picture is <em>unreadable</em>, not because it is cluttered but because it has thrown away the information that mattered. Which factors belong to the same cluster? Are there two clusters or four? The arrows cannot say. Yet that was exactly the content of the causal claim: SC works <em>with</em> OX, and the solvent cluster is an alternative to it, not an addition.</p>
+<p>The failure is structural, not cosmetic. A single arrow <span class="math inline">\(A \to E\)</span> cannot distinguish “<span class="math inline">\(A\)</span> is sufficient for <span class="math inline">\(E\)</span>” from “<span class="math inline">\(A\)</span> is one indispensable part of a cluster that is sufficient” — and regularity theory lives on that distinction. Two arrows into a node might mean one complex cause or two alternative causes, and those are different theories with different predictions. The unit of causal structure is not the arrow but the <em>cluster as a whole</em>, together with the <em>set of alternative clusters</em> converging on an outcome. A structure whose edges join sets of nodes to a node, rather than one node to one node, is a <strong>hypergraph</strong>, and that is what the arc in the diagrams has been drawing all along: the arc is the visible boundary of a hyperedge.</p>
+<p>Hypergraphs also carry the multi-outcome structures that a single minimal theory cannot, and the two that most need telling apart are these:</p>
+<div id="fig-chain" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-chain.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: The two structures a correlation cannot distinguish. Left, a chain: <span class="math inline">\(C\)</span> is <em>endogenous</em>, an effect of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> and in turn a part-cause of <span class="math inline">\(E\)</span>. Right, a common cause: <span class="math inline">\(X\)</span> produces both <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span>, which therefore rise and fall together though neither causes the other. This is the hooters pattern again, and it is why chain claims are marked provisional until something beyond the table settles them (<a href="#sec-limitations-vol1" class="quarto-xref">Section&nbsp;6.3</a>).
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-queries" class="level2">
+<h2 class="anchored" data-anchor-id="sec-queries">Definition and query API</h2>
+<section id="definition-causal-hypergraph" class="level3">
+<h3 class="anchored" data-anchor-id="definition-causal-hypergraph">Definition: causal hypergraph</h3>
+<p>A <em>causal hypergraph</em> <span class="math inline">\(\mathcal{H}\)</span> is a triple <span class="math inline">\((\mathcal{N}, \mathcal{E},
+\iota)\)</span> where <span class="math inline">\(\mathcal{N}\)</span> is the set of factor nodes, <span class="math inline">\(\mathcal{E}\)</span> is the set of MSC-hyperedges (one per MSC), and the incidence map <span class="math inline">\(\iota\)</span> assigns each hyperedge a set of source literals and one target outcome node. (The letter <span class="math inline">\(\delta\)</span> stays reserved for the coincidence table.) An MSC <span class="math inline">\(M = \ell_1 * \cdots * \ell_k \rightarrow E\)</span> corresponds to a directed multi-input edge from the cluster’s literals to the outcome.</p>
+</section>
+<section id="visual-convention" class="level3">
+<h3 class="anchored" data-anchor-id="visual-convention">Visual convention</h3>
+<p>Hyperedges are drawn in CVL, the convention introduced in <a href="#sec-reading-diagrams" class="quarto-xref">Section&nbsp;1.4</a>: one arrow per literal, and an arc across the shafts of the arrows that belong to the same cluster. Alternative clusters are separate groups of arrows — arc-tied, or a single untied arrow for a one-literal cluster — converging on the same outcome node. The correspondence is exact in both directions — each arc-tied group or untied arrow is one hyperedge, and each hyperedge is one such group — so a diagram can be parsed back into a theory rather than merely illustrating one. The language, its remaining graphemes, and the converters are specified in <code>causal-visuals.qmd</code>.</p>
+</section>
+<section id="fast-csr-representation" class="level3">
+<h3 class="anchored" data-anchor-id="fast-csr-representation">Fast CSR representation</h3>
+<p>The hypergraph is stored in Compressed Sparse Row format — flat integer arrays for factor names, edge pointers, signed literal encodings, outcome factor IDs, and FitVectors (the fit record of each theory — consistency, coverage, and robustness, defined in Volume II). The queries that inspect the hyperedges of given outcomes (<code>alternatives</code>, <code>partners</code>, <code>common_causes</code>) run in <span class="math inline">\(O(|\mathcal{E}|)\)</span> time; <code>is_relevant</code> follows chains and needs at most one pass over the hyperedges per visited factor, <span class="math inline">\(O(|\mathcal{N}|\,|\mathcal{E}|)\)</span>; <code>paths</code> enumerates all simple paths, whose number can grow exponentially with the length of the chains:</p>
+<div id="tbl-queries" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-queries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Causal hypergraph query API.
+</figcaption>
+<div aria-describedby="tbl-queries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Query</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>is_relevant(A, E)</code></td>
+<td>Is <span class="math inline">\(A\)</span> a literal in any MSC for <span class="math inline">\(E\)</span>? (direct or via chain)</td>
+</tr>
+<tr class="even">
+<td><code>alternatives(E)</code></td>
+<td>All MSCs targeting <span class="math inline">\(E\)</span> — equifinal clusters</td>
+</tr>
+<tr class="odd">
+<td><code>partners(A, E)</code></td>
+<td>Co-literals of <span class="math inline">\(A\)</span> in each MSC for <span class="math inline">\(E\)</span></td>
+</tr>
+<tr class="even">
+<td><code>paths(A, E)</code></td>
+<td>All simple paths from <span class="math inline">\(A\)</span> to <span class="math inline">\(E\)</span> via endogenous factors</td>
+</tr>
+<tr class="odd">
+<td><code>common_causes(E1, E2)</code></td>
+<td>Factors appearing as causes in MSCs for both <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_2\)</span></td>
+</tr>
+<tr class="even">
+<td><code>graded_relevance(A, E)</code></td>
+<td>As <code>is_relevant</code>, plus the best FitVector and, given the ambiguity set, the summed consistency weight of its members that contain <span class="math inline">\(A\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-reasoning" class="level1">
+<h1>Scientific Reasoning Forms and Fallacies</h1>
+<section id="reasoning-form-taxonomy" class="level2">
+<h2 class="anchored" data-anchor-id="reasoning-form-taxonomy">Reasoning-form taxonomy</h2>
+<p>Eight inference forms are used in experimental science, each with formal applicability conditions:</p>
+<div id="tbl-forms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-forms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Reasoning forms with applicability conditions and native study designs.
+</figcaption>
+<div aria-describedby="tbl-forms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Form</th>
+<th>Definition</th>
+<th>Native design</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deductive</td>
+<td>Known minimal theory + case → token attribution</td>
+<td>Case study</td>
+</tr>
+<tr class="even">
+<td>Enumerative inductive</td>
+<td>Many positives → generalisation</td>
+<td>Registry</td>
+</tr>
+<tr class="odd">
+<td>Eliminative inductive</td>
+<td>Contrastive cases → MSC (method of difference)</td>
+<td>RCT, QCA</td>
+</tr>
+<tr class="even">
+<td>Statistical</td>
+<td>Difference-test under homogeneity</td>
+<td>RCT, cohort</td>
+</tr>
+<tr class="odd">
+<td>Abductive</td>
+<td>Best minimal theory by parsimony over ambiguity set</td>
+<td>QCA, multi-outcome</td>
+</tr>
+<tr class="even">
+<td>Analogical</td>
+<td>Structural similarity of causal fields</td>
+<td>Cross-study</td>
+</tr>
+<tr class="odd">
+<td>Counterfactual</td>
+<td>No MSC would fire without <span class="math inline">\(A\)</span> → token claim</td>
+<td>Case study</td>
+</tr>
+<tr class="even">
+<td>Mechanistic</td>
+<td>Chain MSC at lower level of description</td>
+<td>Mediation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The <em>native</em> form for minimal-theory search is <strong>eliminative induction</strong>: the method of difference systematically eliminates factor combinations that are not sufficient, leaving only the clusters. The other forms are licensed by established minimal theories (deductive, counterfactual, mechanistic) or provide weaker support (enumerative, analogical).</p>
+</section>
+<section id="argumentation-schemes-with-critical-questions" class="level2">
+<h2 class="anchored" data-anchor-id="argumentation-schemes-with-critical-questions">Argumentation schemes with critical questions</h2>
+<p>Causal claims are also checked through Walton-style argumentation schemes <span class="citation" data-cites="walton2008">(<a href="#ref-walton2008" role="doc-biblioref">Walton et al. 2008</a>)</span>, each with machine-checkable critical questions. The central scheme is <em>Causal from correlation</em>; its fifth question uses the consistency and coverage of a theory <span class="math inline">\(M\)</span>, <span class="math inline">\(\text{con}(M)\)</span> and <span class="math inline">\(\text{cov}(M)\)</span>, and their thresholds <span class="math inline">\(\tau_\text{con}\)</span> and <span class="math inline">\(\tau_\text{cov}\)</span>, which Volume II defines:</p>
+<blockquote class="blockquote">
+<p><strong>Schema:</strong> A and E co-occur reliably in a homogeneous causal field; <em>therefore</em> A is causally relevant to E.</p>
+<p><strong>Critical questions:</strong></p>
+<ul>
+<li><strong>CQ1 (Minimality):</strong> Is A a non-redundant literal in some MSC for E?</li>
+<li><strong>CQ2 (Common cause):</strong> Could there be a common cause of A and E?</li>
+<li><strong>CQ3 (Direction):</strong> Could A be the effect, not the cause?</li>
+<li><strong>CQ4 (Homogeneity):</strong> Was the causal field homogeneous?</li>
+<li><strong>CQ5 (Fit):</strong> Is <span class="math inline">\(\text{con}(M) \geq \tau_\text{con}\)</span> and <span class="math inline">\(\text{cov}(M) \geq \tau_\text{cov}\)</span>?</li>
+<li><strong>CQ6 (Robustness):</strong> Is the theory robust across the threshold grid?</li>
+</ul>
+</blockquote>
+<p>Each question is answered by querying the causal hypergraph, the FitVector, or the report of the contradiction test (<code>HomogeneityReport</code>). An argument is sound only if all six questions are answered satisfactorily.</p>
+</section>
+<section id="sec-fallacies" class="level2">
+<h2 class="anchored" data-anchor-id="sec-fallacies">Fallacy detection</h2>
+<p>Every fallacy is a <strong>violation of a minimal-theory inference condition</strong> — a structurally detectable mismatch with the premisses or rule-applicability conditions of the deductive schema (<a href="#sec-deduction" class="quarto-xref">Section&nbsp;3.4</a>). Two levels must be kept apart. The engine’s <code>FallacyType</code> taxonomy enumerates eighteen kinds of reasoning defect in three groups: seven causal, seven statistical, four configurational. Ten of those kinds carry a <strong>FALL code</strong>, which marks them as normative <em>inhibitors</em>: patterns an agent is obliged to check before endorsing a causal conclusion. The remaining eight are reported when the engine meets them but impose no such obligation, because their detection depends on study information the coincidence table does not carry.</p>
+<p>The ten inhibitors are listed in <a href="#tbl-inhibitors" class="quarto-xref">Table&nbsp;4</a>. Each is given with its group, the test that detects it, and the severity the engine assigns by default.</p>
+<!-- Generated by scripts/gen_standard.py from standards/causal-standard.yaml. Do not edit by hand. -->
+<div id="tbl-inhibitors" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[11,20,16,41,12]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-inhibitors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: The 10 fallacy inhibitors (3 causal, 4 statistical, 3 configurational). Each names one violation of a minimal-theory inference condition.
+</figcaption>
+<div aria-describedby="tbl-inhibitors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 20%">
+<col style="width: 16%">
+<col style="width: 41%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Inhibitor</th>
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Detected by</th>
+<th style="text-align: left;">Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>FALL-01</strong></td>
+<td style="text-align: left;">Post hoc ergo propter hoc</td>
+<td style="text-align: left;">causal</td>
+<td style="text-align: left;">No negative case for E in the field: n_negative equals zero.</td>
+<td style="text-align: left;">SEVERE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>FALL-02</strong></td>
+<td style="text-align: left;">Naive correlation</td>
+<td style="text-align: left;">statistical</td>
+<td style="text-align: left;">A significant test with no sufficient condition recovered for E.</td>
+<td style="text-align: left;">SEVERE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>FALL-03</strong></td>
+<td style="text-align: left;">Confounding</td>
+<td style="text-align: left;">causal</td>
+<td style="text-align: left;">Contradictory configurations reported by assess_homogeneity.</td>
+<td style="text-align: left;">SEVERE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>FALL-04</strong></td>
+<td style="text-align: left;">Simpson’s paradox</td>
+<td style="text-align: left;">causal</td>
+<td style="text-align: left;">The aggregate risk difference has the opposite sign to every stratum.</td>
+<td style="text-align: left;">SEVERE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>FALL-05</strong></td>
+<td style="text-align: left;">Ignored equifinality</td>
+<td style="text-align: left;">configurational</td>
+<td style="text-align: left;">alternatives(E) returns more than one MSC while a unique cause is asserted.</td>
+<td style="text-align: left;">MAJOR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>FALL-06</strong></td>
+<td style="text-align: left;">Spurious sufficient condition</td>
+<td style="text-align: left;">configurational</td>
+<td style="text-align: left;">The disjunction without the cluster is still necessary for E.</td>
+<td style="text-align: left;">MAJOR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>FALL-07</strong></td>
+<td style="text-align: left;">Underpowered absence claim</td>
+<td style="text-align: left;">statistical</td>
+<td style="text-align: left;">achieved_power below 0.8 for a non-trivial alternative.</td>
+<td style="text-align: left;">MAJOR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>FALL-08</strong></td>
+<td style="text-align: left;">Absence of evidence as evidence of absence</td>
+<td style="text-align: left;">statistical</td>
+<td style="text-align: left;">A non-significant difference-test, p greater than alpha. The severity is MINOR because the engine sees the test but not the assertion built on it; the finding flags a reading the report may not have made.</td>
+<td style="text-align: left;">MINOR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>FALL-09</strong></td>
+<td style="text-align: left;">HARKing</td>
+<td style="text-align: left;">statistical</td>
+<td style="text-align: left;">The hypothesis does not appear in the pre-registered protocol.</td>
+<td style="text-align: left;">MAJOR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>FALL-10</strong></td>
+<td style="text-align: left;">Mechanism without sufficiency</td>
+<td style="text-align: left;">configurational</td>
+<td style="text-align: left;">Mechanism factors are named but no MSC over them is recovered, or the recovered MSC omits one of them.</td>
+<td style="text-align: left;">MINOR</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Three of them show how directly the codes read off the theory. FALL-03 (confounding) fires on a contradictory configuration, which by 1 proves — given causal determination, a correct record, and a single causal field — that a latent background bundle changed its truth-value. FALL-05 (ignored equifinality) fires when <code>alternatives(E)</code> returns more than one cluster while the claim singles out a unique cause. FALL-10 (mechanism without sufficiency) fires when a mechanism names factors that appear in no recovered cluster — a narrative richer than the evidence.</p>
+</section>
+</section>
+<section id="sec-discussion-vol1" class="level1">
+<h1>Discussion</h1>
+<section id="the-coherence-thesis" class="level2">
+<h2 class="anchored" data-anchor-id="the-coherence-thesis">The coherence thesis</h2>
+<p>The key contribution of this volume is not any single algorithm but the <strong>coherence of the theoretical position</strong>: one definition of causal relevance, one formal language, one deductive inference schema, one fallacy engine. Every component speaks the same language; no ad hoc bridging is required. The explicit incompatibility with Pearl’s SCM framework is not a rejection of causal inference — it is a commitment to theoretical coherence.</p>
+<p>Volume II carries this coherence into the probabilistic and experimental regime: the same factor-set structure, the same homogeneity condition (now differentiated into Gates A and B), and the same Boolean MSC-membership predicate ground the extension to noisy, replicated data. Volume III tests the framework against the full range of example cases.</p>
+</section>
+<section id="sec-objections-vol1" class="level2">
+<h2 class="anchored" data-anchor-id="sec-objections-vol1">Objections and replies</h2>
+<section id="objection-1-manipulability" class="level3">
+<h3 class="anchored" data-anchor-id="objection-1-manipulability">Objection 1: Manipulability</h3>
+<blockquote class="blockquote">
+<p>Causal claims in medicine and policy concern effective interventions. Regularity theory yields extensional patterns, not intervention-relevant counterfactuals.</p>
+</blockquote>
+<p><em>Reply.</em> The manipulability condition is too strong. Many causal claims are correctly made about factors that are not manipulable (geological events, genetic traits, historical institutions). More importantly, the regularity-theoretic verdict that <span class="math inline">\(A\)</span> is a non-redundant part of a minimally sufficient cluster for <span class="math inline">\(E\)</span> already tells a clinician that removing <span class="math inline">\(A\)</span> from that cluster — if possible — will disrupt the sufficient condition: no intervention semantics are needed. When intervention is possible, the difference-test proposition (<a href="#sec-deduction" class="quarto-xref">Section&nbsp;3.4</a>), together with its Volume II counterpart for randomised contrasts under Gate B, is the formal justification for why the RCT provides evidence; when it is not, the regularity framework continues to provide well-grounded causal verdicts.</p>
+</section>
+<section id="objection-2-token-causation" class="level3">
+<h3 class="anchored" data-anchor-id="objection-2-token-causation">Objection 2: Token causation</h3>
+<blockquote class="blockquote">
+<p>A type-level framework cannot explain why <em>this patient</em> had a stroke. Token causal claims require counterfactual reasoning.</p>
+</blockquote>
+<p><em>Reply.</em> This is correct as a limitation of the type-level framework but not as an objection to it. Token attribution is fully supported when the case configuration is known: <code>which_msc_fires(case)</code> identifies the active MSC in a specific case (INF-06; Volume III, crosswalk Case 02; <a href="#fig-fire-token" class="quarto-xref">Figure&nbsp;5</a>). Token ambiguity arises only when several MSCs fire in the same case — overdetermination, for which the engine lists every firing cluster with <code>mscs_firing(case)</code> — and these are precisely the situations where the counterfactual also yields an indeterminate answer.</p>
+</section>
+<section id="objection-3-binary-factors" class="level3">
+<h3 class="anchored" data-anchor-id="objection-3-binary-factors">Objection 3: Binary factors</h3>
+<blockquote class="blockquote">
+<p>Real variables are continuous. Binarisation is lossy and may change the theory.</p>
+</blockquote>
+<p><em>Reply.</em> Binarisation is a pre-theoretic choice that carries epistemic consequences; both sides of the consequence are transparent in the framework. Any chosen threshold induces a Boolean theory, and <code>assess_homogeneity</code> with the binarised table tests whether the threshold respects the causal field. If different thresholds yield different theories, the binarisation is epistemically consequential — that is information about the underlying causal structure, not a flaw in the approach. The dual readout (qualitative minimal-theory verdict plus a parallel Fisher exact test on the <span class="math inline">\(2 \times 2\)</span> table of the binarised outcome, when the input carries a numeric effect) is reported side by side in the dynamic casebook.</p>
+</section>
+</section>
+<section id="sec-limitations-vol1" class="level2">
+<h2 class="anchored" data-anchor-id="sec-limitations-vol1">Limitations</h2>
+<p>The framework as developed in this volume has three well-defined limitations.</p>
+<ul>
+<li><strong>Multi-value factors.</strong> The Boolean framework treats all factors as binary. Ordered categories (severity grades, dosage levels) require the multi-value extension, which lifts binary literals to <span class="math inline">\(\{0, 1, \ldots, k\}\)</span> and replaces MSC-membership with a more complex literal relation. This extension is scheduled and partially implemented but not validated.</li>
+<li><strong>Continuous causes.</strong> A continuous cause-variable can only enter the framework through a threshold binarisation. The choice of threshold is epistemically non-trivial: the thresholded factor is a proxy for the continuous cause, and minimal theories are relative to the proxied factor set.</li>
+<li><strong>Chain ambiguity.</strong> INF-07 (chain warrant) cannot be licensed from a coincidence table alone, because a common cause and a causal chain produce the same pattern of association. Every chain claim is therefore marked <em>provisional</em> until a lower-level coincidence table or a temporal ordering argument resolves the ambiguity.</li>
+</ul>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>One definition, carried through without compromise, generates the whole qualitative apparatus. Causal relevance as MSC-membership in a permanently redundancy-free minimal theory gave the data structures, and then the homogeneity condition that licenses reading a theory off a coincidence table, and then the deductive inference schema, and then the causal hypergraph as the adequate representation, and then the reasoning forms and the fallacies as violations of the conditions the schema had already stated. Nothing had to be imported from a rival account to make a layer work.</p>
+<p>Volume II extends the same definition to noisy, replicated data, replaces the qualitative deduction with a probabilistic cover, and — as its central contribution — introduces the paradigm of causal hypothesis inference that establishes what experimental statistics establishes and what it cannot. Volume III tests both volumes against the complete case corpus.</p>
+<section id="availability" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="availability">Availability</h2>
+<p>The Causal Regularity Bundle — this volume and its companions, the engine, the agent skill file, the normative registry, and the benchmark harness — is to be archived on Zenodo, with the DOI recorded in <code>CITATION.cff</code>, and is developed at <a href="https://github.com/grasshoff/causal-architect">github.com/grasshoff/causal-architect</a>. Prose and figures are licensed CC BY 4.0, the code MIT.</p>
+</section>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Bibliography</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-baumgartner2008" class="csl-entry" role="listitem">
+Baumgartner, Michael. 2008. <span>“Regularity Theories Reassessed.”</span> <em>Philosophia</em> 36 (3): 327–54. <a href="https://doi.org/10.1007/s11406-007-9114-4">https://doi.org/10.1007/s11406-007-9114-4</a>.
+</div>
+<div id="ref-baumgartner2009inus" class="csl-entry" role="listitem">
+Baumgartner, Michael. 2009. <span>“Uncovering Deterministic Causal Structures: A Boolean Approach.”</span> <em>Synthese</em> 170 (1): 71–96. <a href="https://doi.org/10.1007/s11229-008-9348-0">https://doi.org/10.1007/s11229-008-9348-0</a>.
+</div>
+<div id="ref-baumgartner-falk2023" class="csl-entry" role="listitem">
+Baumgartner, Michael, and Christoph Falk. 2023. <span>“Boolean Difference-Making: A Modern Regularity Theory of Causation.”</span> <em>British Journal for the Philosophy of Science</em> 74 (1): 171–97. <a href="https://doi.org/10.1093/bjps/axz047">https://doi.org/10.1093/bjps/axz047</a>.
+</div>
+<div id="ref-baumgartner-grasshoff2004" class="csl-entry" role="listitem">
+Baumgartner, Michael, and Gerd Graßhoff. 2004. <em><span>Kausalit<span>ä</span>t und kausales Schliessen. Eine Einf<span>ü</span>hrung mit interaktiven <span>Ü</span>bungen</span></em>. Bern Studies in the History; Philosophy of Science.
+</div>
+<div id="ref-grasshoff2001causal" class="csl-entry" role="listitem">
+Graßhoff, Gerd, and Michael May. 2001. <span>“Causal Regularities.”</span> In <em>Current Issues in Causation</em>, edited by Wolfgang Spohn, Marion Ledwig, and Michael Esfeld. Mentis.
+</div>
+<div id="ref-hume1739" class="csl-entry" role="listitem">
+Hume, David. 1739. <em>A Treatise of Human Nature</em>.
+</div>
+<div id="ref-mackie1965" class="csl-entry" role="listitem">
+Mackie, John L. 1965. <span>“Causes and Conditions.”</span> <em>American Philosophical Quarterly</em> 2 (4): 245–64.
+</div>
+<div id="ref-mackie1974cement" class="csl-entry" role="listitem">
+Mackie, John L. 1974. <em>The Cement of the Universe: A Study of Causation</em>. Oxford University Press.
+</div>
+<div id="ref-mill1843" class="csl-entry" role="listitem">
+Mill, John Stuart. 1843. <em>A System of Logic, Ratiocinative and Inductive</em>. Parker.
+</div>
+<div id="ref-pearl2009causality" class="csl-entry" role="listitem">
+Pearl, Judea. 2009. <em>Causality: Models, Reasoning, and Inference</em>. 2nd ed. Cambridge University Press.
+</div>
+<div id="ref-walton2008" class="csl-entry" role="listitem">
+Walton, Douglas, Chris Reed, and Fabrizio Macagno. 2008. <em>Argumentation Schemes</em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511802034">https://doi.org/10.1017/CBO9780511802034</a>.
+</div>
+</div>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

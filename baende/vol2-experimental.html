@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gerd Graßhoff">
+<meta name="dcterms.date" content="2026-09-29">
+<meta name="keywords" content="causal hypothesis inference, probabilistic cover, bundle homogeneity, difference-test, e-values, statistical inference, experimental design, deep reading, regularity theory">
+
+<title>Causal Regularity Theory II: Experimental Inference</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="libs/clipboard/clipboard.min.js"></script>
+<script src="libs/quarto-html/quarto.js" type="module"></script>
+<script src="libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="libs/quarto-html/popper.min.js"></script>
+<script src="libs/quarto-html/tippy.umd.min.js"></script>
+<script src="libs/quarto-html/anchor.min.js"></script>
+<link href="libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="libs/bootstrap/bootstrap.min.js"></script>
+<link href="libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light"><style id="ka-bar-css">
+#ka-bar{font:600 14px/1.3 "Source Sans 3","Avenir Next","Segoe UI",sans-serif;background:#00152e;color:#f4efe4;border-bottom:3px solid #c4a15a;
+  display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:baseline;justify-content:space-between;padding:.6rem 1.2rem;position:relative;z-index:1100}
+#ka-bar a{color:#f4efe4;text-decoration:none}
+#ka-bar a:hover{color:#c4a15a}
+#ka-bar .ka-brand span{color:#c4a15a}
+#ka-bar .ka-vols a{margin-left:.9rem}
+#ka-bar .ka-vols a[aria-current="true"]{color:#c4a15a;border-bottom:2px solid #c4a15a}
+#ka-up{position:fixed;left:1rem;bottom:1rem;z-index:1100;font:650 13px/1 "Source Sans 3","Avenir Next","Segoe UI",sans-serif;
+  background:#002147;color:#f4ead0;text-decoration:none;padding:.55rem .85rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,21,46,.3)}
+#ka-up:hover{color:#c4a15a}
+@media print{#ka-bar,#ka-up{display:none}}
+</style>
+<div id="ka-bar">
+  <a class="ka-brand" id="ka-home" href="../#card-vol2"><span>Kausalität</span> 2026 · <span id="ka-home-label">Volumes</span></a>
+  <span>Volume II · Experimental data · <a href="../files/vol2-experimental.pdf">PDF</a></span>
+  <span class="ka-vols" id="ka-vols"><a href="vol1-qualitative.html">I</a><a href="vol2-experimental.html" aria-current="true">II</a><a href="vol3-casebook.html">III</a></span>
+</div>
+<a id="ka-up" href="../#card-vol2">↑ Kausalität 2026</a>
+<script>
+(function () {
+  var from = new URLSearchParams(location.search).get('from') === 'en' ? 'en' : 'de';
+  var base = from === 'en' ? '../en/' : '../';
+  var de = {label: 'Bände', up: '↑ Zur Karte auf der Startseite'};
+  var en = {label: 'Volumes', up: '↑ Back to the card on the home page'};
+  var t = from === 'en' ? en : de;
+  document.getElementById('ka-home').href = base + '#card-vol2';
+  document.getElementById('ka-home-label').textContent = t.label;
+  var up = document.getElementById('ka-up'); up.href = base + '#card-vol2'; up.textContent = t.up;
+  document.querySelectorAll('#ka-vols a').forEach(function (a) { a.href = a.getAttribute('href').split('?')[0] + '?from=' + from; });
+})();
+</script>
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../files/vol2-experimental.pdf"><i class="bi bi-file-pdf"></i>Typst (arxivai)</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Causal Regularity Theory II: Experimental Inference</h1>
+<p class="subtitle lead">Probabilistic Cover, Causal Hypothesis Inference from Experimental Data, and the Semantic Ground Source</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Gerd Graßhoff <a href="mailto:gerd.grasshoff@hu-berlin.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4450-357X" class="quarto-title-author-orcid" aria-label="ORCID profile for Gerd Graßhoff"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Humboldt-Universität zu Berlin
+          </p>
+        <p class="affiliation">
+            Forschungsinstitut des Deutschen Museums
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 29, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Experimental statistics, as standardly practised, infers a <em>parameter</em> (<span class="math inline">\(p_1 = p_0\)</span>) and then reads the result as causal. This volume replaces that extra-statistical step with <em>causal hypothesis inference</em>: the object of inference is a candidate cluster or minimal theory, expressed in the language of Volume I; statistics estimate firing rates and grade evidence without supplying the hypothesis. The firing-rate identity shows why the sign of a significant risk difference licenses cluster-membership of the treatment factor, with the polarity that the sign fixes, only under contrastive bundle homogeneity (Gate B) — not under Mill’s totality of conditions, and not from a <span class="math inline">\(p\)</span>-value alone. Standard designs (randomised trial, factorial, cohort, case-control, sequential, meta-analysis, crossover) are instances of the same inference under different assignment and sampling mechanisms. Volume I states the qualitative definition; Volume III executes the procedure on the casebook.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>causal hypothesis inference, probabilistic cover, bundle homogeneity, difference-test, e-values, statistical inference, experimental design, deep reading, regularity theory</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Causal Regularity Bundle — Volume II.</strong> Companion volumes: I (qualitative theory), III (casebook). Terms are used in the senses of the LWgrammar registers <em>causal-regularity</em> and <em>experimental-statistics</em>.</p>
+</div>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<div class="callout callout-style-default callout-tip callout-titled" title="The claim of this volume">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The claim of this volume
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Under contrastive bundle homogeneity (Gate B), a significant risk difference licenses cluster-membership of the treatment factor, and its sign fixes the polarity: a positive difference places the treatment in a cluster for the outcome, a negative one in a cluster for the outcome’s absence. Without Gate B the difference licenses no structural claim. Hypothesis testing of a parameter is not that licence.</p>
+</div>
+</div>
+<section id="what-a-trial-actually-tells-you" class="level2">
+<h2 class="anchored" data-anchor-id="what-a-trial-actually-tells-you">What a trial actually tells you</h2>
+<p>A trial of 20,000 patients reports that statins reduce cardiovascular events, <span class="math inline">\(p &lt; 0.001\)</span>. The finding is real, the trial is well conducted, and the conclusion drawn from it is almost always stated in a form the statistics do not support.</p>
+<p>What the test establishes is a claim about two numbers: the event rate under treatment differs from the event rate under placebo. What the reader takes away is a claim about causal structure: statins are part of what keeps cardiovascular events from occurring. The second claim does not follow from the first by any statistical step. It follows — when it follows at all — from the first <em>together with</em> an assumption about the trial’s design, and the business of this volume is to say exactly which assumption, and what happens when it fails.</p>
+<p>The structure the trial is really reaching for is a minimal theory, in the sense of Volume I, and it can be drawn:</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> STATIN = statin treatment administered · HBP = high blood pressure present · CVE = cardiovascular event (heart attack or stroke) · DIET = dietary modification · EXER = aerobic exercise programme. <code>~CVE</code> means the <em>absence</em> of a cardiovascular event — the outcome the trial is trying to bring about. The symbol <code>*</code> reads <em>and</em>; <code>+</code> reads <em>or</em>.</p>
+</div>
+</div>
+</div>
+<div id="fig-statin" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-statin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-statin.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-statin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The object of inference in a statin trial is not a parameter but a structure. The claim is that STATIN is an indispensable part of one cluster producing the <em>absence</em> of a cardiovascular event — the outcome node reads <em>not CVE</em>, which marks a regularity for an absence — and that this cluster is not the only one. In words: (STATIN and HBP) or (DIET and EXER) are causally relevant to the absence of a cardiovascular event. A <span class="math inline">\(p\)</span>-value speaks to none of this directly; it speaks to a rate, and the rate becomes evidence about the structure only under a condition stated in <a href="#sec-two-gates" class="quarto-xref">Section&nbsp;4.5</a>.
+</figcaption>
+</figure>
+</div>
+<p>Volume II derives what the noisy, replicated regime of real experiments can still establish about such structures.</p>
+</section>
+<section id="from-qualitative-to-experimental-inference" class="level2">
+<h2 class="anchored" data-anchor-id="from-qualitative-to-experimental-inference">From qualitative to experimental inference</h2>
+<p>Volume I established when a minimal theory can be <em>read off</em> a qualitative coincidence table: when bundle-level homogeneity is not violated and every configuration is observed deterministically. Real experiments operate under a different regime: rows are replicated across units that differ in their unmeasured background conditions, the outcome varies probabilistically even within the same measured configuration, and the experimenter cannot verify that all latent bundles are frozen.</p>
+<p>Volume II derives what this noisy, replicative regime can still establish about causal structure. The key move is to replace “each bundle fires or not in this case” with “each bundle fires with some frequency across units drawn from this population.” That shift generates a quantitative layer on top of the qualitative structure, without abandoning or replacing the underlying Boolean theory — a theory built from <em>and</em>, <em>or</em> and <em>not</em> over factors that are either present or absent. Causal relevance remains a yes-or-no matter: a factor is relevant when it is a member of a minimally sufficient condition (MSC-membership); the numbers are frequencies, not degrees.</p>
+</section>
+<section id="the-central-contribution" class="level2">
+<h2 class="anchored" data-anchor-id="the-central-contribution">The central contribution</h2>
+<p>The received practice of experimental statistics infers a <em>parameter</em>: it tests whether <span class="math inline">\(p_1 = p_0\)</span> and, if significant, concludes that treatment has “an effect.” The causal reading is an extra-statistical step, typically performed informally. This volume replaces that step.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition — causal hypothesis">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition — causal hypothesis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>causal hypothesis</strong> is a claim that a specific conjunction of factors is a cluster for a given outcome — stated precisely as a formula, relative to an explicit causal field, factor set, and process order. It is not a claim about a parameter; it is a claim about causal structure.</p>
+<p><strong>Stated exactly.</strong> A causal hypothesis is a formula <span class="math inline">\(H: M_1 + \cdots + M_k
+\Rightarrow E\)</span> in which each <span class="math inline">\(M_i\)</span> is a candidate cluster; in words, <span class="math inline">\(M_1\)</span> or … or <span class="math inline">\(M_k\)</span> are causally relevant to <span class="math inline">\(E\)</span>. The object of inference is this formula — a cluster-membership claim, a polarity claim, or an atomic-theory claim — not a <span class="math inline">\(p\)</span>-value threshold and not a directed-graph edge.</p>
+<p><strong>Example.</strong> The statin trial (Volume III, Case B-ST) targets the hypothesis <span class="math inline">\(\text{STATIN}*\text{HBP} \Rightarrow \neg\text{CVE}\)</span>: statin treatment together with high blood pressure is a cluster for the <em>absence</em> of a cardiovascular event. This is the claim that Volume III licenses from the trial’s stratified table — not the weaker claim “<span class="math inline">\(p &lt; 0.05\)</span> for cardiovascular events.”</p>
+<div id="fig-schematic-hypothesis" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schematic-hypothesis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-schematic-hypothesis.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-hypothesis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The schematic form of any causal hypothesis: <span class="math inline">\(k\)</span> candidate clusters <span class="math inline">\(M_1, \ldots, M_k\)</span>, one outcome <span class="math inline">\(E\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Statistics estimate firing rates and grade evidence; they do not replace the hypothesis. The standard experimental designs — seven of them in <a href="#tbl-design-types" class="quarto-xref">Table&nbsp;4</a> — are reconstructed below as instances of the same inference.</p>
+</section>
+</section>
+<section id="sec-part2" class="level1">
+<h1>Experimental data</h1>
+</section>
+<section id="sec-prob" class="level1">
+<h1>The Probabilistic Cover</h1>
+<section id="from-deduction-to-probabilistic-error-theory" class="level2">
+<h2 class="anchored" data-anchor-id="from-deduction-to-probabilistic-error-theory">From deduction to probabilistic error theory</h2>
+<p>The deductive schema of Volume I delivers valid causal claims given perfect premisses. Real data are noisy and sparse: the causal field may be incompletely observed, factors may be measured with error, and the coincidence table may not include all test situations relevant to alternative causal clusters. The <strong>probabilistic cover</strong> is the theory of error for these departures — it grades the epistemic quality of the premisses without replacing the deductive logic.</p>
+<p>Two kinds of departure require different treatment; P1 and P2 are the premisses of Volume I’s deductive schema (P1: the coincidence table as evidence; P2: the field is homogeneous). <em>Homogeneity violations</em> (P2 failure) show up as contradictory configurations. <em>Incompleteness of the evidence</em> (P1 failure) is measured by fit scores and robustness — how well a minimal theory accounts for the observed data and how stable that account is across thresholds. The second treatment is legitimate only after the first has been tested.</p>
+</section>
+<section id="sec-prob-homogeneity" class="level2">
+<h2 class="anchored" data-anchor-id="sec-prob-homogeneity">Homogeneity as the gate of the probabilistic cover</h2>
+<p><em>(Register: <strong>homogeneity</strong>, II.1 [Gate A: sufficiency-reading]; <strong>homogeneity</strong>, III.1 [Gate B: difference-test]. The two senses are distinct and must not be conflated — see <a href="#sec-stochastic-variation" class="quarto-xref">Section&nbsp;4</a>.)</em></p>
+<p>Because HC — the homogeneity condition, premiss P2 of Volume I — is the <em>minimal</em> homogeneity condition (Volume I, register sense II.1) — each latent background bundle keeps one truth-value across the field, not Mill’s totality of constant background factors — its violation carries real information. A contradictory configuration shows that some latent bundle fired in one test situation and not in the other: an <em>active, unblocked causal cluster</em> outside the factor set. Which cluster it is, the table does not say; finding it is the repair, and the probabilistic cover must not average it away.</p>
+<p>Two distinct inferences call for two distinct homogeneity gates. They must not be conflated.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> A <em>contradictory configuration</em> is a combination of measured factor values that occurs in the table both with <span class="math inline">\(E=1\)</span> and with <span class="math inline">\(E=0\)</span>. <span class="math inline">\(C_E\)</span> = the number of contradictory configurations for outcome <span class="math inline">\(E\)</span> · <span class="math inline">\(B_E\)</span> = the contradiction burden, the smallest share of rows that would have to be removed or reclassified to leave no contradictory configuration (Volume I).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition — Gate A and Gate B">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition — Gate A and Gate B
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two distinct inferences require two distinct homogeneity checks. <strong>Gate A</strong> asks whether a coincidence table is clean enough to read a complete theory from it. <strong>Gate B</strong> asks whether a two-arm comparison isolates the treatment factor. Neither gate asks that every background factor be identical across cases — that is Mill’s error — but each asks for a different, weaker condition.</p>
+<p><strong>Gate A (sufficiency-reading).</strong> Bundle-level homogeneity (Volume I, sense II.1): each latent background bundle has constant truth-value across the field. Checked operationally: no contradictory configuration, <span class="math inline">\(C_E = 0\)</span>.</p>
+<p><strong>Gate B (difference-test).</strong> Contrastive bundle homogeneity (Volume I, sense III.1): no rival background bundle fires differentially with the treatment factor <span class="math inline">\(T\)</span>. Secured by randomisation, blocking, or an explicit bound on an unmeasured confounder. Gate B does not require Gate A: contradictions are expected when the factor set is incomplete.</p>
+<p><strong>Example.</strong> The statin trial satisfies Gate B by randomisation — rival clusters fire with equal probability in both arms — and fails Gate A on <span class="math inline">\(\{\text{STATIN}, \text{HBP}, \text{CVE}\}\)</span>, as every well-powered trial should: contradictions reveal that the factor set does not capture every causal pathway. The warehouse fire table satisfies Gate A (<span class="math inline">\(C_E = 0\)</span>) and has no Gate B, being unreplicated.</p>
+</div>
+</div>
+<p><strong>Gate A — Sufficiency-reading</strong> (Boolean cluster search on the coincidence table):</p>
+<div id="tbl-hc-gate-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hc-gate-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Gate A: homogeneity gate for sufficiency-reading (Boolean MSC search).
+</figcaption>
+<div aria-describedby="tbl-hc-gate-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(C_E\)</span> result</th>
+<th>Status</th>
+<th>Permitted output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(C_E=0\)</span>, replicated configurations adequate</td>
+<td>HC not falsified for sufficiency-reading</td>
+<td>Search and grade theories by fit, robustness, consistency weight, and e-values</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(C_E=0\)</span>, little or no replication</td>
+<td>HC unverified (test has low power)</td>
+<td>Provisional theory only; report the test’s low diagnostic power</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_E&gt;0\)</span>, small <span class="math inline">\(B_E\)</span> with documented measurement error</td>
+<td>HC violated by measurement noise</td>
+<td>Correct or model the error, retest; no unqualified MSC verdict</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(C_E&gt;0\)</span>, substantive <span class="math inline">\(B_E\)</span> or systematic contradictions</td>
+<td>HC violated by an active latent bundle</td>
+<td>Suspend MSC reading; require field separation or factor-set expansion</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Gate B — Difference-test relevance</strong> (randomised controlled trial (RCT), cohort, or stratified study):</p>
+<div id="tbl-hc-gate-b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hc-gate-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Gate B: contrastive bundle homogeneity gate for difference-test relevance.
+</figcaption>
+<div aria-describedby="tbl-hc-gate-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Design condition</th>
+<th>Status</th>
+<th>Permitted inference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No latent bundle’s firing probability depends on <span class="math inline">\(T\)</span>; enabling partners balanced</td>
+<td>Contrastive bundle homogeneity met</td>
+<td>Difference-test is valid; the sign of <span class="math inline">\(p_1 - p_0\)</span> licenses MSC-membership of <span class="math inline">\(T\)</span> with that polarity (<a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>)</td>
+</tr>
+<tr class="even">
+<td>Identifiable rival bundle blocked by design (eligibility/protocol)</td>
+<td>Bundle kept false for all units</td>
+<td>Valid; <span class="math inline">\(C_E&gt;0\)</span> expected and does not invalidate the test</td>
+</tr>
+<tr class="odd">
+<td>Unidentifiable rival bundle balanced by randomisation</td>
+<td>Bundle firing independent of <span class="math inline">\(T\)</span> in expectation</td>
+<td>Valid probabilistically; <span class="math inline">\(C_E&gt;0\)</span> expected and does not invalidate the test</td>
+</tr>
+<tr class="even">
+<td>Rival bundle firing correlated with <span class="math inline">\(T\)</span> (unmeasured confounder)</td>
+<td>Contrastive bundle homogeneity violated</td>
+<td>Difference-test confounded; MSC-membership inference invalid</td>
+</tr>
+<tr class="odd">
+<td>Enabling partner of <span class="math inline">\(T\)</span>’s MSC not uniform across arms</td>
+<td>Cluster under study selectively enabled</td>
+<td>Apparent effect is artefact of the enabling partner; block or measure it</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Gate B makes explicit what the conventional criterion of “no unmeasured confounding” means inside regularity theory: it is the requirement that no latent bundle’s firing probability depends on the factor under test. Randomisation, eligibility criteria, and protocol are the instruments for meeting this requirement. Gate B does <em>not</em> require <span class="math inline">\(C_E = 0\)</span>: in any realistic trial with <span class="math inline">\(\mathcal{F} = \{T, E\}\)</span>, patients differ in their background states and <span class="math inline">\(C_E &gt; 0\)</span> is expected. That is not a homogeneity violation for the purpose of the difference-test; it is evidence that the trial factor set is incomplete for MSC-reading (Gate A) but does not invalidate the relevance inference (Gate B).</p>
+<p>Gate A prevents a basic category mistake: high consistency or coverage cannot repair a violated sufficiency-reading premiss. A formula may fit most rows while the same measured configuration yields opposite outcomes. Bayesian consistency weighting and e-value accumulation are likewise downstream of Gate A and must not average over contradictory causal fields when sufficiency-reading is the goal.</p>
+<p>The complete analysis sequence is therefore:</p>
+<ol type="1">
+<li>designate the outcome <span class="math inline">\(E\)</span> and the factor set <span class="math inline">\(X\)</span>;</li>
+<li>run the exact contradiction test and report <span class="math inline">\((C_E,B_E)\)</span>;</li>
+<li>if <span class="math inline">\(C_E&gt;0\)</span>, diagnose provenance, measurement, field mixture, and omitted factors; suspend the causal verdict;</li>
+<li>repair the data, block the offending cluster by design, or expand/stratify the causal field, and retest HC;</li>
+<li>only when HC is not falsified, compute consistency, coverage, robustness, Bayesian ambiguity, and sequential e-values;</li>
+<li>retain the qualification <em>HC not falsified in the observed configurations</em> in the final verdict.</li>
+</ol>
+</section>
+<section id="sec-fit" class="level2">
+<h2 class="anchored" data-anchor-id="sec-fit">Fit scores and the ambiguity set</h2>
+<p><em>(Register: <strong>consistency</strong>, I.1; <strong>coverage</strong>, I.1; <strong>consistency weight</strong>, I.1; <strong>ambiguity set</strong>, I.1.)</em></p>
+<p>Gate A passed, the engine searches the space of minimal theories. For any candidate theory <span class="math inline">\(\mathcal{M}\)</span>, define:</p>
+<p><span class="math display">\[
+\text{con}(\mathcal{M}) = \frac{\text{TP}}{\text{TP} + \text{FP}}, \quad
+\text{cov}(\mathcal{M}) = \frac{\text{TP}}{\text{TP} + \text{FN}},
+\]</span></p>
+<p>where TP counts cases where <span class="math inline">\(\mathcal{M}\)</span> fires and <span class="math inline">\(E = 1\)</span>, FP where <span class="math inline">\(\mathcal{M}\)</span> fires and <span class="math inline">\(E = 0\)</span>, and FN where <span class="math inline">\(E = 1\)</span> but no MSC of <span class="math inline">\(\mathcal{M}\)</span> fires.</p>
+<p>The <strong>FitVector</strong> summarises the epistemic standing of <span class="math inline">\(\mathcal{M}\)</span> in a replication context: <span class="math inline">\((n, \text{con}, \text{cov}, \text{robustness}, \tau_c,
+\tau_v)\)</span> where <span class="math inline">\(\tau_c, \tau_v\)</span> are the consistency and coverage thresholds at which <span class="math inline">\(\mathcal{M}\)</span> is recovered. <strong>Robustness</strong> is the fraction of threshold pairs <span class="math inline">\((\tau_c, \tau_v) \in [0.7,1]^2\)</span> (the engine’s default grid, in steps of <span class="math inline">\(0.05\)</span>) at which the same theory is recovered — a theory present only at the exact calibrating threshold has robustness near zero and should be treated with caution.</p>
+<p>The <strong>ambiguity set</strong> <span class="math inline">\(\mathcal{A}\)</span> is the set of fit-equivalent minimal theories returned at a fixed <span class="math inline">\((\tau_c, \tau_v)\)</span>. <span class="math inline">\(|\mathcal{A}| &gt; 1\)</span> means the data are compatible with multiple theories; the engine reports all members, together with the set of factors on which they agree (the <em>consensus core</em>). Volume I assumes that the true theory is unique (premiss P4, causal uniqueness); <span class="math inline">\(|\mathcal{A}| &gt; 1\)</span> is therefore always an evidence-insufficiency finding, never an ontological indeterminacy.</p>
+<section id="bayesian-consistency-weighting" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-consistency-weighting">Bayesian consistency weighting</h3>
+<p>Given <span class="math inline">\(\mathcal{A}\)</span>, assign each <span class="math inline">\(\mathcal{M}_k\)</span> a <strong>consistency weight</strong> via the Beta-binomial model:</p>
+<p><span class="math display">\[
+w_k \propto P_{\text{prior}}(\mathcal{M}_k) \cdot
+\frac{B(a + \mathrm{TP}_k,\, b + \mathrm{FP}_k)}{B(a,b)},
+\]</span></p>
+<p>where <span class="math inline">\(B(\cdot,\cdot)\)</span> is the Beta function. The ratio is the probability of the observed <span class="math inline">\(\mathrm{TP}_k\)</span> successes and <span class="math inline">\(\mathrm{FP}_k\)</span> failures, in their order, among the cases on which <span class="math inline">\(\mathcal{M}_k\)</span> fires, when the probability of <span class="math inline">\(E\)</span> given that <span class="math inline">\(\mathcal{M}_k\)</span> fires carries a <span class="math inline">\(\mathrm{Beta}(a,b)\)</span> prior. The denominator <span class="math inline">\(B(a,b)\)</span> is the same for every member of <span class="math inline">\(\mathcal{A}\)</span> and cancels when the weights are normalised; the engine keeps it so that absolute values remain comparable across hyperparameters. Under a uniform prior over the members of <span class="math inline">\(\mathcal{A}\)</span> the <span class="math inline">\(P_{\mathrm{prior}}\)</span> term cancels as well. The default <span class="math inline">\(\mathrm{Beta}(1,1)\)</span> prior is the uniform distribution. This is <em>not</em> Bayesian model averaging: the members of <span class="math inline">\(\mathcal{A}\)</span> are rival theories scored on the same cases, not independent Bernoulli processes, and the weight uses only the cases on which a theory fires (TP and FP), not its coverage. The term “Bayesian model averaging” is superseded by <em>consistency weight</em> (register I.1), which correctly emphasises that the quantity grades consistency with the data, not posterior probability in the full Bayesian sense.</p>
+<p>The query <code>graded_relevance(A, E)</code> reports Boolean relevance, the best FitVector among MSCs containing <span class="math inline">\(A\)</span>, and the <em>consistency membership</em> of <span class="math inline">\(A\)</span>: the normalised sum of <span class="math inline">\(w_k\)</span> over those <span class="math inline">\(\mathcal{M}_k\)</span> that contain <span class="math inline">\(A\)</span> as a literal, positive or negative (a <em>literal</em> is a factor or its negation as it occurs in a formula: <span class="math inline">\(A\)</span> is the positive literal, <span class="math inline">\(\neg A\)</span> the negative one).</p>
+</section>
+</section>
+<section id="sec-evalues" class="level2">
+<h2 class="anchored" data-anchor-id="sec-evalues">Anytime-valid inference: e-values</h2>
+<p><em>(Register: <strong>e-value</strong>, I.1. The null specifies <span class="math inline">\(p_0\)</span> as the empirical base rate, not 0.5 by default — see rule of use.)</em></p>
+<p>Standard tests require fixing the sample size in advance — optional stopping invalidates their Type-I error guarantees. A literature-mining agent accumulates evidence one study at a time and needs <em>anytime-valid</em> inference.</p>
+<p>We implement <em>safe testing</em> via <em>e-values</em> and <em>e-processes</em> <span class="citation" data-cites="ramdas2023 grünwald2024">(<a href="#ref-ramdas2023" role="doc-biblioref">Ramdas et al. 2023</a>; <a href="#ref-grünwald2024" role="doc-biblioref">Grünwald et al. 2024</a>)</span>. An <em>e-value</em> is a nonnegative statistic whose expectation under the null is at most 1. An <em>e-process</em> is a nonnegative sequence <span class="math inline">\((K_t)_{t\ge 0}\)</span>, <span class="math inline">\(K_0=1\)</span>, whose value at every stopping time <span class="math inline">\(\tau\)</span> is an e-value, <span class="math inline">\(\mathbb{E}[K_\tau]\le 1\)</span> under the null; a stopping time is any rule for when to stop that uses only the observations made so far. The construction below builds <span class="math inline">\(K_t=\prod_{s\le t}E_s\)</span> from one-step factors <span class="math inline">\(E_s\)</span> whose conditional expectation given the past is at most 1 under every null distribution. The product is then a nonnegative supermartingale, Ville’s inequality applies (<a href="#sec-sequential-design" class="quarto-xref">Section&nbsp;6.6.5</a>), and the agent may reject the null as soon as <span class="math inline">\(K_t \geq 1/\alpha\)</span>, whenever it chooses to look.</p>
+<p>For testing the sufficiency of MSC <span class="math inline">\(M\)</span> for outcome <span class="math inline">\(E\)</span>, the null is composite:</p>
+<p><span class="math display">\[
+H_0:\; P(E=1 \mid M\text{ fires}) \leq p_0 .
+\]</span></p>
+<p>Observations are taken only on cases where <span class="math inline">\(M\)</span> fires. <span class="math inline">\(p_0\)</span> is the <em>sufficiency threshold</em> — the success rate that would be consistent with <span class="math inline">\(M\)</span> not being sufficient; it is set to the empirical base rate of <span class="math inline">\(E\)</span> in the full field (treating <span class="math inline">\(M\)</span> as irrelevant), not to <span class="math inline">\(1/2\)</span>. Write <span class="math inline">\(X_t \in \{0,1\}\)</span> for the outcome on the <span class="math inline">\(t\)</span>-th case where <span class="math inline">\(M\)</span> fires, and let <span class="math inline">\(s_{t-1}\)</span> be the number of successes among the preceding <span class="math inline">\(n_{t-1}=t-1\)</span> such cases.</p>
+<p><strong>Construction (Beta predictive clipped at <span class="math inline">\(p_0\)</span>).</strong> Fix a <span class="math inline">\(\mathrm{Beta}(a,b)\)</span> prior (default <span class="math inline">\(a=b=1\)</span>). Before <span class="math inline">\(X_t\)</span> is observed, form the Beta predictive and clip it from below at <span class="math inline">\(p_0\)</span>:</p>
+<p><span class="math display">\[
+q_t \;=\; \max\!\Bigl(p_0,\; \frac{a + s_{t-1}}{a + b + n_{t-1}}\Bigr).
+\]</span></p>
+<p>The one-step e-value is the likelihood ratio of <span class="math inline">\(q_t\)</span> against <span class="math inline">\(p_0\)</span>,</p>
+<p><span class="math display">\[
+E_t \;=\;
+\begin{cases}
+q_t/p_0 &amp; \text{if } X_t = 1,\\
+(1-q_t)/(1-p_0) &amp; \text{if } X_t = 0,
+\end{cases}
+\qquad K_t = \prod_{s\le t} E_s ,
+\]</span></p>
+<p>and <span class="math inline">\(K_t\)</span> is updated as new studies are ingested; the null is rejected when <span class="math inline">\(K_t \geq 1/\alpha\)</span>.</p>
+<p><strong>Proposition (e-process for the composite null).</strong> Let the cases on which <span class="math inline">\(M\)</span> fires be independent, each with the same success probability <span class="math inline">\(p \le p_0\)</span>. Then <span class="math inline">\((K_t)\)</span> is a nonnegative supermartingale with <span class="math inline">\(K_0=1\)</span>, hence an e-process for <span class="math inline">\(H_0\)</span>.</p>
+<p><em>Proof.</em> <span class="math inline">\(q_t\)</span> is fixed by the past and satisfies <span class="math inline">\(p_0 \le q_t &lt; 1\)</span>. For any <span class="math inline">\(p \le p_0\)</span>,</p>
+<p><span class="math display">\[
+\mathbb{E}_p[E_t \mid \text{past}] \;=\; p\,\frac{q_t}{p_0} + (1-p)\,\frac{1-q_t}{1-p_0}.
+\]</span></p>
+<p>This is linear in <span class="math inline">\(p\)</span> with slope <span class="math inline">\(q_t/p_0 - (1-q_t)/(1-p_0) \ge 0\)</span>, because <span class="math inline">\(q_t \ge p_0\)</span>. Its maximum over <span class="math inline">\(p \le p_0\)</span> is therefore attained at <span class="math inline">\(p=p_0\)</span>, where it equals <span class="math inline">\(q_t + (1-q_t) = 1\)</span>. Hence <span class="math inline">\(\mathbb{E}_p[K_t \mid \text{past}] = K_{t-1}\,\mathbb{E}_p[E_t \mid
+\text{past}] \le K_{t-1}\)</span> under every <span class="math inline">\(p \le p_0\)</span>, and Ville’s inequality applies. <span class="math inline">\(\square\)</span></p>
+<p>The clipping is required. The unclipped predictive <span class="math inline">\((a+s_{t-1})/(a+b+n_{t-1})\)</span> yields an e-process only for the point null <span class="math inline">\(p=p_0\)</span>: when it falls below <span class="math inline">\(p_0\)</span>, the factor for <span class="math inline">\(X_t=0\)</span> exceeds 1, and a true success rate <em>below</em> <span class="math inline">\(p_0\)</span> inflates the product. With predictive <span class="math inline">\(0.2\)</span>, <span class="math inline">\(p_0=0.4\)</span> and true <span class="math inline">\(p=0\)</span>, the conditional expectation of the one-step factor is <span class="math inline">\(0.8/0.6 = 4/3 &gt; 1\)</span>. In a simulation with <span class="math inline">\(p_0=0.3\)</span>, true <span class="math inline">\(p=0.1\)</span> and 300 cases, the unclipped product reached <span class="math inline">\(1/\alpha=20\)</span> in all of 4,000 runs, the clipped product in none; at <span class="math inline">\(p=p_0=0.3\)</span> the clipped product reached it in 2.4 % of runs, below <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<p><strong>What rejection licenses.</strong> Rejection licenses <span class="math inline">\(P(E=1\mid M\text{ fires}) &gt;
+p_0\)</span>: on the cases where <span class="math inline">\(M\)</span> fires, <span class="math inline">\(E\)</span> occurs more often than its base rate. That is evidence for the sufficiency of <span class="math inline">\(M\)</span> relative to the base rate. It is not by itself MSC-membership of any literal of <span class="math inline">\(M\)</span>: MSC-membership of <span class="math inline">\(T\)</span> additionally requires the Gate B contrast of <a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>.</p>
+</section>
+</section>
+<section id="sec-stochastic-variation" class="level1">
+<h1>Stochastic Background Variation and Bundle Homogeneity</h1>
+<p><em>(Register: <strong>background bundle</strong>, I.1; <strong>switched-off cluster</strong>, I.1; <strong>firing rate</strong>, I.1; <strong>homogeneity</strong>, II.1 [Gate A]; <strong>homogeneity</strong>, III.1 [Gate B, contrastive bundle homogeneity]. Cases 1–3 below are tolerable; Cases 4–5 are intolerable. The taxonomy is the operative content of Gate A and Gate B.)</em></p>
+<section id="the-question-and-the-mistake-to-avoid" class="level2">
+<h2 class="anchored" data-anchor-id="the-question-and-the-mistake-to-avoid">The question and the mistake to avoid</h2>
+<p>Real experimental units — patients, organisms, physical samples — differ in countless unmeasured background characteristics. The question is which of this variation threatens the causal inference and which is causally inert.</p>
+<p>The answer is structured by the MSC concept: once factors are organised into conjunctive clusters, the vast majority of background variation is demonstrably irrelevant to the inference. The naive response — that <em>any</em> uncontrolled variation threatens the inference — is false and, if accepted, would prohibit every experiment ever conducted.</p>
+</section>
+<section id="tolerable-variation-three-cases" class="level2">
+<h2 class="anchored" data-anchor-id="tolerable-variation-three-cases">Tolerable variation: three cases</h2>
+<p><strong>Case 1 — Variation inside a switched-off bundle.</strong></p>
+<p>A latent MSC <span class="math inline">\(M_j\)</span> is switched off when its background bundle <span class="math inline">\(L_j\)</span> (the conjunction of its latent conjuncts) has truth-value <em>false</em> across the field. Individual factors inside <span class="math inline">\(L_j\)</span> may vary freely and stochastically from unit to unit: what matters is the <strong>truth-value of the conjunction</strong> <span class="math inline">\(L_j\)</span>, not which conjunct happens to be absent in any given unit. Two patients may block the same rival cluster at different conjuncts — one by immune deficiency, another by a suppressing infection — yet <span class="math inline">\(L_j\)</span> is false for both, and the cluster is switched off in both.</p>
+<p><strong>Case 2 — Variation inside a uniformly enabled bundle (enabling partners).</strong></p>
+<p>The cluster under study — <span class="math inline">\(T * L_T \Rightarrow E\)</span> — has a background bundle <span class="math inline">\(L_T\)</span> of latent enabling partners. If <span class="math inline">\(L_T\)</span> is true for every unit (all enabling partners present), variation in <span class="math inline">\(L_T\)</span>’s composition remains causally inert: what matters is that <span class="math inline">\(L_T\)</span> stays true, not that each conjunct of <span class="math inline">\(L_T\)</span> is identically instantiated. Patients may absorb a drug through different physiological pathways — as long as the relevant enabling conjunct holds, the cluster is enabled and <span class="math inline">\(T\)</span> makes the difference.</p>
+<p><strong>Case 3 — Balanced stochastic firing of a rival bundle (the RCT residue).</strong></p>
+<p>A rival cluster <span class="math inline">\(M_j\)</span> may have a bundle <span class="math inline">\(L_j\)</span> that cannot be switched off by design: there is no accessible blocking conjunct. In a randomised trial, <span class="math inline">\(L_j\)</span> fires in some patients and not others, so within <span class="math inline">\(\mathcal{F} = \{T, E\}\)</span>, the same measured configuration <span class="math inline">\((T=0)\)</span> sometimes yields <span class="math inline">\(E=1\)</span> (via <span class="math inline">\(L_j\)</span>) and sometimes <span class="math inline">\(E=0\)</span>. This means <span class="math inline">\(C_E &gt; 0\)</span> — the sufficiency-reading gate (Gate A) is violated.</p>
+<p>This does <em>not</em> invalidate the difference-test. Randomisation makes the firing probability of <span class="math inline">\(L_j\)</span> independent of <span class="math inline">\(T\)</span>: the rival cluster fires at the same expected rate in both arms. The expected outcome difference is then attributable to the <span class="math inline">\(T\)</span>-cluster alone. Stochastic variation in <span class="math inline">\(L_j\)</span> is therefore <em>tolerable for difference-test relevance</em>, even though it falsifies Gate A.</p>
+</section>
+<section id="intolerable-variation-two-cases" class="level2">
+<h2 class="anchored" data-anchor-id="intolerable-variation-two-cases">Intolerable variation: two cases</h2>
+<p><strong>Case 4 — Differential bundle firing correlated with the factor under test.</strong></p>
+<p>If a rival bundle <span class="math inline">\(L_j\)</span> fires more often when <span class="math inline">\(T=1\)</span> than when <span class="math inline">\(T=0\)</span>, the difference-test is confounded. The measured risk difference captures both the <span class="math inline">\(T\)</span>-cluster contribution <em>and</em> the excess firing of <span class="math inline">\(L_j\)</span> in the treated arm. This is what “unmeasured confounding” means inside regularity theory: not arbitrary covariate imbalance, but the specific condition that a latent bundle’s firing rate depends on the factor under study.</p>
+<p><strong>Case 5 — Unbalanced enabling of the cluster under study.</strong></p>
+<p>If the enabling partners <span class="math inline">\(L_T\)</span> of the <span class="math inline">\(T\)</span>-cluster are not uniformly present or balanced across arms, variation in <span class="math inline">\(L_T\)</span> is no longer inert. Apparent effects of <span class="math inline">\(T\)</span> may be artefacts of the enabling partners.</p>
+</section>
+<section id="summary-a-taxonomy" class="level2">
+<h2 class="anchored" data-anchor-id="summary-a-taxonomy">Summary: a taxonomy</h2>
+<div id="tbl-variation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Taxonomy of background variation and its effect on causal inference.
+</figcaption>
+<div aria-describedby="tbl-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variation</th>
+<th>Bundle firing effect</th>
+<th>Inference effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Internal variation inside a switched-off bundle</td>
+<td>Bundle stays false</td>
+<td>Causally inert; tolerable</td>
+</tr>
+<tr class="even">
+<td>Internal variation of a fully enabled bundle</td>
+<td>Bundle stays true</td>
+<td>Causally inert; tolerable</td>
+</tr>
+<tr class="odd">
+<td>Balanced stochastic firing of a rival bundle</td>
+<td>Random, independent of <span class="math inline">\(T\)</span></td>
+<td>Tolerable for Gate B; violates Gate A</td>
+</tr>
+<tr class="even">
+<td>Differential bundle firing correlated with <span class="math inline">\(T\)</span></td>
+<td>Biased firing-rate difference</td>
+<td>Confounding; intolerable</td>
+</tr>
+<tr class="odd">
+<td>Unbalanced enabling partners</td>
+<td>Bundle fires selectively in one arm</td>
+<td>Apparent effect artefactual; intolerable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The practical consequence: an experiment need not control every causally relevant background factor individually. It must ensure that (i) rival clusters are either blocked by design or balanced by randomisation, and (ii) enabling partners of the cluster under study are uniformly present or balanced.</p>
+</section>
+<section id="sec-two-gates" class="level2">
+<h2 class="anchored" data-anchor-id="sec-two-gates">Two homogeneity demands for two inferences</h2>
+<ul>
+<li><strong>For sufficiency-reading</strong> (reading a formula as an MSC from the coincidence table), bundle-level minimal homogeneity is required: every latent bundle must be constant in truth-value relative to the measured factor set. The contradiction test (<span class="math inline">\(C_E = 0\)</span>, Gate A) is the operational gate.</li>
+<li><strong>For difference-test relevance</strong> (inferring that <span class="math inline">\(T\)</span> is a non-redundant part of some MSC for <span class="math inline">\(E\)</span> or for <span class="math inline">\(\neg E\)</span>, the sign of the difference deciding which), only <em>contrastive</em> bundle homogeneity is required: no rival bundle may fire differentially with <span class="math inline">\(T\)</span>; enabling partners of <span class="math inline">\(T\)</span>’s cluster must be balanced. The study design (Gate B) is the operational gate.</li>
+</ul>
+<p>The difference between them is worth seeing rather than only reading, because it is the difference between an ambition a trial cannot meet and one it can:</p>
+<div id="fig-gates" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-gates.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The same structure, two different demands on it. Gate A licenses reading a whole theory off the data, and for that the rival cluster must be held to a constant truth-value — it must not come and go. Gate B licenses a single contrast, and asks far less: the rival cluster may fire as often as it likes, provided it fires <em>equally often in both arms</em>. That is precisely what randomisation buys. It does not switch the rival cluster off — nothing in a trial of human beings could — it makes the cluster’s firing independent of the allocation, which is all a difference test needs.
+</figcaption>
+</figure>
+</div>
+<p>Confusing these two demands generates errors in both directions: treating <span class="math inline">\(C_E &gt; 0\)</span> as a veto on every experimental causal inference (too strong) or treating a significant difference-test as establishing a complete MSC without checking Gate A (too weak). The first error condemns most epidemiology; the second licenses the routine over-reading of trial results that the rest of this volume is written to prevent.</p>
+</section>
+</section>
+<section id="sec-statistics-vol2" class="level1">
+<h1>Statistical Analysis as Difference-Tests</h1>
+<p><em>(Register: <strong>difference-test</strong>, I.1; <strong>homogeneity</strong>, III.1 [contrastive bundle, required here]; <strong>risk difference</strong>, I.1 [unique T-cluster contribution]; <strong>protective polarity</strong>, I.1; <strong>consistency weight</strong>, I.1; <strong>e-value</strong>, I.1.)</em></p>
+<section id="the-fundamental-reinterpretation" class="level2">
+<h2 class="anchored" data-anchor-id="the-fundamental-reinterpretation">The fundamental reinterpretation</h2>
+<p>Standard experimental statistics — 2×2 tables, RCT contrasts, stratification, regression adjustment, meta-analytic pooling — are, from the regularity-theoretic perspective, <em>probabilistic difference-tests for MSC-membership</em> (register: <strong>difference-test</strong>, I.1). This section states the reinterpretation.</p>
+<p>A two-group comparison (treatment <span class="math inline">\(T\)</span> vs.&nbsp;control, outcome <span class="math inline">\(E\)</span>) tests whether <span class="math inline">\(T\)</span> is a non-redundant literal in some MSC for <span class="math inline">\(E\)</span> or for <span class="math inline">\(\neg E\)</span>. Specifically:</p>
+<ol type="1">
+<li><p><strong>The null</strong> <span class="math inline">\(H_0\)</span> states that <span class="math inline">\(T\)</span> is a literal of no MSC for <span class="math inline">\(E\)</span> and of no MSC for <span class="math inline">\(\neg E\)</span>: neither <span class="math inline">\(T\)</span> nor <span class="math inline">\(\neg T\)</span> occurs in the minimal theory of either. Then, in the notation of <a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>, <span class="math inline">\(S=U=0\)</span> and <span class="math inline">\(E=R\)</span>. In the 2×2 table under Gate B: <span class="math inline">\(p_1 = p_0\)</span>.</p></li>
+<li><p><strong>The alternative</strong> <span class="math inline">\(H_1\)</span> is the negation of <span class="math inline">\(H_0\)</span>: <span class="math inline">\(T\)</span> or <span class="math inline">\(\neg T\)</span> is a literal of some MSC for <span class="math inline">\(E\)</span> or for <span class="math inline">\(\neg E\)</span>. In the 2×2 table under Gate B, a departure <span class="math inline">\(p_1 \neq p_0\)</span> is evidence for <span class="math inline">\(H_1\)</span>, and the <em>sign</em> of <span class="math inline">\(p_1 - p_0\)</span> decides which of these memberships it supports.</p></li>
+<li><p><strong>Contrastive bundle homogeneity secured by design</strong> (Gate B, <a href="#sec-stochastic-variation" class="quarto-xref">Section&nbsp;4</a>). What the difference-test requires is not Mill’s totality — the identical instantiation of every unmeasured factor — but only that no rival bundle fires differentially with <span class="math inline">\(T\)</span>. Eligibility criteria and protocol switch identifiable rival clusters off; randomisation handles unblockable rival clusters by balancing their expected firing. Because the demand is contrastive rather than total, real trials can meet it.</p></li>
+</ol>
+<p><strong>What the test establishes — and what it does not.</strong> A statistically significant two-sided difference <span class="math inline">\(p_1 \neq p_0\)</span> under Gate-B conditions licenses only <span class="math inline">\(\Delta = p_1 - p_0 \neq 0\)</span>: <span class="math inline">\(T\)</span> is a literal of an MSC for <span class="math inline">\(E\)</span> or for <span class="math inline">\(\neg E\)</span> (or <span class="math inline">\(\neg T\)</span> is, unless <span class="math inline">\(\neg T\)</span>-clusters are excluded by design). The <em>sign</em> of the estimate fixes the polarity. With <span class="math inline">\(\neg T\)</span>-clusters for <span class="math inline">\(E\)</span> excluded (<span class="math inline">\(U=0\)</span>, <a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>), <span class="math inline">\(\Delta &gt; 0\)</span> licenses that <span class="math inline">\(T\)</span> is a non-redundant literal of an MSC for <span class="math inline">\(E\)</span>. For the protective direction the same identity is written for <span class="math inline">\(\neg E\)</span>: with <span class="math inline">\(\neg T\)</span>-clusters for <span class="math inline">\(\neg E\)</span> excluded, <span class="math inline">\(\Delta &lt; 0\)</span> licenses that <span class="math inline">\(T\)</span> is a non-redundant literal of an MSC for <span class="math inline">\(\neg E\)</span>. Completing the minimal theory additionally requires expanding the factor set to include conjunctive partners, minimising the disjunction by (MN), and identifying at least two clusters for structural orientation or supplying a process order. (SUF), (MS), (NEC) and (MN) are the rules of Volume I’s calculus: read sufficiency off the table, minimise each conjunction, form the necessary disjunction, minimise the disjunction.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Statin trial: Volume III, Case B-ST">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Statin trial: Volume III, Case B-ST
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The full statin worked example — factor set, process order, 400-patient coincidence table, Gate A/Gate B analysis, MSC recovery, polarity, equifinality, and causal-hypothesis verdict — is given in Volume III, Case B-ST. The result: <span class="math inline">\(\text{STATIN}*\text{HBP} \Rightarrow \neg\text{CVE}\)</span> with <span class="math inline">\(\text{con}=0.95\)</span>, <span class="math inline">\(\text{cov}\approx 0.29\)</span>. The risk difference is negative (<span class="math inline">\(p_1 = 0.12\)</span> against <span class="math inline">\(p_0 = 0.24\)</span>, Fisher exact <span class="math inline">\(p \approx 0.003\)</span>), so under Gate B it licenses MSC-membership of STATIN in the protective polarity: STATIN is a literal of an MSC for <span class="math inline">\(\neg\text{CVE}\)</span>. Gate A is violated as expected; the MSC-reading requires the conjunctive partner HBP. Only the theory and the headline numbers are stated here; the full statistics are in Volume III.</p>
+</div>
+</div>
+</section>
+<section id="sec-firing-identity" class="level2">
+<h2 class="anchored" data-anchor-id="sec-firing-identity">The firing-rate identity</h2>
+<p>The remainder of this chapter is a derivation, not a catalogue. Experimental designs differ in the assignment mechanism that generates <span class="math inline">\(T\)</span> and in the sampling mechanism that generates the rows of the coincidence table. They do not differ in the object of inference. That object is fixed by the complete (unknown) minimal theory for <span class="math inline">\(E\)</span> and by the partition of its MSCs.</p>
+<section id="partition-of-the-complete-theory" class="level3">
+<h3 class="anchored" data-anchor-id="partition-of-the-complete-theory">Partition of the complete theory</h3>
+<p>Assume causal determination (P3, Volume I): <span class="math inline">\(E=1\)</span> if and only if at least one MSC of the complete theory fires. Partition those MSCs into three classes:</p>
+<ul>
+<li><strong><span class="math inline">\(T\)</span>-clusters.</strong> MSCs containing the positive literal <span class="math inline">\(T\)</span>. Write <span class="math inline">\(S\)</span> for the disjunction of their enabling bundles: a <span class="math inline">\(T\)</span>-cluster fires iff <span class="math inline">\(T=1\)</span> and <span class="math inline">\(S=1\)</span>.</li>
+<li><strong><span class="math inline">\(\neg T\)</span>-clusters.</strong> MSCs containing the negative literal <span class="math inline">\(\neg T\)</span>. Write <span class="math inline">\(U\)</span> for the disjunction of their enabling bundles: a <span class="math inline">\(\neg T\)</span>-cluster fires iff <span class="math inline">\(T=0\)</span> and <span class="math inline">\(U=1\)</span>.</li>
+<li><strong><span class="math inline">\(T\)</span>-free clusters (rivals).</strong> MSCs containing neither <span class="math inline">\(T\)</span> nor <span class="math inline">\(\neg T\)</span>. Write <span class="math inline">\(R\)</span> for their disjunction.</li>
+</ul>
+<p>Then, identically,</p>
+<p><span class="math display">\[
+E \;=\; (T \land S) \;\lor\; R \;\lor\; (\neg T \land U).
+\]</span></p>
+<p>Taking conditional probabilities,</p>
+<p><span class="math display">\[
+\begin{aligned}
+p_1 &amp;:= P(E=1\mid T=1) = P(S \lor R \mid T=1),\\
+p_0 &amp;:= P(E=1\mid T=0) = P(U \lor R \mid T=0).
+\end{aligned}
+\]</span></p>
+<p>The risk difference is therefore</p>
+<p><span class="math display">\[
+\Delta \;=\; p_1 - p_0 \;=\; P(S\lor R\mid T=1) - P(U\lor R\mid T=0).
+\]</span></p>
+<p>No sampling model has yet been imposed. The identity is Boolean.</p>
+</section>
+<section id="gate-b-as-an-independence-condition" class="level3">
+<h3 class="anchored" data-anchor-id="gate-b-as-an-independence-condition">Gate B as an independence condition</h3>
+<p><strong>Definition (Gate B, measure-theoretic).</strong> Contrastive bundle homogeneity holds iff the latent triple <span class="math inline">\((S,U,R)\)</span> is independent of assignment <span class="math inline">\(T\)</span>:</p>
+<p><span class="math display">\[
+(S,U,R) \;\perp\; T.
+\]</span></p>
+<p>Randomisation is one instrument for this independence; it is not the definition. Eligibility criteria that switch a rival off (<span class="math inline">\(R=0\)</span> almost surely, abbreviated a.s.: with probability one) are another. Protocol that holds enabling partners uniformly present (<span class="math inline">\(S=1\)</span> a.s.) is a third.</p>
+</section>
+<section id="proposition-unique-cluster-decomposition" class="level3">
+<h3 class="anchored" data-anchor-id="proposition-unique-cluster-decomposition">Proposition (unique-cluster decomposition)</h3>
+<p><strong>Assume Gate B.</strong> Then</p>
+<p><span class="math display">\[
+\Delta \;=\; P(S \land \neg R) - P(U \land \neg R).
+\]</span></p>
+<p><em>Proof.</em> Independence gives <span class="math inline">\(p_1 = P(S\lor R)\)</span> and <span class="math inline">\(p_0 = P(U\lor R)\)</span>. Expand:</p>
+<p><span class="math display">\[
+P(S\lor R) - P(U\lor R) = P(S)+P(R)-P(S\land R) - P(U)-P(R)+P(U\land R).
+\]</span></p>
+<p>The <span class="math inline">\(P(R)\)</span> terms cancel. The remainder is <span class="math inline">\(P(S\land\neg R) - P(U\land\neg R)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span class="math inline">\(P(S\land\neg R)\)</span> is the probability that a <span class="math inline">\(T\)</span>-cluster fires and no rival fires — the <em>unique <span class="math inline">\(T\)</span>-cluster contribution</em>. <span class="math inline">\(P(U\land\neg R)\)</span> is the unique <span class="math inline">\(\neg T\)</span>-cluster contribution. Overdetermined units, on which a <span class="math inline">\(T\)</span>-cluster and a rival fire together, cancel from <span class="math inline">\(\Delta\)</span>: they contribute to both arms’ rival baseline once Gate B holds. This is why <span class="math inline">\(\Delta\)</span> is not a measure of “strength”. Numerically, <span class="math inline">\(\Delta\)</span> is the same mean difference that Neyman’s analysis estimates <span class="citation" data-cites="neyman1923">(<a href="#ref-neyman1923" role="doc-biblioref">[1923] 1990</a>)</span>; what the identity adds is its reading. Units whose outcome is already fixed by a rival cluster contribute nothing to <span class="math inline">\(\Delta\)</span>, and <span class="math inline">\(\Delta\)</span> counts only the units on which a <span class="math inline">\(T\)</span>-cluster (or a <span class="math inline">\(\neg T\)</span>-cluster) alone decides the outcome.</p>
+<p>If protocol and eligibility switch <span class="math inline">\(\neg T\)</span>-clusters off (<span class="math inline">\(U=0\)</span> a.s.) — the usual trial, in which being untreated does not itself constitute a sufficient condition for <span class="math inline">\(E\)</span> — the identity collapses to</p>
+<p><span class="math display">\[
+\Delta \;=\; P(S \land \neg R) \;\geq\; 0.
+\]</span></p>
+<p>Protective polarity is the same identity written for <span class="math inline">\(\neg E\)</span>. Let <span class="math inline">\(S_{\neg E}\)</span>, <span class="math inline">\(U_{\neg E}\)</span>, <span class="math inline">\(R_{\neg E}\)</span> be the bundles of the same partition applied to the MSCs for <span class="math inline">\(\neg E\)</span>. Under Gate B for that triple and with <span class="math inline">\(U_{\neg E}=0\)</span>, <span class="math inline">\(\Delta_{\neg E} = P(\neg E\mid T=1) - P(\neg E\mid T=0) =
+P(S_{\neg E}\land\neg R_{\neg E}) \geq 0\)</span>, and since <span class="math inline">\(\Delta_{\neg E} =
+-\Delta\)</span>, <span class="math inline">\(\Delta = -P(S_{\neg E}\land\neg R_{\neg E}) \leq 0\)</span>. The sign of <span class="math inline">\(\Delta\)</span> <em>is</em> the polarity of the MSC outcome. A two-sided <span class="math inline">\(p\)</span>-value has no sign.</p>
+</section>
+<section id="proposition-msc-membership" class="level3">
+<h3 class="anchored" data-anchor-id="proposition-msc-membership">Proposition (MSC-membership)</h3>
+<p><strong>Assume Gate B.</strong> Then:</p>
+<ol type="1">
+<li>If <span class="math inline">\(U=0\)</span> a.s., <span class="math inline">\(\Delta &gt; 0\)</span> implies <span class="math inline">\(P(S\land\neg R)&gt;0\)</span>. Hence there is a positive-measure set of units on which a <span class="math inline">\(T\)</span>-cluster fires and no rival fires. On that set <span class="math inline">\(T\)</span> is a non-redundant conjunct of a sufficient condition for <span class="math inline">\(E\)</span>: dropping <span class="math inline">\(T\)</span> yields <span class="math inline">\(E=0\)</span>. Therefore <span class="math inline">\(T\)</span>, as a positive literal, is a non-redundant literal of an MSC for <span class="math inline">\(E\)</span>.</li>
+<li>If <span class="math inline">\(U_{\neg E}=0\)</span> a.s., <span class="math inline">\(\Delta &lt; 0\)</span> implies, by the same argument applied to <span class="math inline">\(\neg E\)</span>, that <span class="math inline">\(T\)</span> is a non-redundant literal of an MSC for <span class="math inline">\(\neg E\)</span> (protective polarity).</li>
+<li>Without either exclusion, <span class="math inline">\(\Delta \neq 0\)</span> licenses only that <span class="math inline">\(P(S\land\neg R) \neq P(U\land\neg R)\)</span>: <span class="math inline">\(T\)</span> or <span class="math inline">\(\neg T\)</span> is a literal of an MSC for <span class="math inline">\(E\)</span>, and the sign of <span class="math inline">\(\Delta\)</span> says which of the two unique contributions is larger.</li>
+<li><span class="math inline">\(\Delta = 0\)</span> does <em>not</em> imply that <span class="math inline">\(T\)</span> is absent from every MSC. With <span class="math inline">\(U=0\)</span> it implies <span class="math inline">\(P(S\land\neg R)=0\)</span>: either the <span class="math inline">\(T\)</span>-cluster is never enabled (<span class="math inline">\(P(S)=0\)</span>), or it fires only on units where a rival also fires. In the second case the <span class="math inline">\(T\)</span>-cluster remains minimally sufficient, but in this field every <span class="math inline">\(E\)</span>-case it covers is covered by a rival as well, so (MN) applied to the observed cases would drop it from the disjunction. Distinguishing the two cases is a Gate A problem, not a significance problem.</li>
+</ol>
+<p><em>Proof of (1).</em> Immediate from the decomposition. Non-redundancy: take a unit on which <span class="math inline">\(S\land\neg R\)</span> holds. If the enabling bundle that fires there were sufficient for <span class="math inline">\(E\)</span> without <span class="math inline">\(T\)</span>, that sufficient condition would be <span class="math inline">\(T\)</span>-free and would contain a <span class="math inline">\(T\)</span>-free MSC, a disjunct of <span class="math inline">\(R\)</span>; then <span class="math inline">\(R=1\)</span> on that unit, contradicting <span class="math inline">\(\neg R\)</span>. (2) is (1) for the outcome <span class="math inline">\(\neg E\)</span>; (3) is the decomposition itself. <span class="math inline">\(\square\)</span></p>
+<p>Neyman’s 1923 analysis of agricultural experiments <span class="citation" data-cites="neyman1923">(<a href="#ref-neyman1923" role="doc-biblioref">[1923] 1990</a>)</span> estimates a mean difference under randomisation. Fisher’s randomisation test <span class="citation" data-cites="fisher1935">(<a href="#ref-fisher1935" role="doc-biblioref">1935a</a>)</span> evaluates a sharp null under the randomisation distribution. Neither object is MSC-membership. Both instruments, used under Gate B, <em>license</em> MSC-membership via the proposition above, the sign of the estimate fixing the polarity. That licensing step is the regularity-theoretic contribution; it is not in Fisher, and it is not in Neyman. Potential-outcome readings of the same instruments <span class="citation" data-cites="rubin1974estimating imbens2015causal">(<a href="#ref-rubin1974estimating" role="doc-biblioref">1974</a>; <a href="#ref-imbens2015causal" role="doc-biblioref">2015</a>)</span> replace the Boolean identity with a pair of hypothetical responses per unit and are not used here (Volume I, demarcation).</p>
+</section>
+<section id="proposition-regularity-theoretic-sharp-null-and-fishers-exact-test" class="level3">
+<h3 class="anchored" data-anchor-id="proposition-regularity-theoretic-sharp-null-and-fishers-exact-test">Proposition (regularity-theoretic sharp null and Fisher’s exact test)</h3>
+<p>The regularity-theoretic sharp null <span class="math inline">\(H_0\)</span> is: <span class="math inline">\(T\)</span> is a literal of no MSC for <span class="math inline">\(E\)</span> and of no MSC for <span class="math inline">\(\neg E\)</span>. Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(S=U=0\)</span> almost surely, hence <span class="math inline">\(E=R\)</span>, hence <span class="math inline">\(E \perp T\)</span> under Gate B. Conditional on the table margins of a completely randomised assignment with fixed <span class="math inline">\(n_1\)</span>, the <span class="math inline">\(2 \times 2\)</span> table is then hypergeometric. Fisher’s exact test <span class="citation" data-cites="fisher1935logic fisher1935">(<a href="#ref-fisher1935logic" role="doc-biblioref">1935b</a>, <a href="#ref-fisher1935" role="doc-biblioref">1935a</a>)</span> is therefore a test of this sharp null, not a test of a parameter. Rejection at level <span class="math inline">\(\alpha\)</span> under Gate B licenses <span class="math inline">\(\Delta \neq 0\)</span> (clause 3 of the previous proposition). Together with the sign of the estimate and the exclusion of <span class="math inline">\(\neg T\)</span>-clusters (<span class="math inline">\(U=0\)</span>, or <span class="math inline">\(U_{\neg E}=0\)</span> for the protective direction), it licenses MSC-membership of <span class="math inline">\(T\)</span> with that polarity (clauses 1 and 2). Failure to reject does not license nonmembership (clause 4; fallacy inhibitor FALL-07 of the normative registry, <a href="#sec-semantic" class="quarto-xref">Section&nbsp;9</a>: the underpowered absence claim).</p>
+</section>
+<section id="power-from-the-identity-not-from-a-z-recipe" class="level3">
+<h3 class="anchored" data-anchor-id="power-from-the-identity-not-from-a-z-recipe">Power from the identity, not from a <span class="math inline">\(z\)</span>-recipe</h3>
+<p>Write <span class="math inline">\(\sigma = P(S)\)</span>, <span class="math inline">\(\rho = P(R)\)</span>, and assume Gate B, <span class="math inline">\(U=0\)</span> and <span class="math inline">\((S,R)\)</span> independent (the independent-bundle case; if <span class="math inline">\(S\)</span> and <span class="math inline">\(R\)</span> are dependent, <span class="math inline">\(\Delta = P(S\land\neg R)\)</span> replaces the product below). Then <span class="math inline">\(\Delta = \sigma(1-\rho)\)</span>. The two-proportion sample size for detecting <span class="math inline">\(\Delta\)</span> at level <span class="math inline">\(\alpha\)</span> and power <span class="math inline">\(1-\beta\)</span> is</p>
+<p><span class="math display">\[
+n_{\text{per arm}} = \left(\frac{z_{1-\alpha/2}\sqrt{2\bar{p}(1-\bar{p})} + z_{1-\beta}\sqrt{p_0(1-p_0)+p_1(1-p_1)}}{\Delta}\right)^2
+\]</span></p>
+<p>with <span class="math inline">\(p_0=\rho\)</span>, <span class="math inline">\(p_1=\rho+\Delta\)</span>, <span class="math inline">\(\bar{p}=(p_0+p_1)/2\)</span>, and <span class="math inline">\(z_q\)</span> the <span class="math inline">\(q\)</span>-quantile of the standard normal distribution (the formula of <code>sample_size_two_proportion</code> with equal allocation). Substituting <span class="math inline">\(\Delta=\sigma(1-\rho)\)</span> shows that <span class="math inline">\(n\)</span> is approximately proportional to <span class="math inline">\(1/[\sigma^2(1-\rho)^2]\)</span>; the approximation is only to leading order, because the numerator also depends on <span class="math inline">\(\sigma\)</span> through <span class="math inline">\(p_1\)</span>. A conjunctive partner of prevalence <span class="math inline">\(\sigma=1/4\)</span> cuts <span class="math inline">\(\Delta\)</span> to a quarter of its value for a partner that is always present, and so multiplies the required sample by approximately sixteen. Computed with the formula at <span class="math inline">\(\alpha=0.05\)</span> and power <span class="math inline">\(0.8\)</span>: for <span class="math inline">\(\rho=0.2\)</span>, <span class="math inline">\(\sigma=1\)</span> (<span class="math inline">\(p_1=1\)</span>) requires 5 units per arm and <span class="math inline">\(\sigma=1/4\)</span> (<span class="math inline">\(p_1=0.4\)</span>) requires 82, a factor of 16.4; for <span class="math inline">\(\rho=0.1\)</span> and <span class="math inline">\(\rho=0.3\)</span> the factors are 12.8 (4 against 51) and 20.2 (6 against 121). This is the mathematical content of “effect modification”: it is conjunctivity, and it is a sample-size fact, not a regression interaction to be discovered after the trial.</p>
+<p>The formula powers <em>one</em> MSC-membership contrast. It does not power recovery of a full minimal theory, which additionally requires observing the conjunctive partners and the equifinal remainder.</p>
+</section>
+</section>
+</section>
+<section id="sec-causal-hypothesis-inference" class="level1">
+<h1>Causal Hypothesis Inference from Experimental Data</h1>
+<p><em>(Register: <strong>causal hypothesis</strong>, I.1; <strong>replicated coincidence table</strong>, I.1; <strong>statistical inference with experimental data</strong>, I.1 [operative]; <strong>hypothesis testing</strong>, I.1 [documented contrast, not the paper’s method].)</em></p>
+<section id="the-contrast-to-be-replaced" class="level2">
+<h2 class="anchored" data-anchor-id="the-contrast-to-be-replaced">The contrast to be replaced</h2>
+<p>Classical experimental statistics infers a <em>parameter</em>. A randomised trial computes an observed risk difference <span class="math inline">\(\hat{\Delta} = \hat{p}_1 - \hat{p}_0\)</span> and tests <span class="math inline">\(H_0: p_1 = p_0\)</span>. If the result is significant, it concludes: the treatment has a statistically significant effect on the outcome. The causal reading — the treatment is a non-redundant part of a sufficient condition for the outcome — is an extra-statistical inference performed informally, without formal criteria, without checking structural conditions, and without specifying what completing the causal structure requires.</p>
+<p>This gap is not a minor technical detail. It is the difference between a claim about a <em>population parameter</em> and a claim about a <em>causal structure</em>. A parameter claim is consistent with any causal interpretation, including spurious association, confounding, and misidentified equifinality. The causal hypothesis requires structural conditions — MSC-membership, conjunctive partners, polarity, orientation, coverage — that the parameter estimate does not supply.</p>
+<p><strong>Hypothesis testing <em>with statistical means</em></strong> is the name for the received paradigm, as stated in Fisher <span class="citation" data-cites="fisher1925">(<a href="#ref-fisher1925" role="doc-biblioref">1925</a>)</span> and in the Neyman–Pearson theory of most powerful tests <span class="citation" data-cites="neymanpearson1933">(<a href="#ref-neymanpearson1933" role="doc-biblioref">1933</a>)</span>. It uses statistical instruments to evaluate a <em>parameter</em> hypothesis (<span class="math inline">\(p_1 = p_0\)</span>) and then treats the result as evidence for a causal one. This conflation is what causal hypothesis inference replaces.</p>
+</section>
+<section id="sec-what-is-causal-hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="sec-what-is-causal-hypothesis">What a causal hypothesis is</h2>
+<p>The definition is in the Introduction. What follows is the falsification discipline that makes the object of inference a hypothesis rather than a parameter.</p>
+<p>A causal hypothesis is falsifiable by structural tests:</p>
+<ul>
+<li><strong>Gate A falsification:</strong> a contradictory configuration in which the hypothesised MSC fires disproves its sufficiency for <span class="math inline">\(E\)</span> (given HC).</li>
+<li><strong>Gate B falsification:</strong> an identifiable confounding bundle correlated with <span class="math inline">\(T\)</span> disproves the relevance inference.</li>
+<li><strong>Minimality falsification:</strong> a proper sub-conjunction of the hypothesised MSC that is still sufficient proves one conjunct redundant.</li>
+<li><strong>Necessity falsification:</strong> a positive case not covered by any MSC in the hypothesised theory disproves minimal necessity.</li>
+</ul>
+</section>
+<section id="sec-data-setup" class="level2">
+<h2 class="anchored" data-anchor-id="sec-data-setup">How experimental data are set up</h2>
+<p><em>(Register: <strong>replicated coincidence table</strong>, I.1.)</em></p>
+<p>Experimental data for causal hypothesis inference are structured as a <strong>replicated coincidence table</strong>: a finite table whose rows are units (patients, specimens, events), whose columns are binarised factors in <span class="math inline">\(\mathcal{F}\)</span> plus the binary outcome <span class="math inline">\(E\)</span>, and in which multiple rows may share the same measured factor-configuration (the same cell of the cross-tabulation).</p>
+<section id="steps-in-data-setup" class="level3">
+<h3 class="anchored" data-anchor-id="steps-in-data-setup">Steps in data setup</h3>
+<ol type="1">
+<li><p><strong>State the causal field.</strong> The population, time frame, and setting. This determines which cases belong to the analysis and which are from different causal fields (to be stratified).</p></li>
+<li><p><strong>Name the factor set.</strong> Every factor <span class="math inline">\(F \in \mathcal{F}\)</span> must be binary or binarisable. State the binarisation threshold for every continuous factor and the rationale for that threshold. Binarisation is a pre-theoretic choice; different thresholds may yield different theories.</p></li>
+<li><p><strong>State the process order.</strong> If there is a known temporal or mechanistic ordering of the factors (e.g., treatment precedes adherence precedes outcome), state it. Process order is the orientation device for single-MSC theories (Volume I); without it the engine reports <code>UNORIENTABLE</code>.</p></li>
+<li><p><strong>State the polarity of <span class="math inline">\(E\)</span>.</strong> Is the outcome <span class="math inline">\(E=1\)</span> the event (risk direction) or is <span class="math inline">\(\neg E = 1\)</span> the protective direction? Polarity is a substantive choice, not a convention.</p></li>
+<li><p><strong>Distinguish Gate A and Gate B data.</strong> Gate A data: a complete coincidence table from which MSC-membership is to be <em>read off</em> directly. Gate B data: a two-arm comparison in which Gate B secures the contrastive inference. The two are not mutually exclusive: a trial with a small factor set supplies Gate B data; adding stratification variables to the table converts it toward Gate A.</p></li>
+<li><p><strong>Record provenance.</strong> Every row must have a provenance source: the study, the sample identifier, the data extraction rule. No row without provenance; no fabricated rows.</p></li>
+</ol>
+</section>
+<section id="the-22-table-as-a-special-case" class="level3">
+<h3 class="anchored" data-anchor-id="the-22-table-as-a-special-case">The 2×2 table as a special case</h3>
+<p>The standard clinical trial 2×2 table is a replicated coincidence table with <span class="math inline">\(\mathcal{F} = \{T, E\}\)</span> and many replications per cell:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(E = 1\)</span></th>
+<th><span class="math inline">\(E = 0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(T = 1\)</span></td>
+<td><span class="math inline">\(n_{11}\)</span></td>
+<td><span class="math inline">\(n_{10}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T = 0\)</span></td>
+<td><span class="math inline">\(n_{01}\)</span></td>
+<td><span class="math inline">\(n_{00}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>This is the Gate B table. Under Gate-B conditions a significant difference between <span class="math inline">\(\hat p_1 = n_{11}/(n_{11}+n_{10})\)</span> and <span class="math inline">\(\hat p_0 = n_{01}/(n_{01}+n_{00})\)</span> licenses MSC-membership of <span class="math inline">\(T\)</span> with the polarity given by the sign of <span class="math inline">\(\hat p_1 - \hat p_0\)</span>: for <span class="math inline">\(E\)</span> if it is positive, for <span class="math inline">\(\neg E\)</span> if it is negative (<a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>). It is not a Gate A table because <span class="math inline">\(\mathcal{F} = \{T,E\}\)</span> is too small to recover the full MSC structure — Gate A is violated as long as <span class="math inline">\(C_E &gt; 0\)</span>, which is expected for any realistic trial. The MSC that includes <span class="math inline">\(T\)</span> typically also includes conjunctive partners visible only in an expanded factor set.</p>
+</section>
+</section>
+<section id="sec-inference-procedure" class="level2">
+<h2 class="anchored" data-anchor-id="sec-inference-procedure">The inference procedure</h2>
+<p>The following six-step procedure is the canonical causal hypothesis inference protocol. Volume III executes it on the worked cases of its Parts 3 and 4 in the fixed panel format.</p>
+<section id="step-1-state-the-causal-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-state-the-causal-hypothesis">Step 1 — State the causal hypothesis</h3>
+<p>State <span class="math inline">\(H\)</span> as a formula: which factors, which MSCs, which polarity of <span class="math inline">\(E\)</span>. If the hypothesis is a membership claim (<span class="math inline">\(T\)</span> is a literal in some MSC for <span class="math inline">\(E\)</span>), state it as such. At this stage no statistics are needed — the hypothesis is the structural claim whose evidence will be assembled and graded.</p>
+</section>
+<section id="step-2-secure-gate-b-contrastive-bundle-homogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-secure-gate-b-contrastive-bundle-homogeneity">Step 2 — Secure Gate B (contrastive bundle homogeneity)</h3>
+<p>Before any statistics, verify that Gate B is met. For each identifiable rival bundle <span class="math inline">\(L_j\)</span>:</p>
+<ul>
+<li>Is <span class="math inline">\(L_j\)</span> switched off by design (exclusion criterion, eligibility criterion)?</li>
+<li>If not, is <span class="math inline">\(L_j\)</span> balanced by randomisation (assignment independent of <span class="math inline">\(T\)</span>)?</li>
+<li>Is the enabling partner bundle <span class="math inline">\(L_T\)</span> uniformly present or balanced?</li>
+</ul>
+<p>If a rival bundle <span class="math inline">\(L_j\)</span> fires differentially with <span class="math inline">\(T\)</span>, Gate B is violated and the difference-test for <span class="math inline">\(T\)</span> is confounded. Report the violation; do not proceed to statistics on the confounded table.</p>
+</section>
+<section id="step-3-run-gate-a-contradiction-test" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-run-gate-a-contradiction-test">Step 3 — Run Gate A (contradiction test)</h3>
+<p>On the available coincidence table, run the exact contradiction test: compute <span class="math inline">\((C_E, B_E)\)</span>. Report the result explicitly:</p>
+<ul>
+<li><span class="math inline">\(C_E = 0\)</span>: no violation detected for sufficiency-reading; proceed to MSC search if replication is adequate.</li>
+<li><span class="math inline">\(C_E &gt; 0\)</span>: sufficiency-reading suspended; explain the violation; note that Gate B inference is unaffected if Gate B is secured.</li>
+</ul>
+</section>
+<section id="step-4-estimate-the-unique-t-cluster-contribution" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-estimate-the-unique-t-cluster-contribution">Step 4 — Estimate the unique <span class="math inline">\(T\)</span>-cluster contribution</h3>
+<p>The <strong>risk difference</strong> <span class="math inline">\(\Delta = p_1 - p_0\)</span> is, under Gate B, equal to <span class="math inline">\(P(S\land\neg R)-P(U\land\neg R)\)</span> (<a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>) — the unique <span class="math inline">\(T\)</span>-cluster contribution, not a strength measure and not Neyman’s average treatment effect <span class="citation" data-cites="neyman1923">(<a href="#ref-neyman1923" role="doc-biblioref">[1923] 1990</a>)</span>. With <span class="math inline">\(U=0\)</span>, <span class="math inline">\(\Delta=P(S\land\neg R)\)</span>. Use Fisher’s exact test <span class="citation" data-cites="fisher1935logic fisher1935">(<a href="#ref-fisher1935logic" role="doc-biblioref">1935b</a>, <a href="#ref-fisher1935" role="doc-biblioref">1935a</a>)</span> for small cell counts; it tests the regularity-theoretic sharp null, not a parameter (<a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>). Rejection licenses <span class="math inline">\(\Delta \neq 0\)</span>; the sign of <span class="math inline">\(\hat\Delta\)</span> then fixes the polarity of the membership claim carried into Step 6.</p>
+<p>State the risk difference, its confidence interval, and — if the data are sequential — the e-value <span class="math inline">\(E_t\)</span> with <span class="math inline">\(p_0\)</span> set to the empirical base rate of the outcome under <span class="math inline">\(H_0\)</span>. The e-value accumulates across studies without requiring a pre-fixed sample size; the null is rejected when <span class="math inline">\(\prod_t E_t \geq 1/\alpha\)</span>. Rejection licenses a success rate above <span class="math inline">\(p_0\)</span> on the cases where the tested cluster fires (<a href="#sec-evalues" class="quarto-xref">Section&nbsp;3.4</a>), not by itself the membership of <span class="math inline">\(T\)</span>.</p>
+<p>Do <em>not</em> report a relative risk or odds ratio as the primary causal estimand. Both distort the unique <span class="math inline">\(T\)</span>-cluster contribution when the base rate <span class="math inline">\(p_0 \neq 0\)</span> and when the MSC structure includes conjunctive partners.</p>
+</section>
+<section id="step-5-recover-and-score-candidate-mscs" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-recover-and-score-candidate-mscs">Step 5 — Recover and score candidate MSCs</h3>
+<p>From the expanded coincidence table (with conjunctive partners added to the factor set), search for minimal theories:</p>
+<ul>
+<li>Apply (SUF), (MS), (NEC), (MN) to the observed data.</li>
+<li>For each candidate MSC <span class="math inline">\(M_k\)</span> containing <span class="math inline">\(T\)</span>, compute <span class="math inline">\((\text{con}_k,
+\text{cov}_k, \text{robustness}_k)\)</span>.</li>
+<li>Assign consistency weights <span class="math inline">\(w_k\)</span> (see <a href="#sec-fit" class="quarto-xref">Section&nbsp;3.3</a>).</li>
+<li>Report the full ambiguity set <span class="math inline">\(\mathcal{A}\)</span> when <span class="math inline">\(|\mathcal{A}| &gt; 1\)</span>.</li>
+</ul>
+<p>The result is the graded causal hypothesis: the MSC(s) that contain <span class="math inline">\(T\)</span> as a non-redundant literal, with their fit scores and consistency weights. This is the causal reading of the data; the <span class="math inline">\(p\)</span>-value from Step 4 is supporting evidence, not the verdict.</p>
+</section>
+<section id="step-6-state-the-licensed-causal-conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-state-the-licensed-causal-conclusion">Step 6 — State the licensed causal conclusion</h3>
+<p>State explicitly what the analysis licenses and what it does not:</p>
+<ul>
+<li><strong>Licensed:</strong> <span class="math inline">\(T\)</span> is a non-redundant literal in MSC <span class="math inline">\(M_k\)</span> for <span class="math inline">\(E\)</span> (if <span class="math inline">\(\hat\Delta &gt; 0\)</span>) or for <span class="math inline">\(\neg E\)</span> (if <span class="math inline">\(\hat\Delta &lt; 0\)</span>) relative to field <span class="math inline">\(\delta\)</span> and factor set <span class="math inline">\(\mathcal{F}\)</span>, with <span class="math inline">\(\text{con}_k\)</span> and <span class="math inline">\(\text{cov}_k\)</span> as stated.</li>
+<li><strong>Not licensed without further data:</strong> the full minimal theory for <span class="math inline">\(E\)</span> (which requires identifying all equifinal MSCs and applying (MN)); causal orientation without a second cluster or a process order; MSC-membership of <span class="math inline">\(T\)</span> for the outcome <span class="math inline">\(E\)</span> in a different causal field or factor set.</li>
+<li><strong>Not licensed by the <span class="math inline">\(p\)</span>-value alone:</strong> MSC-membership without Gate B; polarity without the sign of <span class="math inline">\(\hat\Delta\)</span>; conjunctive partners without expanded factor set; orientation without structural asymmetry or process order.</li>
+<li><strong>Polarity must be stated:</strong> if <span class="math inline">\(T\)</span> is a literal in an MSC for <span class="math inline">\(\neg E\)</span>, the correct conclusion is that <span class="math inline">\(T\)</span> is causally relevant to <span class="math inline">\(\neg E\)</span> — in a trial, to <em>event-free survival</em> — not that <span class="math inline">\(T\)</span> “reduces” <span class="math inline">\(E\)</span>. The polarity of the MSC outcome is the direction.</li>
+</ul>
+</section>
+</section>
+<section id="what-is-licensed-by-msc-membership-of-t" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-licensed-by-msc-membership-of-t">What is licensed by MSC-membership of <span class="math inline">\(T\)</span></h2>
+<p>Securing Gate B and demonstrating <span class="math inline">\(p_1 \neq p_0\)</span> licenses <span class="math inline">\(\Delta \neq 0\)</span>: <span class="math inline">\(T\)</span> or <span class="math inline">\(\neg T\)</span> is a literal of an MSC for <span class="math inline">\(E\)</span> or for <span class="math inline">\(\neg E\)</span>. With <span class="math inline">\(\neg T\)</span>-clusters excluded by design, the sign of the difference licenses:</p>
+<blockquote class="blockquote">
+<p><span class="math inline">\(T\)</span> is a non-redundant part of some MSC for <span class="math inline">\(E\)</span> (if <span class="math inline">\(p_1 &gt; p_0\)</span>) or for <span class="math inline">\(\neg E\)</span> (if <span class="math inline">\(p_1 &lt; p_0\)</span>), relative to the observed causal field and factor set.</p>
+</blockquote>
+<p>This is the <em>MSC-membership claim</em>, with its polarity. It is a structural claim, not a parameter estimate. Completing the minimal theory requires:</p>
+<ol type="1">
+<li><p><strong>Identifying conjunctive partners.</strong> Expand the factor set until Gate A is passed or the conjunctive structure is recovered. Partners are factors that must be present for <span class="math inline">\(T\)</span>’s cluster to fire — their absence would switch off the cluster even when <span class="math inline">\(T\)</span> is present.</p></li>
+<li><p><strong>Applying (MN) to identify equifinality.</strong> If additional clusters cover the remaining positive cases not covered by <span class="math inline">\(T\)</span>’s cluster, they constitute equifinal MSCs. Coverage below 1.0 is evidence of equifinality.</p></li>
+<li><p><strong>Orienting the theory.</strong> With two or more clusters (equifinality), orientation follows from structural non-symmetry (Volume I). With a single cluster, orientation requires either a known process order (temporal or mechanistic precedence) or a provisional-orientation flag.</p></li>
+<li><p><strong>Checking permanence.</strong> Under factor-set expansion, <span class="math inline">\(T\)</span> must remain a non-redundant literal. A factor whose relevance disappears on expansion was not causally relevant but a proxy for the true cause.</p></li>
+</ol>
+<p><strong>Null results.</strong> A non-significant result (<span class="math inline">\(p &gt; \alpha\)</span>) does <em>not</em> establish that <span class="math inline">\(T\)</span> is absent from every MSC for <span class="math inline">\(E\)</span>. Asserting the null — <span class="math inline">\(T\)</span> is a literal of no MSC for <span class="math inline">\(E\)</span> and of no MSC for <span class="math inline">\(\neg E\)</span> — requires a high-powered test and a tight confidence interval around zero, <em>and</em> a field homogeneous enough for a theory in which <span class="math inline">\(T\)</span> appears in no MSC; even then <span class="math inline">\(\Delta = 0\)</span> is compatible with a <span class="math inline">\(T\)</span>-cluster that fires only where a rival fires (clause 4 of the MSC-membership proposition). Without these, the correct output is: <em>MSC-membership of <span class="math inline">\(T\)</span> not established; cannot be excluded</em> (FALL-07).</p>
+</section>
+<section id="sec-design-types" class="level2">
+<h2 class="anchored" data-anchor-id="sec-design-types">Design types as instances of the same inference</h2>
+<p>Fisher’s <em>Design of Experiments</em> <span class="citation" data-cites="fisher1935">(<a href="#ref-fisher1935" role="doc-biblioref">1935a</a>)</span>, Yates’s factorial calculus <span class="citation" data-cites="yates1937">(<a href="#ref-yates1937" role="doc-biblioref">1937</a>)</span>, Cochran and Cox’s catalogue of arrangements <span class="citation" data-cites="cochran1957">(<a href="#ref-cochran1957" role="doc-biblioref">1957</a>)</span>, and Cox’s planning monograph <span class="citation" data-cites="cox1958">(<a href="#ref-cox1958" role="doc-biblioref">1958</a>)</span> are the reference works for how assignment mechanisms are constructed. They are not reference works for what those mechanisms establish about causal <em>structure</em>. The derivations below take the assignment mechanism from that literature and apply the firing-rate identity (<a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>). The object of inference remains a causal hypothesis. Volume III instantiates each derivation on coincidence tables; it does not repeat the proofs.</p>
+<section id="completely-randomised-design" class="level3">
+<h3 class="anchored" data-anchor-id="completely-randomised-design">Completely randomised design</h3>
+<p><strong>Assignment.</strong> A completely randomised design with <span class="math inline">\(n\)</span> units and <span class="math inline">\(n_1\)</span> treated is a uniformly random injection of <span class="math inline">\(n_1\)</span> ones into <span class="math inline">\(\{1,\ldots,n\}\)</span> <span class="citation" data-cites="fisher1935">(<a href="#ref-fisher1935" role="doc-biblioref">1935a</a>)</span>. Write <span class="math inline">\(T=(T_1,\ldots,T_n)\)</span> for the assignment vector and <span class="math inline">\((S_i,U_i,R_i)\)</span> for unit <span class="math inline">\(i\)</span>’s latent bundles. The defining property is</p>
+<p><span class="math display">\[
+T \;\perp\; \bigl((S_i,U_i,R_i)\bigr)_{i=1}^n.
+\]</span></p>
+<p>This <em>is</em> Gate B, in the finite-population randomisation distribution. Bernoulli trials <span class="math inline">\(T_i \sim \mathrm{Bern}(\pi)\)</span> independent of the latents give the same independence in the sampling model. Stratified randomisation gives Gate B <em>within</em> each block: <span class="math inline">\((S,U,R)\perp T \mid \text{block}\)</span>.</p>
+<p><strong>Proposition (randomisation licenses the unique-cluster decomposition).</strong> Under complete randomisation and <span class="math inline">\(U=0\)</span>,</p>
+<p><span class="math display">\[
+\mathbb{E}[\hat{\Delta}\mid (S_i,R_i)_{i=1}^n] \;=\; \frac{1}{n}\sum_i \mathbf{1}(S_i=1,R_i=0),
+\]</span></p>
+<p>the finite-population unique <span class="math inline">\(T\)</span>-cluster contribution. Unbiasedness is with respect to the randomisation distribution, not a superpopulation.</p>
+<p><strong>What is identifiable.</strong> Sign and magnitude of <span class="math inline">\(\Delta\)</span>, which with <span class="math inline">\(U=0\)</span> is <span class="math inline">\(P(S\land\neg R)\)</span>; hence MSC-membership of <span class="math inline">\(T\)</span> with the polarity given by the sign. <strong>What is not.</strong> The composition of <span class="math inline">\(S\)</span> (conjunctive partners) unless those partners are measured; the composition of <span class="math inline">\(R\)</span>; orientation, unless a second cluster or a process order is supplied. Gate A fails whenever <span class="math inline">\(0&lt;\rho&lt;1\)</span>, which is the typical trial: <span class="math inline">\(C_E&gt;0\)</span> is expected and does not invalidate the membership inference.</p>
+<p><strong>Intention-to-treat.</strong> If assigned <span class="math inline">\(T\)</span> differs from received <span class="math inline">\(T^{\mathrm{rec}}\)</span>, the identity applies to assigned <span class="math inline">\(T\)</span>. The licensed claim is MSC-membership of <em>assignment</em>, whose enabling bundle now includes compliance. Per-protocol analysis conditions on <span class="math inline">\(T^{\mathrm{rec}}\)</span>, which is a function of latent enabling partners, and typically violates Gate B (Case 5).</p>
+</section>
+<section id="sec-factorial" class="level3">
+<h3 class="anchored" data-anchor-id="sec-factorial"><span class="math inline">\(2^k\)</span> factorial: interaction sign distinguishes conjunctivity from equifinality</h3>
+<p>Yates <span class="citation" data-cites="yates1937">(<a href="#ref-yates1937" role="doc-biblioref">1937</a>)</span> and Cochran and Cox <span class="citation" data-cites="cochran1957">(<a href="#ref-cochran1957" role="doc-biblioref">1957</a>)</span> analyse the <span class="math inline">\(2^k\)</span> factorial by orthogonal contrasts. The regularity reading of those contrasts is not “moderation.” It is a theorem about MSC form.</p>
+<p>Consider <span class="math inline">\(k=2\)</span>, factors <span class="math inline">\(T_1,T_2\)</span> assigned independently of all latents, four cell probabilities <span class="math inline">\(p_{ab}=P(E=1\mid T_1=a,T_2=b)\)</span>. The Yates interaction is</p>
+<p><span class="math display">\[
+I \;=\; (p_{11}-p_{10}) - (p_{01}-p_{00}).
+\]</span></p>
+<p><strong>Proposition (interaction sign).</strong> Assume Gate B for the pair <span class="math inline">\((T_1,T_2)\)</span> and <span class="math inline">\(U=0\)</span> for both factors. Then:</p>
+<ol type="1">
+<li><em>Conjunctive cluster</em> <span class="math inline">\(T_1 * T_2 * L \Rightarrow E\)</span>, plus <span class="math inline">\(T\)</span>-free rivals <span class="math inline">\(R\)</span>. Key: <span class="math inline">\(L\)</span> = latent enabling partner; the arc in the diagram ties <span class="math inline">\(T_1\)</span>, <span class="math inline">\(T_2\)</span>, and <span class="math inline">\(L\)</span> into one cluster. <span class="math display">\[I \;=\; P(L \land \neg R) \;\geq\; 0.\]</span></li>
+<li><em>Two equifinal clusters</em> <span class="math inline">\(T_1 * L_1 + T_2 * L_2 \Rightarrow E\)</span>, plus rivals <span class="math inline">\(R\)</span>. Key: <span class="math inline">\(L_1\)</span>, <span class="math inline">\(L_2\)</span> = distinct enabling partners for each treatment factor; two separate arcs. <span class="math display">\[I \;=\; -P(L_1 \land L_2 \land \neg R) \;\leq\; 0.\]</span></li>
+</ol>
+<div id="fig-factorial" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-factorial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-schematic-factorial-equi.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-factorial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The two structures: conjunctive (positive interaction, left) vs.&nbsp;equifinal (negative interaction, right).
+</figcaption>
+</figure>
+</div>
+<p><em>Proof of (1).</em> Under independence of assignment, <span class="math inline">\(p_{11}=P(L\lor R)\)</span> and <span class="math inline">\(p_{10}=p_{01}=p_{00}=P(R)\)</span>. Hence <span class="math inline">\(I=P(L\lor R)-P(R)=P(L\land\neg R)\)</span>.</p>
+<p><em>Proof of (2).</em> Now <span class="math inline">\(p_{11}=P(L_1\lor L_2\lor R)\)</span>, <span class="math inline">\(p_{10}=P(L_1\lor R)\)</span>, <span class="math inline">\(p_{01}=P(L_2\lor R)\)</span>, <span class="math inline">\(p_{00}=P(R)\)</span>. Expanding and cancelling yields <span class="math inline">\(I=-P(L_1\land L_2\land\neg R)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>The sign of <span class="math inline">\(I\)</span> is a structural diagnostic: positive interaction is evidence of a <em>conjunction</em> (one MSC containing both factors); negative interaction is evidence of <em>equifinality</em> (two MSCs, overdetermination in the <span class="math inline">\((1,1)\)</span> cell). Elementary analysis of variance (ANOVA) treats <span class="math inline">\(|I|\)</span> as moderation and discards the sign. That reading is false to the Boolean structure.</p>
+<p>The <span class="math inline">\(T_1\)</span> main effect, averaging over <span class="math inline">\(T_2\)</span>, equals <span class="math inline">\(\tfrac12 I\)</span> in case (1): the unique-cluster contribution <em>diluted by the half of the design in which the partner is off</em>. A non-significant main effect with a significant positive interaction does not refute MSC-membership of <span class="math inline">\(T_1\)</span>; it is exactly what conjunctivity predicts. Reporting only main effects hides the sign of <span class="math inline">\(I\)</span> and with it the distinction between the two structures; in the equifinal case this is FALL-05 (ignored equifinality).</p>
+<p>Higher <span class="math inline">\(k\)</span> is the same calculus. A <span class="math inline">\(k\)</span>-literal MSC <span class="math inline">\(T_1 * \cdots * T_k * L \Rightarrow E\)</span> with rivals <span class="math inline">\(R\)</span> places its whole unique contribution <span class="math inline">\(P(L\land\neg R)\)</span> in the one cell in which all <span class="math inline">\(k\)</span> factors are present. Every Yates contrast — each main effect and each interaction up to order <span class="math inline">\(k\)</span> — then has the same positive sign and, in Yates’s scaling (division by <span class="math inline">\(2^{k-1}\)</span>), the same magnitude <span class="math inline">\(P(L\land\neg R)/2^{k-1}\)</span>; for <span class="math inline">\(k=2\)</span> this is the equality of main effect and <span class="math inline">\(\tfrac12 I\)</span> stated above. A pattern of negative two-factor interactions with positive main effects is what equifinal single-literal MSCs predict.</p>
+</section>
+<section id="sec-cohort" class="level3">
+<h3 class="anchored" data-anchor-id="sec-cohort">Cohort: conditional Gate B and the Cornfield bound</h3>
+<p>A prospective cohort does not randomise <span class="math inline">\(T\)</span>. Gate B is replaced by <em>conditional</em> contrastive homogeneity given a measured factor set <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[
+(S,U,R) \;\perp\; T \mid X.
+\]</span></p>
+<p>Then <span class="math inline">\(\Delta(x) = P(S\land\neg R\mid X=x) - P(U\land\neg R\mid X=x)\)</span>, and the standardised difference <span class="math inline">\(\sum_x \Delta(x)\,P(X=x)\)</span> is the unique-cluster contribution averaged over <span class="math inline">\(X\)</span>. If some rival bundle still fires differentially with <span class="math inline">\(T\)</span> within a level of <span class="math inline">\(X\)</span>, conditional independence fails (Case 4).</p>
+<p><strong>Proposition (Cornfield bound, regularity form).</strong> Assume <span class="math inline">\(S=U=0\)</span> (no <span class="math inline">\(T\)</span>-cluster) and causal determination, so <span class="math inline">\(E=R\)</span>. Then <span class="math inline">\(\Delta = \rho_1 - \rho_0\)</span> where <span class="math inline">\(\rho_t = P(R=1\mid T=t)\)</span>: without a <span class="math inline">\(T\)</span>-cluster, the whole observed difference <em>equals</em> the differential firing of the disjunction <span class="math inline">\(R\)</span> of all <span class="math inline">\(T\)</span>-free rivals. The classical Cornfield conditions <span class="citation" data-cites="cornfield1959">(<a href="#ref-cornfield1959" role="doc-biblioref">1959</a>)</span> state the corresponding bound, in relative risks, for a single unmeasured binary confounder: it cannot fully explain an observed association unless both its association with <span class="math inline">\(T\)</span> and its association with <span class="math inline">\(E\)</span> are at least as large as the observed association.</p>
+<p>Covariate adjustment that includes a conjunct of every identified rival either blocks that rival or measures its firing. Adjustment for a common effect of <span class="math inline">\(T\)</span> and <span class="math inline">\(E\)</span> induces a new dependence between <span class="math inline">\(T\)</span> and <span class="math inline">\(R\)</span> within its levels and manufactures a Gate B violation.</p>
+</section>
+<section id="sec-case-control" class="level3">
+<h3 class="anchored" data-anchor-id="sec-case-control">Case-control: the odds ratio identifies <span class="math inline">\(\mathrm{sign}(\Delta)\)</span>, not <span class="math inline">\(\Delta\)</span></h3>
+<p>Sampling is on <span class="math inline">\(E\)</span>. Write <span class="math inline">\(D=1\)</span> for “the unit is drawn into the study”; then <span class="math inline">\(P(D=1\mid E,T,S,U,R) = P(D=1\mid E)\)</span>. Cornfield <span class="citation" data-cites="cornfield1951">(<a href="#ref-cornfield1951" role="doc-biblioref">1951</a>)</span> showed that the exposure odds ratio equals the population odds ratio. Mantel and Haenszel <span class="citation" data-cites="mantel1959">(<a href="#ref-mantel1959" role="doc-biblioref">1959</a>)</span> gave the stratified estimator.</p>
+<p>Let <span class="math inline">\(\mathrm{OR} = \dfrac{p_1/(1-p_1)}{p_0/(1-p_0)}\)</span>. Then <span class="math inline">\(\mathrm{OR}&gt;1\)</span> iff <span class="math inline">\(p_1&gt;p_0\)</span> iff <span class="math inline">\(\Delta&gt;0\)</span>, and likewise <span class="math inline">\(\mathrm{OR}&lt;1\)</span> iff <span class="math inline">\(\Delta&lt;0\)</span>. A case-control odds ratio different from 1 therefore licenses <span class="math inline">\(\mathrm{sign}(\Delta) \neq 0\)</span>, and under Gate B it licenses MSC-membership of <span class="math inline">\(T\)</span> with the polarity given by that sign: with <span class="math inline">\(U=0\)</span>, <span class="math inline">\(\mathrm{OR}&gt;1\)</span> iff <span class="math inline">\(P(S\land\neg R)&gt;0\)</span>, so <span class="math inline">\(T\)</span> is a literal of an MSC for <span class="math inline">\(E\)</span>; with <span class="math inline">\(U_{\neg E}=0\)</span>, <span class="math inline">\(\mathrm{OR}&lt;1\)</span> places <span class="math inline">\(T\)</span> in an MSC for <span class="math inline">\(\neg E\)</span>. It licenses nothing further.</p>
+<p><strong>Proposition (non-identifiability of the unique-cluster contribution).</strong> <span class="math inline">\(\Delta = P(S\land\neg R)\)</span> is not a function of <span class="math inline">\(\mathrm{OR}\)</span> alone. Recovery of <span class="math inline">\(\Delta\)</span> requires an external estimate of <span class="math inline">\(P(E)\)</span>. The rare-disease approximation <span class="math inline">\(\mathrm{OR}\approx p_1/p_0\)</span> still does not yield <span class="math inline">\(\Delta\)</span>, since <span class="math inline">\(p_1/p_0 = 1 + \Delta/p_0\)</span> retains <span class="math inline">\(p_0\)</span>. Reporting an odds ratio as if it were the unique <span class="math inline">\(T\)</span>-cluster contribution is a category mistake.</p>
+<p>Matching on a covariate <span class="math inline">\(X\)</span> that is a conjunct of <span class="math inline">\(S\)</span> (an enabling partner) controls no rival. It splits the <span class="math inline">\(T\)</span>-cluster’s contribution by partner level: where the partner is absent the odds ratio is exactly 1, and only where it is present does it exceed 1. The sign is preserved; what the partner-absent stratum shows is the conjunctivity of the cluster, not the absence of a relation. Matching on a common effect of <span class="math inline">\(T\)</span> and <span class="math inline">\(E\)</span> manufactures a Gate B violation. Match on measured rival-conjuncts; matching on enabling partners of the cluster under test buys no protection against confounding.</p>
+</section>
+<section id="sec-sequential-design" class="level3">
+<h3 class="anchored" data-anchor-id="sec-sequential-design">Sequential designs and e-processes</h3>
+<p>O’Brien and Fleming <span class="citation" data-cites="obrien1979">(<a href="#ref-obrien1979" role="doc-biblioref">1979</a>)</span> and the group-sequential theory of Jennison and Turnbull <span class="citation" data-cites="jennison2000">(<a href="#ref-jennison2000" role="doc-biblioref">2000</a>)</span> control Type I error of a <em>parameter</em> test under planned looks. They do not license MSC-membership, and their error guarantee does not survive looks whose timing depends on the accumulating data.</p>
+<p>The e-process of <a href="#sec-evalues" class="quarto-xref">Section&nbsp;3.4</a> tests the composite null <span class="math inline">\(H_0: P(E=1\mid M\text{ fires}) \le p_0\)</span> on the cases where a candidate MSC <span class="math inline">\(M\)</span> fires, taken as independent with a common success probability; <span class="math inline">\(p_0\)</span> is the empirical base rate of <span class="math inline">\(E\)</span> in the field (not <span class="math inline">\(1/2\)</span>). Its running product <span class="math inline">\(K_t=\prod_{s\le t}E_s\)</span>, built from the Beta predictive clipped at <span class="math inline">\(p_0\)</span>, is a nonnegative supermartingale with <span class="math inline">\(K_0=1\)</span> under every <span class="math inline">\(p\le p_0\)</span>, so <span class="math inline">\(\mathbb{E}[K_\tau]\le 1\)</span> at every stopping time <span class="math inline">\(\tau\)</span> <span class="citation" data-cites="ramdas2023 grünwald2024">(<a href="#ref-ramdas2023" role="doc-biblioref">Ramdas et al. 2023</a>; <a href="#ref-grünwald2024" role="doc-biblioref">Grünwald et al. 2024</a>)</span>, and Ville’s inequality <span class="citation" data-cites="ville1939">(<a href="#ref-ville1939" role="doc-biblioref">1939</a>)</span> gives</p>
+<p><span class="math display">\[
+P\bigl(\sup_t K_t \;\ge\; 1/\alpha\bigr) \;\le\; \alpha .
+\]</span></p>
+<p>Rejection of the null by the e-process licenses <span class="math inline">\(P(E=1\mid M\text{ fires}) &gt; p_0\)</span>: evidence for the sufficiency of <span class="math inline">\(M\)</span> relative to the base rate. For <span class="math inline">\(M\)</span> containing <span class="math inline">\(T\)</span> it is not by itself MSC-membership of <span class="math inline">\(T\)</span>; that additionally requires the Gate B contrast of <a href="#sec-firing-identity" class="quarto-xref">Section&nbsp;5.2</a>, with its sign. Optional stopping without an e-process or a pre-specified boundary does not license either claim.</p>
+</section>
+<section id="sec-meta" class="level3">
+<h3 class="anchored" data-anchor-id="sec-meta">Meta-analysis: <span class="math inline">\(\tau^2\)</span> is a varying conjunctive partner</h3>
+<p>Studies <span class="math inline">\(f=1,\ldots,F\)</span> are distinct causal fields. Under Gate B in each field and <span class="math inline">\(U_f=0\)</span>,</p>
+<p><span class="math display">\[
+\Delta_f \;=\; P(S_f \land \neg R_f) \;=\; \sigma_f(1-\rho_f)
+\]</span></p>
+<p>in the independent-bundle case. A fixed-effect pool estimates a common <span class="math inline">\(\Delta\)</span> and is valid only if <span class="math inline">\(\sigma_f(1-\rho_f)\)</span> is constant across <span class="math inline">\(f\)</span> (for instance, if <span class="math inline">\(\sigma_f\)</span> and <span class="math inline">\(\rho_f\)</span> both are). The DerSimonian–Laird estimator <span class="citation" data-cites="dersimonian1986meta">(<a href="#ref-dersimonian1986meta" role="doc-biblioref">1986</a>)</span> estimates the between-study variance <span class="math inline">\(\tau^2\)</span> on the scale of the chosen effect measure. On the risk-difference scale, and under the identity, it is an estimator of <span class="math inline">\(\mathrm{Var}_f(\sigma_f(1-\rho_f))\)</span>; on the log odds-ratio or log relative-risk scale it is not, and <span class="math inline">\(\tau^2&gt;0\)</span> can arise there even when <span class="math inline">\(\Delta_f\)</span> is constant. On the risk-difference scale, <span class="math inline">\(\tau^2&gt;0\)</span> is evidence that a conjunctive partner or a rival prevalence varies across fields. The licensed response is to promote that moderator into the factor set and re-estimate <span class="math inline">\(\Delta(x)\)</span>, not to report a random-effects mean of incommensurable unique-cluster contributions. Pooling across fields with distinct MSCs is FALL-04.</p>
+</section>
+<section id="crossover" class="level3">
+<h3 class="anchored" data-anchor-id="crossover">Crossover</h3>
+<p>Each unit supplies a pair <span class="math inline">\((E_{i1},E_{i2})\)</span> under a sequence of assignments. Gate B requires that period-specific rival firing be independent of sequence: no carryover cluster that fires in period 2 as a function of <span class="math inline">\(T\)</span> in period 1. A carryover cluster is Case 4 by construction. Washout that switches the carryover bundle off restores Gate B. With <span class="math inline">\(U=0\)</span>, the paired contrast estimates <span class="math inline">\(P(S\land\neg R)\)</span> with the unit as its own block.</p>
+</section>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<div id="tbl-design-types" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-design-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Design types as corollaries of the firing-rate identity.
+</figcaption>
+<div aria-describedby="tbl-design-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Design</th>
+<th>Gate B instrument</th>
+<th>Identifiable from <span class="math inline">\(\Delta\)</span> / <span class="math inline">\(I\)</span> / OR</th>
+<th>Not identifiable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Completely randomised</td>
+<td><span class="math inline">\(T \perp (S,U,R)\)</span></td>
+<td><span class="math inline">\(\Delta\)</span> (<span class="math inline">\(=P(S\land\neg R)\)</span> if <span class="math inline">\(U=0\)</span>); its sign gives the polarity of MSC-membership</td>
+<td>Composition of <span class="math inline">\(S\)</span>, <span class="math inline">\(R\)</span>; orientation</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2^k\)</span> factorial</td>
+<td><span class="math inline">\((T_1,\ldots,T_k)\perp\)</span> latents</td>
+<td>Sign<span class="math inline">\((I)\)</span>: conjunctivity vs equifinality</td>
+<td>Unmeasured higher-order literals</td>
+</tr>
+<tr class="odd">
+<td>Cohort</td>
+<td><span class="math inline">\((S,U,R)\perp T \mid X\)</span></td>
+<td><span class="math inline">\(\Delta(x)\)</span>; signed membership given <span class="math inline">\(X\)</span></td>
+<td><span class="math inline">\(\Delta\)</span> when a rival fires differentially with <span class="math inline">\(T\)</span> given <span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="even">
+<td>Case-control</td>
+<td>sampling on <span class="math inline">\(E\)</span> only</td>
+<td><span class="math inline">\(\mathrm{sign}(\Delta)\)</span>, hence signed membership under Gate B</td>
+<td><span class="math inline">\(\Delta\)</span> itself without <span class="math inline">\(P(E)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Sequential</td>
+<td>same as RCT; e-process for looks</td>
+<td>success rate above <span class="math inline">\(p_0\)</span> where <span class="math inline">\(M\)</span> fires (sufficiency relative to base rate)</td>
+<td>Membership of <span class="math inline">\(T\)</span> without the Gate B contrast</td>
+</tr>
+<tr class="even">
+<td>Meta-analysis</td>
+<td>Gate B per field; common MSC</td>
+<td>common <span class="math inline">\(\Delta\)</span> only if <span class="math inline">\(\tau^2=0\)</span> (risk-difference scale)</td>
+<td>Pooled <span class="math inline">\(\Delta\)</span> when <span class="math inline">\(\sigma_f(1-\rho_f)\)</span> varies</td>
+</tr>
+<tr class="odd">
+<td>Crossover</td>
+<td>no carryover cluster</td>
+<td>paired <span class="math inline">\(P(S\land\neg R)\)</span> (with <span class="math inline">\(U=0\)</span>)</td>
+<td>Period-treatment rivals</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Volume III, Part 4 instantiates these corollaries on coincidence tables. It does not restate the proofs.</p>
+</section>
+</section>
+</section>
+<section id="sec-design" class="level1">
+<h1>Experimental Design Under Ambiguity</h1>
+<section id="next-best-configuration-eig-over-the-ambiguity-set" class="level2">
+<h2 class="anchored" data-anchor-id="next-best-configuration-eig-over-the-ambiguity-set">Next-best configuration: EIG over the ambiguity set</h2>
+<p>Given an ambiguity set of <span class="math inline">\(k\)</span> fit-equivalent minimal theories, the natural design question is: which factor configuration should be observed next to maximally reduce uncertainty about which theory is correct?</p>
+<p>The answer uses <strong>expected information gain (EIG)</strong> over the ambiguity set. For each configuration <span class="math inline">\(x \in \{0,1\}^{|\mathcal{F}|-1}\)</span> of the factors other than the outcome, the predicted outcome is computed under each theory <span class="math inline">\(\mathcal{M}_k \in \mathcal{A}\)</span>. The EIG of <span class="math inline">\(x\)</span> is the expected reduction, in bits, of the entropy of a uniform distribution over <span class="math inline">\(\mathcal{A}\)</span> once the outcome at <span class="math inline">\(x\)</span> is observed (the engine does not yet use the consistency weights here). The configuration with the highest EIG is the <strong>next-best configuration</strong>.</p>
+<p>The function <code>next_best_config(theories, all_factor_names, outcome_name)</code> returns the next-best configuration with its EIG; <code>DesignAdvisor.recommend(query)</code> reports it together with sample size, achieved power and a stopping rule for the design query.</p>
+</section>
+<section id="class-based-design-advisor" class="level2">
+<h2 class="anchored" data-anchor-id="class-based-design-advisor">Class-based design advisor</h2>
+<p>Causal structures fall into recognisable <em>design classes</em> (common cause, conjunctive, equifinal, chain, asymmetric equifinality), each with a characteristic pattern of ambiguity and a characteristic resolution strategy. The <code>recommend_design</code> MCP tool maps the current causal hypergraph query to a design class and recommends the resolution strategy for that class.</p>
+<p>Sequential monitoring uses the O’Brien–Fleming boundary <span class="citation" data-cites="obrien1979">(<a href="#ref-obrien1979" role="doc-biblioref">1979</a>)</span> for conventional testing and e-processes <span class="citation" data-cites="grünwald2024 ramdas2023">(<a href="#ref-grünwald2024" role="doc-biblioref">2024</a>; <a href="#ref-ramdas2023" role="doc-biblioref">2023</a>)</span> for anytime-valid stopping (<a href="#sec-evalues" class="quarto-xref">Section&nbsp;3.4</a>).</p>
+</section>
+</section>
+<section id="sec-deep-reading" class="level1">
+<h1>Deep Reading: From Natural-Language Paper to Structured Causal Claim</h1>
+<section id="concept-and-motivation" class="level2">
+<h2 class="anchored" data-anchor-id="concept-and-motivation">Concept and motivation</h2>
+<p><strong>Deep reading</strong> is the transformation, by a pipeline of specialised subagents, of the natural-language content of a scientific paper into (i) a <em>typed, structured causal claim</em> and (ii) its <em>evidential support</em>, in a form the formal engine can adjudicate. It contrasts with shallow reading — summarisation, keyword extraction — which reproduces the paper’s language without fixing what, exactly, is being claimed and on what evidence. Deep reading is complete when nothing about the paper’s central claim remains in prose form: every claim is typed, every factor defined, every evidence row carries provenance.</p>
+</section>
+<section id="the-subagent-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="the-subagent-pipeline">The subagent pipeline</h2>
+<div id="tbl-deep-reading" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-deep-reading-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: The deep-reading pipeline. Subagents 1–4 and 6 require natural-language competence; subagent 5 is the deterministic engine.
+</figcaption>
+<div aria-describedby="tbl-deep-reading-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Subagent</th>
+<th>Input → Output</th>
+<th>Discipline enforced</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Claim extractor</td>
+<td>Paper prose → typed claims (state attribution, type-level causal, token-level causal, constitutive, mechanism)</td>
+<td>No paraphrase before typing; paper’s words preserved</td>
+</tr>
+<tr class="even">
+<td>2. Terminology typist</td>
+<td>Claims → terms typed as <em>state</em>, <em>process</em>, or <em>measurement outcome</em></td>
+<td>Iron rule: no category interchange</td>
+</tr>
+<tr class="odd">
+<td>3. Normaliser (Stage I)</td>
+<td>Typed claims → factor set, causal field, process order</td>
+<td>Factors binary, modally independent</td>
+</tr>
+<tr class="even">
+<td>4. Evidence tabulator (Stage II)</td>
+<td>Published record → coincidence table, one provenance source per row</td>
+<td>No row without provenance; no fabricated rows</td>
+</tr>
+<tr class="odd">
+<td>5. Formal analyst (Stages III–IV)</td>
+<td>Table → homogeneity check, best-model run, fallacy scan</td>
+<td>Purely mechanical: the engine, no language model</td>
+</tr>
+<tr class="even">
+<td>6. Adjudicator (Stage V)</td>
+<td>Claims + analysis → claim-by-claim verdicts with INF/FALL codes</td>
+<td>Every verdict cites its deciding condition</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="the-discovery-claim-typological-anatomy" class="level2">
+<h2 class="anchored" data-anchor-id="the-discovery-claim-typological-anatomy">The discovery claim: typological anatomy</h2>
+<p>Deep reading earns its name at subagents 1–2, where the logical content of apparently simple report sentences is fixed. The instructive case is the materials-discovery claim: <em>“we have found a material which exhibits superconductivity”</em>. The surface form is an existence report; the typed content is a conjunction of three claims of three different kinds:</p>
+<ol type="1">
+<li><p><strong>A constitutive state attribution (not causal).</strong> An identified bulk phase <span class="math inline">\(P\)</span> of the material is in the superconducting state under stated conditions — adjudicated by the definition of the state (both defining properties verified), not by causal analysis.</p></li>
+<li><p><strong>Type-level causal claims about measurement outcomes.</strong> The warrant of the attribution is causal: <span class="math inline">\(P\)</span> — rather than an impurity phase, a percolation path, or an artefact — is causally relevant to each verified signature. Formally: <span class="math inline">\(P\)</span> occurs as a non-redundant literal in the MSCs of the best models of the signature outcomes.</p></li>
+<li><p><strong>A homogeneity claim.</strong> The causal field is homogeneous — the same preparation yields the same outcomes across samples and laboratories. Reproducibility is not a social virtue appended to the science: it is premiss (P2) of the deductive schema, and failed replication is a contradictory configuration.</p></li>
+</ol>
+<p>Conflating the three kinds — reading the constitutive biconditional as causal, or a measurement outcome as the state itself — is the characteristic fallacy of premature discovery announcements. It is detected structurally at subagent 2. The worked LK-99 deep-reading trace (E0–E8 protocol) is documented in <code>paper-evaluations/eval-lk99.qmd</code>; Volume III, Case B-LK gives the causal hypothesis inference verdict.</p>
+</section>
+</section>
+<section id="sec-semantic" class="level1">
+<h1>Causal-Architect as Semantic Ground Source</h1>
+<section id="three-audience-contract" class="level2">
+<h2 class="anchored" data-anchor-id="three-audience-contract">Three-audience contract</h2>
+<p>Causal-Architect is designed to serve as the authoritative <em>semantic ground source</em> for causal reasoning — the reference from which the meaning of causal claims, the conditions under which they are warranted, and the forms under which they may be inferred are derived. This role is not limited to one audience: scholars use the formal theory as reference; lay readers use the casebook and co-pilot as access point; AI agents use the formal definitions and the companion skill file as machine-readable ingestion material.</p>
+<p>The semantic contract has the same content at three levels of abstraction:</p>
+<ul>
+<li><strong>Scholars:</strong> causal relevance is MSC-membership in a permanently redundancy-free minimal theory over an explicit factor set in a homogeneous causal field. Claims not reconstructible in this form remain hypotheses.</li>
+<li><strong>Lay readers:</strong> a factor causes an outcome when it is a non-removable part of one minimally sufficient cluster. The co-pilot identifies the cluster and displays the conjunctive partners and equifinal alternatives, if any.</li>
+<li><strong>AI agents:</strong> the skill file <code>skills/causal-relevance.md</code> states the STD-1…STD-8 standard, INF-01…INF-11 warrants, and FALL-01…FALL-10 inhibitors in machine-executable form. An agent that claims a factor is causally relevant must provide an INF code; an agent that claims it is not must check all applicable FALL codes.</li>
+</ul>
+</section>
+<section id="the-normative-registry" class="level2">
+<h2 class="anchored" data-anchor-id="the-normative-registry">The normative registry</h2>
+<p>The <strong>normative registry</strong> (<code>standards/causal-standard.yaml</code>) is the single authoritative source for the normative content of the framework. Eleven inference warrants, ten fallacy inhibitors, eight standard rules (STD-1…STD-8), and one output contract are defined once; the engine, the skill file, and the tables in these volumes are generated from the registry or checked against it. Any discrepancy between a table and the registry is resolved in the registry’s favour.</p>
+<!-- Generated by scripts/gen_standard.py from standards/causal-standard.yaml. Do not edit by hand. -->
+<div id="tbl-warrants" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[13,29,58]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-warrants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: The 11 inference warrants. Every affirmative step of a causal verdict cites one of these codes.
+</figcaption>
+<div aria-describedby="tbl-warrants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 28%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Warrant</th>
+<th style="text-align: left;">Established by</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>INF-01</strong></td>
+<td style="text-align: left;">Causal relevance from MSC-membership</td>
+<td style="text-align: left;">A is a literal of some MSC of the atomic minimal theory for E.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>INF-02</strong></td>
+<td style="text-align: left;">Sufficiency of a cluster</td>
+<td style="text-align: left;">All literals of M hold in c and the theory’s consistency is 1.0.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>INF-03</strong></td>
+<td style="text-align: left;">Necessity of the disjunction</td>
+<td style="text-align: left;">Every positive case satisfies some MSC; coverage is 1.0.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>INF-04</strong></td>
+<td style="text-align: left;">Conjunctivity</td>
+<td style="text-align: left;">partners(A, E) is non-empty for every MSC containing A.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>INF-05</strong></td>
+<td style="text-align: left;">Equifinality</td>
+<td style="text-align: left;">alternatives(E) returns more than one MSC.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>INF-06</strong></td>
+<td style="text-align: left;">Token attribution</td>
+<td style="text-align: left;">Exactly one MSC fires in c; where several fire, report ambiguity.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>INF-07</strong></td>
+<td style="text-align: left;">Causal chain</td>
+<td style="text-align: left;">Not decidable from a single coincidence table. The engine reports the chain/common-cause ambiguity instead of asserting either reading.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>INF-08</strong></td>
+<td style="text-align: left;">Common cause</td>
+<td style="text-align: left;">common_causes(C, D) is non-empty and the relevance verdict for the pair is negative.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>INF-09</strong></td>
+<td style="text-align: left;">Homogeneity verdict</td>
+<td style="text-align: left;">assess_homogeneity reports the contradiction count C_E and burden B_E.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>INF-10</strong></td>
+<td style="text-align: left;">Factor-set expansion</td>
+<td style="text-align: left;">Re-running the search on an expanded factor set resolves contradictions present at the initial set, and the relevance verdict is recomputed there.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>INF-11</strong></td>
+<td style="text-align: left;">Minimal-necessity pruning</td>
+<td style="text-align: left;">The disjunction without M_i is still necessary for E.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-dynamic-casebook" class="level2">
+<h2 class="anchored" data-anchor-id="sec-dynamic-casebook">The dynamic casebook as co-pilot</h2>
+<p>The <strong>dynamic casebook</strong> extends the fixed example corpus into an open, live testbed: any researcher or AI agent can submit a novel causal-intuition case with its data table, receive a theory-grounded verdict computed by the engine, compare this verdict with their own intuition side-by-side, and vote on its correctness.</p>
+<p>The service runs at port 5195 (<code>causal-architect serve</code>). Its REST API accepts either boolean coincidence rows (<code>cases</code>) or numeric/mixed tables (<code>table</code>) — the latter is auto-discretised at the median per column by <code>binarize_table()</code>. Any discretisation is a lossy bridge: the Boolean minimal-theory apparatus operates on crisp 0/1 values, and the choice of threshold affects which theory is recovered. The dual readout (qualitative minimal-theory verdict plus a parallel Fisher exact test on the binarised outcome) is reported transparently.</p>
+<p>The comparison view places the user’s causal intuition on the left and the agent’s structured verdict on the right — citing the minimal theory, fit vector, every FALL-code and its severity, and every INF-code warrant.</p>
+<p>The same pipeline is reachable over the <strong>Model Context Protocol (MCP)</strong> by five tools: <code>analyze_case</code> for a free ephemeral verdict, <code>contribute_to_casebook</code> to persist a case with its verdict, <code>vote_case</code>, <code>list_cases</code>, and <code>get_case</code>.</p>
+</section>
+</section>
+<section id="sec-discussion-vol2" class="level1">
+<h1>Discussion</h1>
+<section id="the-causal-hypothesis-paradigm" class="level2">
+<h2 class="anchored" data-anchor-id="the-causal-hypothesis-paradigm">The causal-hypothesis paradigm</h2>
+<p>The central methodological contribution of this volume is the replacement of hypothesis testing <em>with statistical means</em> by <em>causal hypothesis inference</em>. The distinction is not terminological: it changes what count as the inferential object, the adequacy conditions, and the licensing claim.</p>
+<p>In the received paradigm:</p>
+<ul>
+<li>The object of inference is a <em>parameter</em> (<span class="math inline">\(p_1 - p_0\)</span>).</li>
+<li>Adequacy is defined by <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, and <span class="math inline">\(n\)</span>.</li>
+<li>The licensing claim is: <span class="math inline">\(H_0\)</span> rejected at level <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+<p>In causal hypothesis inference:</p>
+<ul>
+<li>The object of inference is a <em>causal hypothesis</em> (<span class="math inline">\(H: M_1 + \ldots \Rightarrow E\)</span>).</li>
+<li>Adequacy requires Gate B secured, factor set adequate, polarity stated.</li>
+<li>The licensing claim is: <span class="math inline">\(T\)</span> is a non-redundant literal in MSC <span class="math inline">\(M_k\)</span> for <span class="math inline">\(E\)</span> or for <span class="math inline">\(\neg E\)</span>, as the sign of the risk difference decides, under Gate-B conditions, with fit scores as stated.</li>
+</ul>
+<p>The two paradigms are not alternative statistical procedures: they are alternative accounts of what experimental data establish. The causal-hypothesis paradigm demands more — it requires structural conditions that classical statistics does not check — but it delivers more: a license for a causal conclusion, not merely a license to reject a parameter null.</p>
+</section>
+<section id="relationship-to-pearls-framework" class="level2">
+<h2 class="anchored" data-anchor-id="relationship-to-pearls-framework">Relationship to Pearl’s framework</h2>
+<p>As stated in Volume I, the framework is explicitly incompatible with Pearl’s interventionist framework of structural causal models (SCM). The causal hypothesis inference paradigm introduced in this volume does not require the do-operator, structural equations, or intervention semantics. Difference-tests under Gate B are grounded in the same method-of-difference intuition as minimal-theory search — contrastive bundle homogeneity is a structural fact about the causal field, not a manipulation of it.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>One definition of causal relevance — MSC-membership — extended to the experimental regime by two homogeneity gates and a six-step inference procedure, generates a principled account of what experimental statistics can and cannot establish about causal structure. The core finding of this volume is negative and constructive at the same time: the received paradigm of hypothesis testing <em>with statistical means</em> is inadequate for causal inference (negative) because it infers about parameters, not hypotheses; and the replacement paradigm of causal hypothesis inference is both principled and implementable (constructive) because it is grounded in the same minimal theory framework that underwrites the qualitative theory of Volume I. The licence it issues is signed: under Gate B a significant risk difference places the treatment in a cluster for the outcome or for its absence, and the sign of the difference decides which.</p>
+<p>Volume III applies this inference procedure to the complete example corpus — qualitative and experimental, philosophy-of-causation benchmarks and paper-laboratory evaluations — demonstrating that the framework gives structured, disputable verdicts where the received paradigm gives only significance labels.</p>
+<section id="availability" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="availability">Availability</h2>
+<p>The Causal Regularity Bundle is to be archived on Zenodo, with the DOI recorded in <code>CITATION.cff</code>, and is developed at <a href="https://github.com/grasshoff/causal-architect">github.com/grasshoff/causal-architect</a>. Prose and figures are licensed CC BY 4.0, the code MIT.</p>
+</section>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Bibliography</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-cochran1957" class="csl-entry" role="listitem">
+Cochran, William G., and Gertrude M. Cox. 1957. <em>Experimental Designs</em>. 2nd ed. John Wiley &amp; Sons.
+</div>
+<div id="ref-cornfield1951" class="csl-entry" role="listitem">
+Cornfield, Jerome. 1951. <span>“A Method of Estimating Comparative Rates from Clinical Data. Applications to Cancer of the Lung, Breast, and Cervix.”</span> <em>Journal of the National Cancer Institute</em> 11 (6): 1269–75. <a href="https://doi.org/10.1093/jnci/11.6.1269">https://doi.org/10.1093/jnci/11.6.1269</a>.
+</div>
+<div id="ref-cornfield1959" class="csl-entry" role="listitem">
+Cornfield, Jerome, William Haenszel, E. Cuyler Hammond, Abraham M. Lilienfeld, Michael B. Shimkin, and Ernst L. Wynder. 1959. <span>“Smoking and Lung Cancer: Recent Evidence and a Discussion of Some Questions.”</span> <em>Journal of the National Cancer Institute</em> 22 (1): 173–203. <a href="https://doi.org/10.1093/jnci/22.1.173">https://doi.org/10.1093/jnci/22.1.173</a>.
+</div>
+<div id="ref-cox1958" class="csl-entry" role="listitem">
+Cox, D. R. 1958. <em>Planning of Experiments</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-dersimonian1986meta" class="csl-entry" role="listitem">
+DerSimonian, Rebecca, and Nan Laird. 1986. <span>“Meta-Analysis in Clinical Trials.”</span> <em>Controlled Clinical Trials</em> 7 (3): 177–88. <a href="https://doi.org/10.1016/0197-2456(86)90046-2">https://doi.org/10.1016/0197-2456(86)90046-2</a>.
+</div>
+<div id="ref-fisher1925" class="csl-entry" role="listitem">
+Fisher, Ronald A. 1925. <em>Statistical Methods for Research Workers</em>. Oliver; Boyd.
+</div>
+<div id="ref-fisher1935" class="csl-entry" role="listitem">
+Fisher, Ronald A. 1935a. <em>The Design of Experiments</em>. Oliver; Boyd.
+</div>
+<div id="ref-fisher1935logic" class="csl-entry" role="listitem">
+Fisher, Ronald A. 1935b. <span>“The Logic of Inductive Inference.”</span> <em>Journal of the Royal Statistical Society</em> 98 (1): 39–82. <a href="https://doi.org/10.2307/2342435">https://doi.org/10.2307/2342435</a>.
+</div>
+<div id="ref-grünwald2024" class="csl-entry" role="listitem">
+Grünwald, Peter, Rianne de Heide, and Wouter Koolen. 2024. <span>“Safe Testing.”</span> <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 86 (5): 1091–128. <a href="https://doi.org/10.1093/jrsssb/qkae011">https://doi.org/10.1093/jrsssb/qkae011</a>.
+</div>
+<div id="ref-imbens2015causal" class="csl-entry" role="listitem">
+Imbens, Guido W., and Donald B. Rubin. 2015. <em>Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction</em>. Cambridge University Press.
+</div>
+<div id="ref-jennison2000" class="csl-entry" role="listitem">
+Jennison, Christopher, and Bruce W. Turnbull. 2000. <em>Group Sequential Methods with Applications to Clinical Trials</em>. Chapman; Hall/CRC.
+</div>
+<div id="ref-mantel1959" class="csl-entry" role="listitem">
+Mantel, Nathan, and William Haenszel. 1959. <span>“Statistical Aspects of the Analysis of Data from Retrospective Studies of Disease.”</span> <em>Journal of the National Cancer Institute</em> 22 (4): 719–48. <a href="https://doi.org/10.1093/jnci/22.4.719">https://doi.org/10.1093/jnci/22.4.719</a>.
+</div>
+<div id="ref-neyman1923" class="csl-entry" role="listitem">
+Neyman, Jerzy. (1923) 1990. <span>“On the Application of Probability Theory to Agricultural Experiments. Essay on Principles. Section 9.”</span> <em>Statistical Science</em> 5 (4): 465–72. <a href="https://doi.org/10.1214/ss/1177012031">https://doi.org/10.1214/ss/1177012031</a>.
+</div>
+<div id="ref-neymanpearson1933" class="csl-entry" role="listitem">
+Neyman, Jerzy, and Egon S. Pearson. 1933. <span>“On the Problem of the Most Efficient Tests of Statistical Hypotheses.”</span> <em>Philosophical Transactions of the Royal Society of London. Series A</em> 231: 289–337. <a href="https://doi.org/10.1098/rsta.1933.0009">https://doi.org/10.1098/rsta.1933.0009</a>.
+</div>
+<div id="ref-obrien1979" class="csl-entry" role="listitem">
+O’Brien, Peter C., and Thomas R. Fleming. 1979. <span>“A Multiple Testing Procedure for Clinical Trials.”</span> <em>Biometrics</em> 35 (3): 549–56. <a href="https://doi.org/10.2307/2530245">https://doi.org/10.2307/2530245</a>.
+</div>
+<div id="ref-ramdas2023" class="csl-entry" role="listitem">
+Ramdas, Aaditya, Peter Grünwald, Vladimir Vovk, and Glenn Shafer. 2023. <span>“Game-Theoretic Statistics and Safe Anytime-Valid Inference.”</span> <em>Statistical Science</em> 38 (4): 576–601. <a href="https://doi.org/10.1214/23-STS894">https://doi.org/10.1214/23-STS894</a>.
+</div>
+<div id="ref-rubin1974estimating" class="csl-entry" role="listitem">
+Rubin, Donald B. 1974. <span>“Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.”</span> <em>Journal of Educational Psychology</em> 66 (5): 688–701. <a href="https://doi.org/10.1037/h0037350">https://doi.org/10.1037/h0037350</a>.
+</div>
+<div id="ref-ville1939" class="csl-entry" role="listitem">
+Ville, Jean. 1939. <em><span><span>É</span>tude critique de la notion de collectif</span></em>. Gauthier-Villars.
+</div>
+<div id="ref-yates1937" class="csl-entry" role="listitem">
+Yates, Frank. 1937. <em>The Design and Analysis of Factorial Experiments</em>. Imperial Bureau of Soil Science.
+</div>
+</div>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gerd Graßhoff">
+<meta name="dcterms.date" content="2026-09-29">
+<meta name="keywords" content="causal casebook, causal intuitions, benchmark cases, minimal theories, Sprachspiele, coincidence analysis, experimental design survey, causal hypothesis inference, fire causation, statin trial, Simpson’s paradox, LK-99, OPERA">
+
+<title>Causal Regularity Theory III: Casebook of Causal Regularities and Benchmarks</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="libs/clipboard/clipboard.min.js"></script>
+<script src="libs/quarto-html/quarto.js" type="module"></script>
+<script src="libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="libs/quarto-html/popper.min.js"></script>
+<script src="libs/quarto-html/tippy.umd.min.js"></script>
+<script src="libs/quarto-html/anchor.min.js"></script>
+<link href="libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="libs/bootstrap/bootstrap.min.js"></script>
+<link href="libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light"><style id="ka-bar-css">
+#ka-bar{font:600 14px/1.3 "Source Sans 3","Avenir Next","Segoe UI",sans-serif;background:#00152e;color:#f4efe4;border-bottom:3px solid #c4a15a;
+  display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:baseline;justify-content:space-between;padding:.6rem 1.2rem;position:relative;z-index:1100}
+#ka-bar a{color:#f4efe4;text-decoration:none}
+#ka-bar a:hover{color:#c4a15a}
+#ka-bar .ka-brand span{color:#c4a15a}
+#ka-bar .ka-vols a{margin-left:.9rem}
+#ka-bar .ka-vols a[aria-current="true"]{color:#c4a15a;border-bottom:2px solid #c4a15a}
+#ka-up{position:fixed;left:1rem;bottom:1rem;z-index:1100;font:650 13px/1 "Source Sans 3","Avenir Next","Segoe UI",sans-serif;
+  background:#002147;color:#f4ead0;text-decoration:none;padding:.55rem .85rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,21,46,.3)}
+#ka-up:hover{color:#c4a15a}
+@media print{#ka-bar,#ka-up{display:none}}
+</style>
+<div id="ka-bar">
+  <a class="ka-brand" id="ka-home" href="../#card-vol3"><span>Kausalität</span> 2026 · <span id="ka-home-label">Volumes</span></a>
+  <span>Volume III · Casebook · <a href="../files/vol3-casebook.pdf">PDF</a></span>
+  <span class="ka-vols" id="ka-vols"><a href="vol1-qualitative.html">I</a><a href="vol2-experimental.html">II</a><a href="vol3-casebook.html" aria-current="true">III</a></span>
+</div>
+<a id="ka-up" href="../#card-vol3">↑ Kausalität 2026</a>
+<script>
+(function () {
+  var from = new URLSearchParams(location.search).get('from') === 'en' ? 'en' : 'de';
+  var base = from === 'en' ? '../en/' : '../';
+  var de = {label: 'Bände', up: '↑ Zur Karte auf der Startseite'};
+  var en = {label: 'Volumes', up: '↑ Back to the card on the home page'};
+  var t = from === 'en' ? en : de;
+  document.getElementById('ka-home').href = base + '#card-vol3';
+  document.getElementById('ka-home-label').textContent = t.label;
+  var up = document.getElementById('ka-up'); up.href = base + '#card-vol3'; up.textContent = t.up;
+  document.querySelectorAll('#ka-vols a').forEach(function (a) { a.href = a.getAttribute('href').split('?')[0] + '?from=' + from; });
+})();
+</script>
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../files/vol3-casebook.pdf"><i class="bi bi-file-pdf"></i>Typst (arxivai)</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Causal Regularity Theory III: Casebook of Causal Regularities and Benchmarks</h1>
+<p class="subtitle lead">The Role of Intuition, Philosophical Sprachspiele, Qualitative and Experimental Cases, and Design Survey</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Gerd Graßhoff <a href="mailto:gerd.grasshoff@hu-berlin.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4450-357X" class="quarto-title-author-orcid" aria-label="ORCID profile for Gerd Graßhoff"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Humboldt-Universität zu Berlin
+          </p>
+        <p class="affiliation">
+            Forschungsinstitut des Deutschen Museums
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 29, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>A regularity theory of causation is tested by whether its definitions recover — and, where the intuition is confused by co-occurrence, <em>correct</em> — the pre-theoretic verdicts of a fixed case repertoire. This volume is that repertoire. It is organised so that each fully worked case exhibits <em>which condition of the theory does the work</em>: minimal sufficiency against idle conjuncts, minimal necessity against the Manchester hooters, bundle-level homogeneity against naive correlation, Gate B against a confounded risk difference. Twenty-four philosophical <em>Sprachspiele</em>, the qualitative coincidence analyses of Volume I, and the experimental inferences of Volume II are one casebook, not three. Stub summaries are refused: a case is either carried through the inference panel or recorded in the master table with its deciding rule.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>causal casebook, causal intuitions, benchmark cases, minimal theories, Sprachspiele, coincidence analysis, experimental design survey, causal hypothesis inference, fire causation, statin trial, Simpson’s paradox, LK-99, OPERA</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Causal Regularity Bundle — Volume III.</strong> Companion volumes: I (qualitative theory), II (experimental inference). Formal calculus: <code>models.qmd</code>. Visual language: <code>causal-visuals.qmd</code>. Terms are used in the senses of the LWgrammar register <em>causal-regularity</em>.</p>
+</div>
+</div>
+</div>
+<section id="sec-intro" class="level1">
+<h1>The role of intuition in causal theory</h1>
+<div class="callout callout-style-default callout-tip callout-titled" title="The claim of this volume">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The claim of this volume
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A theory of causation earns its keep by recovering the stable verdicts of a fixed case repertoire from its definitions, and by correcting the unstable ones. Intuition is the test, not the analysans.</p>
+</div>
+</div>
+<section id="sec-intuition-role" class="level2">
+<h2 class="anchored" data-anchor-id="sec-intuition-role">Causal intuitions as Sprachspiele</h2>
+<p>Theories of causation are tested against short case descriptions. The method is uniform across the literature: a scenario is told in a few sentences; a verdict about the relevance of one factor to another is elicited; the theory under examination is required to replicate that verdict from its definitions alone.</p>
+<p>The theory that meets this test speaks of a few things only, and a reader who has not come from Volume I needs them before the first definition:</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> A <em>factor</em> is a kind of condition or event that is either present (value 1) or absent (value 0) in a case — “the match is struck”, “the Londoners go home”. A <em>literal</em> is a factor with its sign: present (<span class="math inline">\(A\)</span>) or absent (<span class="math inline">\(\neg A\)</span>). A <em>cluster</em> is a combination of literals that is enough for the outcome and contains nothing idle (in the formulae: a minimally sufficient condition, MSC). A <em>minimal theory</em> of an outcome lists the clusters that are needed for it, none of them spare. The <em>factor set</em> <span class="math inline">\(\mathcal{F}\)</span> is the explicit list of factors a case records; the <em>causal field</em> is the range of cases a claim is about. <em>Minimal sufficiency</em> is the test that no conjunct of a cluster can be dropped; <em>minimal necessity</em> the test that no cluster can be dropped from the theory; <em>homogeneity</em> the requirement that no unrecorded rival cluster acts differently across the compared cases; <em>instantiation</em> asks which cluster actually fired in a particular case.</p>
+<p>In formulae <span class="math inline">\(*\)</span> reads <em>and</em>, <span class="math inline">\(+\)</span> reads <em>or</em>, <span class="math inline">\(\neg\)</span> reads <em>not</em>. <span class="math inline">\(X \rightarrow E\)</span> reads “<span class="math inline">\(X\)</span> is sufficient for <span class="math inline">\(E\)</span>”; <span class="math inline">\(X \leftrightarrow E\)</span> “<span class="math inline">\(X\)</span> and <span class="math inline">\(E\)</span> are present in exactly the same cases”; <span class="math inline">\(X \Rightarrow E\)</span> “<span class="math inline">\(X\)</span> is a minimal theory of <span class="math inline">\(E\)</span>, written in the causal direction”. Lower-case letters (<span class="math inline">\(a\)</span>, <span class="math inline">\(e\)</span>) name particular occurrences — the <em>tokens</em> of the factor types <span class="math inline">\(A\)</span>, <span class="math inline">\(E\)</span>. The definitions themselves are those of Volume I.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition — causal Sprachspiel">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition — causal Sprachspiel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>causal Sprachspiel</strong> is a short case description in plain language for which competent speakers converge on a causal verdict before consulting any theory. The theory must then derive that verdict from its own conditions — minimal sufficiency, minimal necessity, homogeneity, instantiation — or state explicitly why it dissents.</p>
+<p><strong>Stated exactly.</strong> A causal Sprachspiel is a triple <span class="math inline">\((D, V, \mathcal{F})\)</span> where <span class="math inline">\(D\)</span> is a case description, <span class="math inline">\(V\)</span> is the inter-subjective verdict (“A caused E” / “A did not cause E”), and <span class="math inline">\(\mathcal{F}\)</span> is the factor set the description makes available. The regularity theory is tested by whether it recovers <span class="math inline">\(V\)</span> from <span class="math inline">\((D, \mathcal{F})\)</span> using only the named conditions.</p>
+<p><strong>Example.</strong> The Manchester hooters <span class="citation" data-cites="mackie1974cement">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 81–84</a>)</span>: speakers judge that the factory hooters do not cause the Londoners to go home; Mackie’s INUS analysis (a cause is an insufficient but non-redundant part of an unnecessary but sufficient condition) certifies them as a cause; minimal necessity prunes them (Volume I, section “The Manchester hooters: what minimal necessity does”; this volume, <a href="#sec-hooters-canonical" class="quarto-xref">Section&nbsp;2.5</a>). The theory earns the verdict by recovering what plain-language use already secured.</p>
+</div>
+</div>
+<p>The term is used here in Wittgenstein’s sense: “the meaning of a word is its use in the language” (PU §43), and grammar “tells what kind of object anything is” (PU §373). The casebook records use, not a hidden essence of <em>cause</em>.</p>
+<p>This volume assembles the repertoire of the modern regularity-theoretic tradition: Graßhoff and May <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">2001</a>)</span>, Baumgartner <span class="citation" data-cites="baumgartner2008 baumgartner2013regularity">(<a href="#ref-baumgartner2008" role="doc-biblioref">2008</a>, <a href="#ref-baumgartner2013regularity" role="doc-biblioref">2013</a>)</span>, Baumgartner and Falk <span class="citation" data-cites="baumgartner-falk2023">(<a href="#ref-baumgartner-falk2023" role="doc-biblioref">2023</a>)</span>, and Andreas and Günther <span class="citation" data-cites="andreas-guenther2019 andreas-guenther2024a andreas-guenther2024b">(<a href="#ref-andreas-guenther2019" role="doc-biblioref">2019</a>, <a href="#ref-andreas-guenther2024a" role="doc-biblioref">2024a</a>, <a href="#ref-andreas-guenther2024b" role="doc-biblioref">2024b</a>)</span>. Each fully worked case records three items:</p>
+<ol type="1">
+<li><strong>Situation</strong> — the description, quoted from the source where possible.</li>
+<li><strong>Causal intuition</strong> — the pre-theoretic verdict, as reported in the source.</li>
+<li><strong>Regularity judgement</strong> — the verdict the theory derives, with the condition that secures it — or an account of dissent.</li>
+</ol>
+<p>A factor <span class="math inline">\(A\)</span> is causally relevant to <span class="math inline">\(E\)</span> if and only if <span class="math inline">\(A\)</span> (or its negation) is a non-redundant conjunct of a cluster that is itself a non-redundant disjunct of a minimally necessary condition of <span class="math inline">\(E\)</span> — a <em>minimal theory</em> of <span class="math inline">\(E\)</span> <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001</a>)</span> — and this membership is stable under suitable expansions of the factor set <span class="citation" data-cites="baumgartner2013regularity baumgartner-falk2023">(<a href="#ref-baumgartner2013regularity" role="doc-biblioref">Baumgartner 2013</a>; <a href="#ref-baumgartner-falk2023" role="doc-biblioref">Baumgartner and Falk 2023</a>)</span>. The casebook shows, case by case, which of these conditions does the work.</p>
+</section>
+<section id="replication-correction-explication" class="level2">
+<h2 class="anchored" data-anchor-id="replication-correction-explication">Replication, correction, explication</h2>
+<p>Formal regularity theory stands to intuition in three relations, and only three:</p>
+<ul>
+<li><strong>Replication.</strong> Where the intuition is stable, the theory must recover it from the coincidence table, without unobserved primitives.</li>
+<li><strong>Correction.</strong> Where co-occurrence misleads (the hooters; Simpson’s reversal), the theory exposes the structural flaw — failure of minimal necessity (the hooters), or of homogeneity (Gate B, Simpson’s reversal).</li>
+<li><strong>Explication.</strong> Pre-theoretic language conflates type-level with token-level causation, sufficiency with necessity, risk with protective polarity. The theory distinguishes them.</li>
+</ul>
+</section>
+<section id="sec-panel-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="sec-panel-protocol">The inference panel</h2>
+<p>Every fully worked case in Parts 3 and 4 follows the six-step inference procedure of Volume II (causal hypothesis inference):</p>
+<ol type="1">
+<li>state the causal hypothesis;</li>
+<li>secure Gate B;</li>
+<li>run Gate A;</li>
+<li>estimate the unique contribution of the treatment’s cluster;</li>
+<li>recover and score candidate clusters;</li>
+<li>state the licensed conclusion.</li>
+</ol>
+<p>The panels set these steps out under the headings query, causal field and factor set, data setup, gates, recovered hypothesis with its scores, and what would change the verdict.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> A <em>contradictory configuration</em> is a combination of recorded factor values that occurs with the outcome present and with it absent. <span class="math inline">\(C_E\)</span> is the number of such configurations for outcome <span class="math inline">\(E\)</span>; <span class="math inline">\(B_E\)</span>, the <em>contradiction burden</em>, is the smallest share of rows that would have to be removed or reclassified to leave none. <strong>Gate A</strong> asks whether a table is clean enough to read a complete theory from it: no contradictory configuration, <span class="math inline">\(C_E = 0\)</span>. <strong>Gate B</strong> asks whether a two-arm comparison isolates the treatment factor: no rival cluster fires differentially with it (secured by randomisation, blocking, or an explicit bound). <span class="math inline">\(\hat{\Delta} = p_1 - p_0\)</span> is the risk difference between the outcome rates with and without the treatment; <em>con</em> (consistency) is the share of cases with the cluster that have the outcome, <em>cov</em> (coverage) the share of outcome cases that have the cluster. INF-01–11 are the inference warrants and FALL-01–10 the fallacy inhibitors of the standard registry (Volume I).</p>
+</div>
+</div>
+</div>
+<p>The philosophical cases (<a href="#sec-hooters" class="quarto-xref">Section&nbsp;2</a> to <a href="#sec-master-table" class="quarto-xref">Section&nbsp;6</a>) use the staged panel of <code>models.qmd</code>: normalisation, coincidence table, derivation, verdict — and a CVL graph, the visual language specified in <code>causal-visuals.qmd</code>.</p>
+<p>One convention carries every diagram in this volume, and a reader who has not come from Volume I needs only this much of it:</p>
+<div id="fig-casebook-legend" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-casebook-legend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-or-vs-and.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-casebook-legend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: How to read every diagram in the casebook. Arrows run from causes to the effect. Arrows tied by an arc are the jointly required parts of <em>one</em> complex cause — remove any of them and the cause is not there. Arrows without an arc are <em>alternative</em> causes, each sufficient on its own. Two further marks appear in the cases. A small box marked ¬ on the shaft, where a line leaves a factor, means the factor’s <em>absence</em> is what does the work. The fill of an arrowhead marks the level of the claim: a hollow head states a causal regularity over event types; a filled head marks the cluster that actually fired in a concrete case — the active cluster.
+</figcaption>
+</figure>
+</div>
+<p>In the HTML edition the same graphs are interactive: clicking an arc reports the minimally sufficient condition it belongs to, and the derivation steps of a case can be played through as deletions.</p>
+</section>
+</section>
+<section id="sec-hooters" class="level1">
+<h1>The paradigm: Manchester Factory Hooters</h1>
+<section id="situation" class="level2">
+<h2 class="anchored" data-anchor-id="situation">Situation</h2>
+<p>The case owes its canonical role to Mackie <span class="citation" data-cites="mackie1974cement">(<a href="#ref-mackie1974cement" role="doc-biblioref">1974, 81–84</a>)</span>; Andreas and Günther <span class="citation" data-cites="andreas-guenther-sep">(<a href="#ref-andreas-guenther-sep" role="doc-biblioref">2026, sec. 1.3</a>)</span> describe it as adapted from Russell <span class="citation" data-cites="russell1921analysis">(<a href="#ref-russell1921analysis" role="doc-biblioref">1921</a>)</span>. Every workday at five o’clock the hooters of a Manchester factory sound; a moment later, workers in London stop work and go home. The regular succession is not accidental: knocking-off time at five o’clock sounds the hooters in Manchester and, through the automatic devices that set off the London hooters at five o’clock, sends the Londoners home.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key.</strong> <span class="math inline">\(T\)</span> = knocking-off time (five o’clock) · <span class="math inline">\(M\)</span> = the Manchester factory hooters sound · <span class="math inline">\(L\)</span> = the London workers go home · <span class="math inline">\(D\)</span> = the Manchester hooters are sounded off-schedule (a drill or a fault) · <span class="math inline">\(B\)</span> = an alternative cause of the Londoners’ going home (the foreman’s early dismissal). <span class="math inline">\(\neg D\)</span> means the hooters were <em>not</em> sounded off-schedule. The London hooters, and the devices that set them off at five o’clock, are not a separate factor: they belong to the London-side standing conditions of the causal field and are held fixed.</p>
+</div>
+</div>
+</div>
+<p>Mackie himself points out that his INUS analysis counts the sounding of the Manchester hooters as a cause of the Londoners’ going home <span class="citation" data-cites="mackie1974cement andreas-guenther-sep">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 84</a>; <a href="#ref-andreas-guenther-sep" role="doc-biblioref">Andreas and Günther 2026, sec. 1.3</a>)</span>; Graßhoff and May call the case “a counter example formulated by Mackie himself” <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">2001, 85</a>)</span>. It shows that the INUS analysis certifies as a cause what is not one.</p>
+</section>
+<section id="causal-intuition" class="level2">
+<h2 class="anchored" data-anchor-id="causal-intuition">Causal intuition</h2>
+<p>The sounding of the Manchester hooters is <em>not</em> causally relevant to the London workers’ going home. The two events are parallel effects of a common cause. Mackie’s own diagnosis appeals to causal priority: preventing the Manchester hooters from sounding does not prevent the Londoners from going home, whereas preventing the London hooters does <span class="citation" data-cites="mackie1974cement andreas-guenther-sep">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 85–86</a>; <a href="#ref-andreas-guenther-sep" role="doc-biblioref">Andreas and Günther 2026, sec. 1.3</a>)</span>. The regularity theory does not use this prevention test. In the reconstruction below the London hooters belong to the causal field, not to the factor set, and the verdict is earned by minimal necessity alone.</p>
+</section>
+<section id="mackies-problem-the-inus-analysis-certifies-the-hooters" class="level2">
+<h2 class="anchored" data-anchor-id="mackies-problem-the-inus-analysis-certifies-the-hooters">Mackie’s problem: the INUS analysis certifies the hooters</h2>
+<p>The INUS idea is that a cause is an <em>insufficient but non-redundant part of an unnecessary but sufficient</em> condition (INUS) <span class="citation" data-cites="mackie1965">(<a href="#ref-mackie1965" role="doc-biblioref">Mackie 1965</a>)</span>. Consider the conjunction of three conditions: (i) the Manchester hooters sound; (ii) nothing made them sound off-schedule; (iii) the London-side standing conditions, including the devices that set off the London hooters at five o’clock, are in place. This conjunction is sufficient for the Londoners’ going home, and no part of it can be dropped without losing sufficiency: it is a cluster, and each of its parts is non-redundant. Thus the sounding of the Manchester hooters passes Mackie’s test for being a cause of the Londoners’ going home <span class="citation" data-cites="mackie1974cement">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 84</a>)</span>.</p>
+<p>Andreas and Günther <span class="citation" data-cites="andreas-guenther-sep">(<a href="#ref-andreas-guenther-sep" role="doc-biblioref">2026, sec. 1.3</a>)</span> state the structure as two regularities. Written with the letters of the key — their <span class="math inline">\(E_1\)</span>, <span class="math inline">\(E_2\)</span>, <span class="math inline">\(C_1\)</span> are <span class="math inline">\(M\)</span>, <span class="math inline">\(L\)</span>, <span class="math inline">\(T\)</span>, and their auxiliary conditions <span class="math inline">\(C_2\)</span> (Manchester side) and <span class="math inline">\(C_3\)</span> (London side) are held fixed in the causal field — they read</p>
+<p><span class="math display">\[T + D \leftrightarrow M, \qquad T + B \leftrightarrow L.\]</span></p>
+<p><em>Reading.</em> The Manchester hooters sound exactly when it is knocking-off time or they are sounded off-schedule; the Londoners go home exactly when it is knocking-off time or the foreman dismisses them early (diagram: <a href="#fig-hooters-candidate" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<p>Then the cluster <span class="math inline">\(M * \neg D\)</span> is minimally sufficient for <span class="math inline">\(L\)</span>: whenever the hooters sound and were not sounded off-schedule, it is five o’clock, and the Londoners go home; neither conjunct suffices alone. Each conjunct — including <span class="math inline">\(M\)</span> — is an INUS condition of <span class="math inline">\(L\)</span>. Mackie concluded that a pure regularity theory cannot be the whole story about causation and supplemented it by a notion of causal priority <span class="citation" data-cites="mackie1974cement grasshoff2001causal">(<a href="#ref-mackie1974cement" role="doc-biblioref">Mackie 1974, 85–86</a>; <a href="#ref-grasshoff2001causal" role="doc-biblioref">Graßhoff and May 2001, 102–3</a>)</span>; Baumgartner describes this as abandoning the attempt at a genuine regularity-theoretic analysis of causation <span class="citation" data-cites="baumgartner2008">(<a href="#ref-baumgartner2008" role="doc-biblioref">Baumgartner 2008, sec. 7</a>)</span>.</p>
+</section>
+<section id="sec-hooters-solution" class="level2">
+<h2 class="anchored" data-anchor-id="sec-hooters-solution">The Graßhoff–May solution: minimal necessity</h2>
+<p>The solution within the regularity framework is due to Graßhoff and May <span class="citation" data-cites="grasshoff2001causal">(<a href="#ref-grasshoff2001causal" role="doc-biblioref">2001, 101–4</a>)</span> and May <span class="citation" data-cites="may1999">(<a href="#ref-may1999" role="doc-biblioref">1999</a>)</span>: both call for the minimisation of necessary conditions <span class="citation" data-cites="baumgartner2008">(<a href="#ref-baumgartner2008" role="doc-biblioref">Baumgartner 2008, sec. 7</a>)</span>. Baumgartner and Graßhoff <span class="citation" data-cites="baumgartner-grasshoff2004">(<a href="#ref-baumgartner-grasshoff2004" role="doc-biblioref">2004, 99–103</a>)</span> discuss the case in full <span class="citation" data-cites="baumgartner2008">(<a href="#ref-baumgartner2008" role="doc-biblioref">Baumgartner 2008, n. 21</a>)</span>.</p>
+<p><strong>Mackie minimised only half of his analysis.</strong> His test removes idle conjuncts from sufficient conditions, but imposes no test on the <em>disjunction</em> of sufficient conditions (the list of alternative causes). The repair is the missing half: a necessary condition must be <em>minimally necessary</em> — no disjunct may be deletable without loss of necessity.</p>
+<p>Applied to the hooters: the list of putative alternative causes reads</p>
+<p><span class="math display">\[(M * \neg D) + T + B \leftrightarrow L.\]</span></p>
+<p><em>Reading.</em> The Londoners go home exactly when (the hooters sound and were not sounded off-schedule) or it is knocking-off time or the foreman dismisses them early.</p>
+<p>Delete the hooters cluster and test what remains: <span class="math inline">\(T + B\)</span> is <em>still necessary</em> for <span class="math inline">\(L\)</span>. Whenever the hooters cluster <span class="math inline">\(M * \neg D\)</span> is instantiated, the common cause <span class="math inline">\(T\)</span> is instantiated along with it. The hooters cluster is a free rider, and <strong>minimal necessity</strong> removes it. Since <span class="math inline">\(M\)</span> appears nowhere in the minimal theory of <span class="math inline">\(L\)</span>, the Manchester hooters are not causally relevant to the Londoners’ going home.</p>
+<p>What the elimination leaves behind is the structure the intuition had all along:</p>
+<div id="fig-hooters-truth" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hooters-truth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-hooters-truth.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hooters-truth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The hooters case after minimal necessity has done its work. Knocking-off time <span class="math inline">\(T\)</span> is causally relevant to the Manchester hooters <span class="math inline">\(M\)</span> and, separately, to the Londoners going home <span class="math inline">\(L\)</span>, for which the foreman’s early dismissal <span class="math inline">\(B\)</span> is an alternative cluster; the off-schedule trigger <span class="math inline">\(D\)</span>, the second cluster for <span class="math inline">\(M\)</span>, is left out of the picture. No arrow runs from <span class="math inline">\(M\)</span> to <span class="math inline">\(L\)</span>, and none is needed to account for their perfect correlation: they are two effects of one cause. All arrowheads are hollow, because each arrow states a causal regularity over event types, not what happened on a particular evening. Orientation is a separate matter: <span class="math inline">\(L\)</span> has two clusters, <span class="math inline">\(T\)</span> and <span class="math inline">\(B\)</span>, so the direction of the arrows into <span class="math inline">\(L\)</span> is fixed by the asymmetry of determination, rule (CPLX); the same holds for <span class="math inline">\(M\)</span> once <span class="math inline">\(D\)</span> is counted.
+</figcaption>
+</figure>
+</div>
+<p>The general lesson is worth stating separately, because the pattern recurs throughout the casebook. Wherever two factors correlate perfectly and one is tempted to call the earlier a cause of the later, minimal necessity asks whether the cluster through the earlier one is <em>needed</em> once the common cause is in the theory. If it is not, it goes — and the correlation is explained without a causal link between the correlates.</p>
+</section>
+<section id="sec-hooters-canonical" class="level2">
+<h2 class="anchored" data-anchor-id="sec-hooters-canonical">Causal analysis: canonical derivation</h2>
+<div class="inference-panel">
+<p><strong>I Normalisation.</strong> Causal field: working days on which the hooter mechanisms function and the London-side standing conditions (Mackie’s <span class="math inline">\(C_2\)</span>, <span class="math inline">\(C_3\)</span>, including the devices that set off the London hooters at five o’clock) are in place. <span class="math inline">\(\mathcal{F} = \{T, D, B, M, L\}\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Factor (type)</th>
+<th>Token</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(T\)</span></td>
+<td>five o’clock (knocking-off time)</td>
+<td>present</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D\)</span></td>
+<td>Manchester hooters sounded off-schedule (drill or fault)</td>
+<td>absent</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(B\)</span></td>
+<td>alternative cause of the Londoners’ going home (foreman’s early dismissal)</td>
+<td>absent</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M\)</span></td>
+<td>Manchester factory hooters sound</td>
+<td>present</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L\)</span></td>
+<td>London workers go home</td>
+<td>present</td>
+</tr>
+</tbody>
+</table>
+<p><strong>G Causal graph.</strong></p>
+<div id="fig-hooters-candidate" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hooters-candidate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-case-hooters-candidate.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hooters-candidate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The candidate hypothesis, with this case’s token layer marked. The hooters cluster <span class="math inline">\(M * \neg D\)</span> is drawn as one complex cause, on a par with the two alternatives <span class="math inline">\(T\)</span> and <span class="math inline">\(B\)</span> — which is exactly the claim the derivation below tests and rejects. In words: (<span class="math inline">\(M\)</span> and not <span class="math inline">\(D\)</span>) or <span class="math inline">\(T\)</span> or <span class="math inline">\(B\)</span> are causally relevant to <span class="math inline">\(L\)</span>. Filled arrowheads mark the clusters instantiated in the marked row 5, <span class="math inline">\(M * \neg D\)</span> and <span class="math inline">\(T\)</span>; the hollow head on <span class="math inline">\(B\)</span> marks a cluster that did not fire.
+</figcaption>
+</figure>
+</div>
+<p><strong>II Coincidence table.</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>row</th>
+<th><span class="math inline">\(T\)</span></th>
+<th><span class="math inline">\(D\)</span></th>
+<th><span class="math inline">\(B\)</span></th>
+<th><span class="math inline">\(M\)</span></th>
+<th><span class="math inline">\(L\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\blacktriangleleft\)</span></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>III–IV Model and derivation.</strong> <span class="model-badge">MT</span> — Outcome: <span class="math inline">\(L\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Claim</th>
+<th>Licence</th>
+<th>In words</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(T \rightarrow L\)</span>; <span class="math inline">\(B \rightarrow L\)</span>; <span class="math inline">\(M * \neg D \rightarrow L\)</span></td>
+<td>(SUF): rows 5–8; rows 2, 4, 6, 8; rows 5, 6</td>
+<td>Three conditions are sufficient</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(T\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(M * \neg D\)</span> are minimally sufficient</td>
+<td>(MS): row 3 refutes <span class="math inline">\(M\)</span> alone; row 1 refutes <span class="math inline">\(\neg D\)</span> alone</td>
+<td>No conjunct is idle</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math inline">\(T + B + M * \neg D \leftrightarrow L\)</span></td>
+<td>(NEC): each <span class="math inline">\(L\)</span>-row (2, 4–8) satisfies a disjunct; the rows without <span class="math inline">\(L\)</span> (1, 3) satisfy none</td>
+<td>Necessary condition</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><em>INUS verdict:</em> <span class="math inline">\(M\)</span> is an INUS condition of <span class="math inline">\(L\)</span></td>
+<td>INUS stops at line 3</td>
+<td>INUS overgenerates</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span class="math inline">\(T + B\)</span> is necessary for <span class="math inline">\(L\)</span></td>
+<td>(NEC): each <span class="math inline">\(L\)</span>-row (2, 4–8) contains <span class="math inline">\(T\)</span> or <span class="math inline">\(B\)</span></td>
+<td><span class="math inline">\(T\)</span> or <span class="math inline">\(B\)</span> is present whenever <span class="math inline">\(L\)</span> is</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Eliminate <span class="math inline">\(M * \neg D\)</span>: <span class="math inline">\(T + B\)</span> is a necessary proper part of line 3, so line 3 is not <em>minimally</em> necessary</td>
+<td>(MN), from lines 3 and 5</td>
+<td><strong>Graßhoff–May step</strong></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Neither <span class="math inline">\(T\)</span> nor <span class="math inline">\(B\)</span> can be eliminated: row 2 has <span class="math inline">\(L\)</span> without <span class="math inline">\(T\)</span>, row 5 has <span class="math inline">\(L\)</span> without <span class="math inline">\(B\)</span>; two clusters remain</td>
+<td>(MN); (CPLX)(a)</td>
+<td>Direction is structurally oriented</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Minimal theory: <span class="math inline">\(T + B \Rightarrow L\)</span></td>
+<td>lines 2, 6, 7: (MS), (MN), (CPLX)</td>
+<td><span class="math inline">\(T\)</span> or <span class="math inline">\(B\)</span> are causally relevant to <span class="math inline">\(L\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>V Verdict.</strong> <span class="math inline">\(M\)</span> is not causally relevant to <span class="math inline">\(L\)</span>: knocking-off time or the foreman’s early dismissal are causally relevant to the Londoners’ going home, and the Manchester hooters occur in no cluster of that minimal theory (<a href="#fig-hooters-truth" class="quarto-xref">Figure&nbsp;2</a>). The verdict replicates the intuition, and every step is read off the eight rows.</p>
+</div>
+</section>
+</section>
+<section id="sec-typelevel" class="level1">
+<h1>Type-Level Benchmark Sprachspiele</h1>
+<section id="case-1-struck-match-and-sung-song-monotony-minimal-sufficiency" class="level2">
+<h2 class="anchored" data-anchor-id="case-1-struck-match-and-sung-song-monotony-minimal-sufficiency">Case 1: Struck match and sung song (Monotony &amp; Minimal Sufficiency)</h2>
+<p><strong>Situation.</strong> A match is struck against a box (<span class="math inline">\(S\)</span>), the head is dry, and oxygen is present. The striker also sings a song (<span class="math inline">\(Q\)</span>). The match ignites (<span class="math inline">\(I\)</span>) <span class="citation" data-cites="baumgartner2008">(<a href="#ref-baumgartner2008" role="doc-biblioref">Baumgartner 2008, secs. 3–4</a>)</span>.</p>
+<p><strong>Intuition.</strong> <span class="math inline">\(S\)</span> is causally relevant to <span class="math inline">\(I\)</span>; <span class="math inline">\(Q\)</span> is not.</p>
+<p><strong>Regularity judgement.</strong> Minimal sufficiency (MS) prunes <span class="math inline">\(Q\)</span>: <span class="math inline">\(S\)</span> is a conjunct of an MSC for <span class="math inline">\(I\)</span>, whereas <span class="math inline">\(Q\)</span> is idle.</p>
+<div class="inference-panel">
+<p><strong>I Normalisation.</strong> Causal field: dry match heads, enough oxygen. <span class="math inline">\(\mathcal{F} = \{S, Q, X, I\}\)</span> (<span class="math inline">\(X\)</span>: open flame).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Factor (type)</th>
+<th>Token</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(S\)</span></td>
+<td>match is struck</td>
+<td>present</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Q\)</span></td>
+<td>striker sings a song</td>
+<td>present</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(X\)</span></td>
+<td>match exposed to open flame</td>
+<td>absent</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(I\)</span></td>
+<td>match ignites</td>
+<td>present</td>
+</tr>
+</tbody>
+</table>
+<p><strong>G Causal graph.</strong></p>
+<div id="fig-match-candidate" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-match-candidate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-case-match.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-match-candidate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The candidate hypothesis for the match. Striking and singing are tied by an arc, so the candidate treats the song as a required part of the cause. Row 5 of the table — struck, not sung, ignited — is what breaks the arc.
+</figcaption>
+</figure>
+</div>
+<p><strong>II Coincidence table.</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>row</th>
+<th><span class="math inline">\(S\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(X\)</span></th>
+<th><span class="math inline">\(I\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><span class="math inline">\(\blacktriangleleft\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>III–IV Derivation.</strong> <span class="model-badge">MT</span> — Outcome: <span class="math inline">\(I\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Claim</th>
+<th>Licence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(S * Q \rightarrow I\)</span>; <span class="math inline">\(S \rightarrow I\)</span>; <span class="math inline">\(X \rightarrow I\)</span></td>
+<td>(SUF): row 6; rows 5, 6; rows 3, 4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(Q\)</span> is idle in <span class="math inline">\(S * Q\)</span>; <span class="math inline">\(Q\)</span> alone is not sufficient</td>
+<td>(MS): rows 5, 6 (<span class="math inline">\(S\)</span> alone suffices); row 2 refutes <span class="math inline">\(Q\)</span></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math inline">\(S + X\)</span> is necessary for <span class="math inline">\(I\)</span>, and neither disjunct alone is</td>
+<td>(NEC), (MN): every <span class="math inline">\(I\)</span>-row (3–6) has <span class="math inline">\(S\)</span> or <span class="math inline">\(X\)</span>; row 3 lacks <span class="math inline">\(S\)</span>, row 5 lacks <span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Minimal theory: <span class="math inline">\(S + X \Rightarrow I\)</span></td>
+<td>lines 2, 3; (CPLX)(a), two clusters</td>
+</tr>
+</tbody>
+</table>
+<p><em>Reading.</em> Striking or exposure to an open flame are causally relevant to the match’s igniting.</p>
+<p><strong>V Verdict.</strong> <span class="math inline">\(S\)</span> is causally relevant to <span class="math inline">\(I\)</span>; <span class="math inline">\(Q\)</span> is not.</p>
+</div>
+<p>The remaining type-level cases (rows 2–6 of <a href="#tbl-casebook-master" class="quarto-xref">Table&nbsp;1</a>) vary this pattern. Each tests one condition: equifinality (short circuit and arson), conjunctivity (match and oxygen), chains (switch and lamp), common cause (barometer), orientation (asymmetric structure). They are recorded in the master table with their deciding rule, not restated as empty sections.</p>
+</section>
+</section>
+<section id="sec-tokenlevel" class="level1">
+<h1>Token-level actual causation</h1>
+<p>Type-level membership does not settle which cluster fired in a particular situation. Actual causation asks which instantiated cluster brought about <em>this</em> outcome.</p>
+<section id="case-7-two-fires-symmetric-overdetermination" class="level2">
+<h2 class="anchored" data-anchor-id="case-7-two-fires-symmetric-overdetermination">Case 7: Two fires (symmetric overdetermination)</h2>
+<p><strong>Situation.</strong> Two fires, ignited independently by short circuit (<span class="math inline">\(A\)</span>) and lightning (<span class="math inline">\(B\)</span>), reach a building at the same moment and burn it down (<span class="math inline">\(E\)</span>). The structure is Baumgartner’s symmetric overdetermination, where two neurons “trigger E simultaneously, such that each stimulus would have itself been sufficient for E to fire” <span class="citation" data-cites="baumgartner2013regularity">(<a href="#ref-baumgartner2013regularity" role="doc-biblioref">Baumgartner 2013, fig. 4c</a>)</span>; the fire story is an illustration of it.</p>
+<p><strong>Intuition.</strong> Both <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> — the particular short circuit and the particular lightning strike — are actual causes of <span class="math inline">\(e\)</span>, the burning of this building.</p>
+<p><strong>Regularity judgement.</strong> Both clusters fire in this case. Actual causation certifies both clusters as active. The case shows that minimality at type level does not force uniqueness at token level: overdetermination is membership of two instantiated clusters, not a defect of the theory.</p>
+</section>
+<section id="case-8-suzie-and-billy-late-preemption" class="level2">
+<h2 class="anchored" data-anchor-id="case-8-suzie-and-billy-late-preemption">Case 8: Suzie and Billy (late preemption)</h2>
+<p><strong>Situation.</strong> Suzie (<span class="math inline">\(A\)</span>) and Billy (<span class="math inline">\(B\)</span>) both throw rocks at a bottle; the bottle shatters (<span class="math inline">\(E\)</span>). Suzie’s rock arrives first and shatters it; Billy’s rock passes through empty air. Billy’s process is cut off by the effect itself — the pattern Baumgartner analyses as late preemption <span class="citation" data-cites="baumgartner2013regularity">(<a href="#ref-baumgartner2013regularity" role="doc-biblioref">Baumgartner 2013, fig. 4b</a>)</span>; the rock story is an illustration of it.</p>
+<p><strong>Intuition.</strong> Suzie’s throw caused the shattering; Billy’s did not.</p>
+<p><strong>Regularity judgement.</strong> Suzie’s throw belongs to the active cluster. Billy’s cluster is preempted: it is not completely instantiated, because his rock never meets an intact bottle. Actual causation tracks the instantiated cluster, not the counterfactual “had Suzie not thrown, Billy would have.”</p>
+<p>The remaining token-level cases (rows 9–16 of <a href="#tbl-casebook-master" class="quarto-xref">Table&nbsp;1</a>) vary preemption, switching, prevention, and omission. Each is decided by the rule named in the table.</p>
+</section>
+</section>
+<section id="sec-because" class="level1">
+<h1>Explanatory ‘because’</h1>
+<p>Andreas and Günther <span class="citation" data-cites="andreas-guenther2019 andreas-guenther2024a andreas-guenther2024b">(<a href="#ref-andreas-guenther2019" role="doc-biblioref">2019</a>, <a href="#ref-andreas-guenther2024a" role="doc-biblioref">2024a</a>, <a href="#ref-andreas-guenther2024b" role="doc-biblioref">2024b</a>)</span> extend regularity theory to explanatory ‘because’ claims. The load-bearing contrast is the tower and its shadow: the tower explains the shadow, the shadow does not explain the tower. The remaining explanatory cases (rows 17–24 of <a href="#tbl-casebook-master" class="quarto-xref">Table&nbsp;1</a>) — among them the subcause, extended double prevention and the assassin’s mentor — are recorded there with their deciding rules. The Munich–Lund example, with which Andreas and Günther show that the unstrengthened Ramsey test makes ‘because’ trivial <span class="citation" data-cites="andreas-guenther2019">(<a href="#ref-andreas-guenther2019" role="doc-biblioref">2019, secs. 1, 3.3</a>)</span>, is not a row of the table.</p>
+</section>
+<section id="sec-master-table" class="level1">
+<h1>Master Benchmark Comparison Table &amp; Synthesis</h1>
+<div id="tbl-casebook-master" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-casebook-master-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Master comparison table of the 24 philosophical benchmark Sprachspiele. “Constructed” marks an illustration of the named structure written for this casebook; it does not occur in the cited literature.
+</figcaption>
+<div aria-describedby="tbl-casebook-master-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Case Name</th>
+<th>Source</th>
+<th>Key Concept</th>
+<th>Intuition</th>
+<th>Regularity Verdict</th>
+<th>Deciding Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Struck match</td>
+<td>Baumgartner (2008)</td>
+<td>Monotony / Idle conjunct</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(MS)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Short circuit &amp; arson</td>
+<td>Constructed (equifinality)</td>
+<td>Equifinality</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(MN), (CPLX)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Match &amp; oxygen</td>
+<td>Baumgartner (2008)</td>
+<td>Conjunction / Co-factors</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(MS), (SUF)</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Switch &amp; lamp</td>
+<td>Constructed (chain)</td>
+<td>Causal chain</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(CHAIN)</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Barometer</td>
+<td>Graßhoff &amp; May (2001)</td>
+<td>Common cause</td>
+<td>No cause</td>
+<td>Replicated</td>
+<td>(PERM), (MN)</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Asymmetric structure</td>
+<td>Baumgartner (2008)</td>
+<td>Orientation</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(CPLX)</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Two fires</td>
+<td>Baumgartner (2013)</td>
+<td>Overdetermination</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(AR)</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Suzie &amp; Billy</td>
+<td>Baumgartner (2013)</td>
+<td>Late preemption</td>
+<td>Suzie cause</td>
+<td>Replicated</td>
+<td>(AR), (MARK)</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Major &amp; Sergeant</td>
+<td>Baumgartner (2013)</td>
+<td>Late preemption</td>
+<td>Major cause</td>
+<td>Replicated</td>
+<td>(AR), (MARK)</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Merlin &amp; Morgana</td>
+<td>Baumgartner &amp; Falk (2023)</td>
+<td>Trumping</td>
+<td>Merlin cause</td>
+<td>Replicated</td>
+<td>(CMT)</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Train switch</td>
+<td>Baumgartner (2013)</td>
+<td>Switching</td>
+<td>No cause</td>
+<td>Replicated</td>
+<td>(MS)</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Short circuit &amp; sprinkler</td>
+<td>Baumgartner (2013)</td>
+<td>Short circuit</td>
+<td>No cause</td>
+<td>Replicated</td>
+<td>(MS)</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Poison &amp; antidote</td>
+<td>Baumgartner (2013)</td>
+<td>Prevention</td>
+<td>Antidote cause</td>
+<td>Replicated</td>
+<td>(NEG-LIT)</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Guard asleep</td>
+<td>Baumgartner (2013)</td>
+<td>Omission</td>
+<td>Guard cause</td>
+<td>Replicated</td>
+<td>(NEG-LIT)</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Double prevention</td>
+<td>Baumgartner (2013)</td>
+<td>Double prevention</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(DBL-PREV)</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Preemption by prevention</td>
+<td>Baumgartner (2013)</td>
+<td>Path preemption</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(PATH-PREV)</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>Re-ignition</td>
+<td>Andreas &amp; Günther (2019)</td>
+<td>Explanatory ‘because’</td>
+<td>Because</td>
+<td>Replicated</td>
+<td>(RT-B)</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>Secondary cause</td>
+<td>Andreas &amp; Günther (2019)</td>
+<td>Background context</td>
+<td>Because</td>
+<td>Replicated</td>
+<td>(RT-B)</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Negative cause</td>
+<td>Andreas &amp; Günther (2019)</td>
+<td>Negative explanation</td>
+<td>Because</td>
+<td>Replicated</td>
+<td>(RT-B)</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>Counterfactual because</td>
+<td>Andreas &amp; Günther (2019)</td>
+<td>Counterfactual match</td>
+<td>Because</td>
+<td>Replicated</td>
+<td>(RT-B)</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>Subcause</td>
+<td>Andreas &amp; Günther (2024b)</td>
+<td>Entangled causes</td>
+<td>Cause</td>
+<td>Replicated</td>
+<td>(LREL)</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>Extended double prev.</td>
+<td>Andreas &amp; Günther (2024b)</td>
+<td>Short circuit in DP</td>
+<td><span class="math inline">\(c\)</span> cause, <span class="math inline">\(f\)</span> not</td>
+<td>Replicated</td>
+<td>(PATH), (MAX)</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>Assassin’s mentor</td>
+<td>Andreas &amp; Günther (2024a)</td>
+<td>Bogus prevention</td>
+<td>Antidote not cause</td>
+<td>Replicated</td>
+<td>(DEV<span class="math inline">\('\)</span>)</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>Tower &amp; shadow</td>
+<td>Andreas &amp; Günther (2019)</td>
+<td>Explanatory asymmetry</td>
+<td>Tower causes</td>
+<td>Replicated</td>
+<td>(RT-B)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-part-qualitative" class="level1">
+<h1>Part 3: Qualitative Cases (Volume I Tests)</h1>
+<p>The following panels apply the definitions of Volume I to coincidence tables. Each is carried through the six-step protocol.</p>
+<section id="sec-a01" class="level2">
+<h2 class="anchored" data-anchor-id="sec-a01">Case A-01: Warehouse Fire — Is the Short Circuit a Cause?</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case A-01 — Is short circuit (SC) a cause of fire (FI)?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case A-01 — Is short circuit (SC) a cause of fire (FI)?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Is SC (short circuit) causally relevant to FI (fire) in the causal field of the nine recorded test situations?</p>
+<p><strong>Key.</strong> SC = short circuit · OX = oxygen present · FL = flammable liquid present · SP = spark · FI = fire.</p>
+<p><strong>Causal field and factor set.</strong> <span class="math inline">\(\mathcal{F} = \{\text{SC}, \text{OX}, \text{FL}, \text{SP}\}\)</span>, outcome FI; nine test situations. No process order is required: with two equifinal MSCs, structural non-symmetry orients the theory without temporal data (Volume I, novelty 5 of the minimal theory).</p>
+<p><strong>Data setup.</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Case</th>
+<th>SC</th>
+<th>OX</th>
+<th>FL</th>
+<th>SP</th>
+<th>FI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Source: constructed test situations for the warehouse-fire structure of Volume I; row 9 is a sealed chamber (flammable liquid and a spark without oxygen). One row per test situation; no replication.</p>
+<p><strong>Gate A.</strong> Contradiction test: <span class="math inline">\(C_E = 0\)</span>, <span class="math inline">\(B_E = 0\)</span>. No contradictory configurations. Homogeneity not falsified; proceed to MSC search.</p>
+<p><strong>Gate B.</strong> Not applicable: this is a qualitative coincidence table, not a replicated experimental study.</p>
+<p><strong>MSC search (engine calls).</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>minimal_theory_search(cases, outcomes<span class="op">=</span>[<span class="st">"FI"</span>])</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># → FL*OX*SP + OX*SC =&gt; FI</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>hg.is_relevant(<span class="st">"SC"</span>, <span class="st">"FI"</span>)  <span class="co"># → True   [INF-01]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>hg.partners(<span class="st">"SC"</span>, <span class="st">"FI"</span>)  <span class="co"># → [{OX}] [INF-04]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>hg.alternatives(<span class="st">"FI"</span>)  <span class="co"># → [SC*OX, FL*SP*OX] [INF-05]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Causal hypothesis.</strong></p>
+<p><span class="math display">\[\text{SC}*\text{OX} + \text{FL}*\text{SP}*\text{OX} \Rightarrow \text{FI}\]</span></p>
+<p><em>Reading.</em> (SC and OX) or (FL and SP and OX) are causally relevant to FI.</p>
+<p><span class="math inline">\([\text{con} = \text{cov} = 1.0,\ n=9,\ \text{robustness}=1.0,\ |\mathcal{A}|=1]\)</span>. SC is a non-redundant literal in the cluster <span class="math inline">\(\text{SC}*\text{OX}\)</span>: the cluster is sufficient by rows 1 and 2; SC alone is refuted by row 5, OX alone by row 6. OX is its conjunctive partner. The second cluster <span class="math inline">\(\text{FL}*\text{SP}*\text{OX}\)</span> is sufficient by rows 2 and 3, and each of its conjuncts is indispensable: row 7 lacks the spark, row 8 the liquid, row 9 the oxygen. It can produce fire without SC (row 3).</p>
+<p><strong>Licensed verdict — YES.</strong> SC is causally relevant to FI (INF-01, INF-02, INF-04, INF-05).</p>
+<p><strong>What would change the verdict.</strong> A test situation SC=1, OX=1, FL=0, SP=0 with FI=0 would contradict row 1, create a contradictory configuration and trigger factor-set expansion (FALL-03). Removing all FL=1, SP=1 cases would remove the equifinality verdict but not SC’s relevance. A field with OX=0 throughout would correctly suspend the verdict: no cluster fires, FI is constant, and relevance claims are suspended relative to that field.</p>
+</div>
+</div>
+<div id="fig-a01-graph" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a01-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-fire.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a01-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Case A-01 as a graph: the full warehouse-fire theory. It has two arcs and therefore two clusters: short circuit with oxygen, and flammable liquid with a spark and oxygen. The verdict on the query can be read straight off the picture — SC belongs to an arc, so it is causally relevant; OX belongs to both arcs, so it is a partner in every cluster; and because two clusters lead to FI, the direction of the whole structure is fixed by the asymmetry of determination without any appeal to what happened first.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-a11" class="level2">
+<h2 class="anchored" data-anchor-id="sec-a11">Case A-11: Ice Cream and Drowning — Correlation or Causation?</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case A-11 — Is IC (ice cream sales) causally relevant to DR (drowning deaths)?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case A-11 — Is IC (ice cream sales) causally relevant to DR (drowning deaths)?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Is the observed correlation between ice-cream sales and drowning deaths causal? The six configurations below are illustrative.</p>
+<p><strong>Causal field and factor set.</strong></p>
+<p><em>Narrow field:</em> <span class="math inline">\(\mathcal{F}_0 = \{\text{IC}, \text{DR}\}\)</span> (IC = ice-cream sales high, DR = drowning deaths high). Initial factor set from naive analysis.</p>
+<p><em>Expanded field:</em> <span class="math inline">\(\mathcal{F}_1 = \{\text{IC}, \text{DR}, \text{HW}, \text{VO}, \text{SW}\}\)</span> where HW = hot weather, VO = beach vendors open, SW = swimming conditions favourable.</p>
+<p><strong>Data setup.</strong> Six configurations; the HW column belongs to the expanded field, and the VO and SW columns are not reproduced.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>row</th>
+<th>HW</th>
+<th>IC</th>
+<th>DR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Provenance: constructed after published aggregate data on seasonal correlations.</p>
+<p><strong>Gate A (narrow field).</strong> Each IC value occurs with both DR outcomes: IC <span class="math inline">\(=1\)</span> with DR in rows 1, 2 and without it in row 6; IC <span class="math inline">\(=0\)</span> with DR in row 5 and without it in rows 3, 4. <span class="math inline">\(C_E = 2\)</span>, <span class="math inline">\(B_E = 2/6 \approx 0.33\)</span>. Homogeneity violated: no minimal theory for DR is recoverable over <span class="math inline">\(\mathcal{F}_0\)</span>. Verdict suspended; field expansion mandated.</p>
+<p><strong>Gate A (expanded field).</strong> Adding HW already removes both contradictions on these rows: <span class="math inline">\(C_E = 0\)</span>. Homogeneity not falsified. Proceed to MSC search.</p>
+<p><strong>MSC search (expanded field).</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>minimal_theory_search(cases, outcomes<span class="op">=</span>[<span class="st">"DR"</span>])  <span class="co"># → HW =&gt; DR on the six rows;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co">#   HW*SW =&gt; DR with SW recorded</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>hg.is_relevant(<span class="st">"IC"</span>, <span class="st">"DR"</span>)  <span class="co"># → False   [INF-11]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>hg.common_causes(<span class="st">"IC"</span>, <span class="st">"DR"</span>)  <span class="co"># → [HW]    [INF-08]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Causal hypothesis.</strong> On the six rows DR is present exactly when HW is; with SW recorded the theory of drowning is</p>
+<p><span class="math display">\[\text{HW}*\text{SW} \Rightarrow \text{DR}.\]</span></p>
+<p><em>Reading.</em> Hot weather and favourable swimming conditions are causally relevant to drowning deaths. The theory has a single cluster, so its direction comes from the process order — the weather precedes the drownings, rule (CPLX)(b) — not from the table. For ice-cream sales, hot weather with open vendors, <span class="math inline">\(\text{HW}*\text{VO}\)</span>, is one cluster; row 6 (high sales on a cool day) shows that it is not the only one, and the further cluster is not recorded here.</p>
+<p>IC is not a literal in any MSC for DR: IC alone is refuted by row 6, and HW suffices without it (rows 1, 2, 5). HW is a common cause of IC and DR.</p>
+<p><strong>Licensed verdict — NO (INF-08, INF-10, INF-11).</strong> IC is not causally relevant to DR. The association is real but is accounted for by the common cause HW.</p>
+<p><strong>Warrants (engine run).</strong> INF-03, INF-06, INF-08, INF-09, INF-10, INF-11 (<code>examples/casebook/case_11_just_correlation.py</code>).</p>
+<div id="fig-a11-graph" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a11-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-icecream.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a11-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Case A-11 on the widened factor set. Hot weather is a conjunct of the arc into ice-cream sales and of the arc into drownings; there is no arc, and no arrow, running from IC to DR. The correlation is not denied — the picture predicts it, since anything that makes HW true tends to make both outcomes true — but it is produced without a causal link between the two correlates. Compare <a href="#fig-hooters-truth" class="quarto-xref">Figure&nbsp;2</a>: this is the hooters pattern in epidemiological dress.
+</figcaption>
+</figure>
+</div>
+<p><strong>FALL codes.</strong> FALL-02 (naive correlation without homogeneity check); FALL-03 (contradictory configuration ignored).</p>
+<p><strong>What would change the verdict.</strong> A difference pair: two cases alike in HW, VO and SW that differ in IC and also differ in DR.</p>
+</div>
+</div>
+</section>
+<section id="sec-a-fh" class="level2">
+<h2 class="anchored" data-anchor-id="sec-a-fh">Case A-FH: Manchester Factory Hooters (Qualitative Panel)</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case A-FH — Do the factory hooters cause workers to wake up?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case A-FH — Do the factory hooters cause workers to wake up?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Are the Manchester factory hooters (FH) causally relevant to workers waking up (WU) in the causal field of the daily production schedule?</p>
+<p><strong>Background.</strong> A morning variant of the hooters pattern (the canonical case is <a href="#sec-hooters" class="quarto-xref">Section&nbsp;2</a>): the factory hooters blow at 7:00 am and the workers wake up at 7:00 am, but the hooters do not wake the workers. In the story both follow the schedule; the table decides what that amounts to.</p>
+<p><strong>Causal field and factor set.</strong> <span class="math inline">\(\mathcal{F} = \{\text{FH}, \text{WU}, \text{AL}, \text{SH}\}\)</span>. <strong>Key.</strong> FH = factory hooters sound at 7:00 · WU = workers wake up · AL = alarm clock rings · SH = shift change scheduled. Outcome: WU. Process order: SH <span class="math inline">\(\prec\)</span> FH, SH <span class="math inline">\(\prec\)</span> AL <span class="math inline">\(\prec\)</span> WU.</p>
+<p><strong>Data setup.</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>row</th>
+<th>SH</th>
+<th>FH</th>
+<th>AL</th>
+<th>WU</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gate A.</strong> <span class="math inline">\(C_E = 0\)</span> over <span class="math inline">\(\mathcal{F}\)</span>. Homogeneity not falsified.</p>
+<p><strong>Gate B.</strong> Not applicable (qualitative table).</p>
+<p><strong>MSC search.</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>minimal_theory_search(cases, outcomes<span class="op">=</span>[<span class="st">"WU"</span>])  <span class="co"># → AL*SH =&gt; WU</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>hg.is_relevant(<span class="st">"FH"</span>, <span class="st">"WU"</span>)  <span class="co"># → False  [INF-11]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The alarm with a scheduled shift is sufficient for waking (rows 1 and 4). Neither part suffices alone: row 6 has the alarm without a shift and nobody wakes; row 3 has a shift without the alarm and nobody wakes. <span class="math inline">\(\text{AL}*\text{SH}\)</span> is therefore minimally sufficient, and it is also necessary: WU occurs only in rows 1 and 4. FH alone is refuted by rows 3, 5 and 6. Two minimally sufficient conditions contain an FH literal, <span class="math inline">\(\text{SH}*\neg\text{FH}\)</span> and <span class="math inline">\(\text{AL}*\neg\text{FH}\)</span>, each witnessed only by row 4. Both are free riders: <span class="math inline">\(\text{AL}*\text{SH}\)</span> alone is already necessary for WU, so (MN) removes them.</p>
+<p><strong>Causal hypothesis.</strong> <span class="math inline">\(\text{AL}*\text{SH} \Rightarrow \text{WU}\)</span>.</p>
+<p><em>Reading.</em> (AL and SH) are causally relevant to WU. The theory has a single cluster, so its direction comes from the process order AL <span class="math inline">\(\prec\)</span> WU, rule (CPLX)(b); without a process order the engine reports such a theory with the status <code>UNORIENTABLE</code>. The factory hooters occur in no cluster: they and the waking are both preceded by the scheduled shift, and the table does not show the shift to be a cause of the hooters (row 4 has a scheduled shift without hooters, row 5 hooters without a shift).</p>
+<div id="fig-alsc-wu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-alsc-wu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-alsc-wu.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alsc-wu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: The minimal theory of waking: the alarm clock and the scheduled shift together are sufficient for the workers waking up. In words: (AL and SH) are causally relevant to WU. The factory hooters appear in no cluster.
+</figcaption>
+</figure>
+</div>
+<p><strong>Licensed verdict — NO.</strong> FH is not causally relevant to WU.</p>
+<p><strong>Warrants.</strong> INF-11 (no cluster with an FH literal survives minimal necessity). The common-cause warrant INF-08 is not licensed by these six rows.</p>
+</div>
+</div>
+</section>
+<section id="sec-crosswalk" class="level2">
+<h2 class="anchored" data-anchor-id="sec-crosswalk">Engine-Query Crosswalk: Cases 01–20</h2>
+<p>The full engine-query casebook addresses twenty canonical question-types that arise when reading experimental science.</p>
+<div id="tbl-casebook-crosswalk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-casebook-crosswalk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Engine-query crosswalk, Cases 01–20.
+</figcaption>
+<div aria-describedby="tbl-casebook-crosswalk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Case</th>
+<th>Type</th>
+<th>Key concept</th>
+<th>INF</th>
+<th>FALL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>01</td>
+<td>Qualitative relevance</td>
+<td>MSC membership</td>
+<td>INF-01–02</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>02</td>
+<td>Token attribution</td>
+<td>Active MSC</td>
+<td>INF-06</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>03</td>
+<td>Equifinality</td>
+<td>Alternatives</td>
+<td>INF-05</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>04</td>
+<td>Conjunctivity</td>
+<td>Partners</td>
+<td>INF-04</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>05</td>
+<td>Causal chain</td>
+<td>Paths via endogenous</td>
+<td>INF-07 (declined)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>06</td>
+<td>Common cause</td>
+<td>Joint effects</td>
+<td>INF-08</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>07</td>
+<td>Direction ambiguity</td>
+<td>Asymmetry, csf</td>
+<td>INF-03</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>08</td>
+<td>Graded evidence</td>
+<td>FitVector, robustness</td>
+<td>INF-09</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>09</td>
+<td>Noisy data</td>
+<td>Ambiguity set</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Cross-study pooling</td>
+<td>E-process</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Correlation vs.&nbsp;causation</td>
+<td>Naive correlation</td>
+<td>INF-11</td>
+<td>FALL-02</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Sample size</td>
+<td>Power</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Next configuration</td>
+<td>EIG</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Sequential monitoring</td>
+<td>E-process</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Post hoc fallacy</td>
+<td>No negatives</td>
+<td>—</td>
+<td>FALL-01</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Simpson’s paradox</td>
+<td>Confounder in MSC</td>
+<td>INF-03</td>
+<td>FALL-04</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>Subgroup effects</td>
+<td>HARKing/conjunctivity</td>
+<td>INF-04</td>
+<td>FALL-09</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>Underpowered study</td>
+<td>Absence claim</td>
+<td>—</td>
+<td>FALL-07</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Mediation</td>
+<td>csf chain</td>
+<td>INF-07 (declined)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>Full paper audit</td>
+<td>All</td>
+<td>All</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-part-experimental" class="level1">
+<h1>Part 4: Quantitative &amp; Experimental Cases (Volume II Tests)</h1>
+<p>The following panels apply causal hypothesis inference (Volume II) to replicated or published experimental data.</p>
+<section id="sec-b-st" class="level2">
+<h2 class="anchored" data-anchor-id="sec-b-st">Case B-ST: Statin Trial — Does STATIN Reduce Cardiovascular Events?</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case B-ST — Does STATIN reduce cardiovascular events in HBP patients?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case B-ST — Does STATIN reduce cardiovascular events in HBP patients?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Is STATIN causally relevant to <span class="math inline">\(\neg\)</span>CVE (event-free survival) in the causal field of the trial population — 400 patients, half of them with a history of high blood pressure?</p>
+<p><strong>Causal field and factor set.</strong> <span class="math inline">\(\mathcal{F} = \{\text{STATIN}, \text{HBP}, \text{CVE}\}\)</span> — statin therapy, history of high blood pressure, cardiovascular event. Process order: HBP <span class="math inline">\(\prec\)</span> STATIN <span class="math inline">\(\prec\)</span> CVE — the history of high blood pressure precedes the therapy, which precedes the event. Polarity: outcome is CVE; causal hypothesis is for the protective direction (<span class="math inline">\(\neg\)</span>CVE).</p>
+<p><strong>Coincidence data.</strong> 400 patients, 200 per arm. Stratified counts:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>HBP <span class="math inline">\(=1\)</span></th>
+<th>HBP <span class="math inline">\(=0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>STATIN <span class="math inline">\(=1\)</span></td>
+<td>CVE <span class="math inline">\(5/100\)</span></td>
+<td>CVE <span class="math inline">\(19/100\)</span></td>
+</tr>
+<tr class="even">
+<td>STATIN <span class="math inline">\(=0\)</span></td>
+<td>CVE <span class="math inline">\(30/100\)</span></td>
+<td>CVE <span class="math inline">\(18/100\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Aggregate rates: <span class="math inline">\(p_1 = 24/200 = 0.12\)</span> (STATIN), <span class="math inline">\(p_0 = 48/200 = 0.24\)</span> (control). Each arm holds 100 patients with and 100 without a history of high blood pressure.</p>
+<p><strong>Gate B.</strong> Randomisation performed; no baseline imbalance in known risk factors. Gate B is satisfied: the difference-test is valid.</p>
+<p><strong>Gate A.</strong> Within <span class="math inline">\(\mathcal{F} = \{\text{STATIN}, \text{HBP}, \text{CVE}\}\)</span> each of the four configurations of STATIN and HBP occurs with and without CVE: <span class="math inline">\(C_E = 4\)</span>, <span class="math inline">\(B_E = 72/400 = 0.18\)</span>. Gate A is violated: this factor set is incomplete for sufficiency-reading. That is expected in difference-tests and does not invalidate Gate B.</p>
+<p><strong>Risk difference.</strong> <span class="math inline">\(\hat{\Delta} = p_1 - p_0 = -0.12\)</span> (protective). Fisher exact <span class="math inline">\(p = 0.003\)</span> (two-sided, <span class="math inline">\(0.0026\)</span>).</p>
+<p><strong>MSC search.</strong> The difference-test is carried by the HBP<span class="math inline">\(=1\)</span> stratum (<span class="math inline">\(5\%\)</span> vs <span class="math inline">\(30\%\)</span>); in the HBP<span class="math inline">\(=0\)</span> stratum the rates are <span class="math inline">\(19\%\)</span> and <span class="math inline">\(18\%\)</span>. HBP is therefore the conjunctive partner of STATIN. The engine recovers:</p>
+<p><span class="math display">\[\text{STATIN} * \text{HBP} \Rightarrow \neg\text{CVE} \qquad [\text{con} = 95/100 = 0.95,\ \text{cov} = 95/328 \approx 0.29].\]</span></p>
+<p><em>Reading.</em> Statin therapy and a history of high blood pressure are causally relevant to the absence of a cardiovascular event (diagram: Volume II, the statin figure of the introduction). The coverage of <span class="math inline">\(0.29\)</span> records that most of the 328 event-free patients are covered by other clusters for <span class="math inline">\(\neg\)</span>CVE, which this factor set does not name: the absence of an event is equifinal.</p>
+<p><strong>Polarity.</strong> STATIN is a literal in an MSC for <span class="math inline">\(\neg\text{CVE}\)</span> (protective).</p>
+<p><strong>Licensed verdict — YES (protective polarity).</strong> Under Gate B, <span class="math inline">\(\hat{\Delta} &lt; 0\)</span> licenses STATIN as a literal of an MSC for <span class="math inline">\(\neg\)</span>CVE, not for CVE: STATIN is a non-redundant literal of the cluster <span class="math inline">\(\text{STATIN}*\text{HBP}\)</span> for the absence of a cardiovascular event.</p>
+<p><strong>Warrants.</strong> INF-01, INF-04. INF-02 requires consistency <span class="math inline">\(1.0\)</span> and is not met (<span class="math inline">\(\text{con} = 0.95\)</span>).</p>
+</div>
+</div>
+</section>
+<section id="sec-b16" class="level2">
+<h2 class="anchored" data-anchor-id="sec-b16">Case B-16: Simpson’s Paradox — Kidney Stone Treatments</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case B-16 — Is open surgery (T) causally relevant to treatment success (E) in kidney stone patients?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case B-16 — Is open surgery (T) causally relevant to treatment success (E) in kidney stone patients?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Is T (open surgery, against percutaneous nephrolithotomy) causally relevant to E (treatment success)? Data: Charig et al. <span class="citation" data-cites="charig1986">(<a href="#ref-charig1986" role="doc-biblioref">1986</a>)</span>, 700 patients.</p>
+<p><strong>Causal field and factor set.</strong> <span class="math inline">\(\mathcal{F} = \{\text{T}, \text{SEV}, \text{E}\}\)</span> where SEV = stone severity (large vs.&nbsp;small).</p>
+<p><strong>Data setup (stratified 2×2 table).</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Small stones</th>
+<th>Large stones</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Open surgery</td>
+<td>81/87 = 93.1%</td>
+<td>192/263 = 73.0%</td>
+<td>273/350 = 78.0%</td>
+</tr>
+<tr class="even">
+<td>Percutaneous</td>
+<td>234/270 = 86.7%</td>
+<td>55/80 = 68.8%</td>
+<td>289/350 = 82.6%</td>
+</tr>
+</tbody>
+</table>
+<p>Open surgery does better in both strata — by <span class="math inline">\(6.4\)</span> percentage points for small stones and <span class="math inline">\(4.3\)</span> for large ones — but worse overall (<span class="math inline">\(-4.6\)</span> points), because large stones were assigned to it about <span class="math inline">\(3.3\)</span> times as often: <span class="math inline">\(263\)</span> of its <span class="math inline">\(350\)</span> patients had large stones, against <span class="math inline">\(80\)</span> of the <span class="math inline">\(350\)</span> percutaneous patients.</p>
+<p><strong>Gate B.</strong> Non-randomised observational study. SEV co-varies with T assignment — Gate B is violated in the aggregate analysis.</p>
+<p><strong>Gate A.</strong> Over <span class="math inline">\(\mathcal{F} = \{\text{T}, \text{SEV}, \text{E}\}\)</span>: all four configurations of T and SEV carry both outcomes, so <span class="math inline">\(C_E = 4\)</span>, and <span class="math inline">\(B_E = (6 + 71 + 36 + 25)/700 = 138/700 = 0.197\)</span>. Homogeneity falsified.</p>
+<p><strong>Licensed verdict — SUSPENDED.</strong> The framework declines to issue a causal verdict on the aggregate data.</p>
+<p><strong>FALL codes.</strong> FALL-04 (Simpson’s paradox, SEVERE): the aggregate risk difference (<span class="math inline">\(-4.6\)</span> points) has the opposite sign to both strata (<span class="math inline">\(+6.4\)</span> and <span class="math inline">\(+4.3\)</span>).</p>
+<p><strong>Diagnosis.</strong> The reversal is compositional confounding. Stone size lowers the success rate under both treatments, and it travels with assignment: large stones went mostly to open surgery. That violates Gate B in the aggregate. It does not show SEV to be a conjunctive partner of T: both strata favour open surgery by similar margins (the two margins differ by <span class="math inline">\(2.2\)</span> points), whereas a conjunction <span class="math inline">\(\text{T}*\text{SEV}\)</span> would show the treatment making its difference in one stratum and not in the other, as HBP does for STATIN in Case B-ST. Within the strata the comparison is closer to Gate B, but in a non-randomised study nothing secures that no further factor travelled with assignment; the verdict therefore stays suspended.</p>
+</div>
+</div>
+</section>
+<section id="sec-b18" class="level2">
+<h2 class="anchored" data-anchor-id="sec-b18">Case B-18: Underpowered Study — Non-Significance vs.&nbsp;Absence</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case B-18 — Does non-significance establish causal irrelevance?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case B-18 — Does non-significance establish causal irrelevance?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> A trial of <span class="math inline">\(n = 50\)</span> per arm reports 15 events on control against 19 on treatment, <span class="math inline">\(\hat{\Delta} = 0.08\)</span>, Fisher exact <span class="math inline">\(p = 0.53\)</span>. Does this establish that T is not causally relevant to E?</p>
+<p><strong>Causal field and factor set.</strong> <span class="math inline">\(\mathcal{F} = \{\text{T}, \text{E}\}\)</span>. Outcome E: adverse event.</p>
+<p><strong>Data setup.</strong> <span class="math inline">\(n = 50\)</span> per arm. Control rate 30%, treatment rate 38%.</p>
+<p><strong>Gate B.</strong> Randomisation performed; Gate B secured by design.</p>
+<p><strong>Power analysis.</strong> Achieved power is 0.13. Detecting a difference of <span class="math inline">\(0.08\)</span> from a control rate of <span class="math inline">\(0.30\)</span> at 80% power and two-sided <span class="math inline">\(\alpha = 0.05\)</span> requires <span class="math inline">\(n = 550\)</span> per arm by the two-proportion formula of Volume II (section “Power from the identity”). The study is severely underpowered.</p>
+<p><strong>Licensed verdict — UNCERTAIN / INCONCLUSIVE.</strong> Non-significance in an underpowered study does not license a claim of absence.</p>
+<p><strong>FALL codes.</strong> FALL-07 (underpowered absence claim); FALL-08 (absence of evidence taken as evidence of absence).</p>
+</div>
+</div>
+</section>
+<section id="sec-b20" class="level2">
+<h2 class="anchored" data-anchor-id="sec-b20">Case B-20: Full Paper Audit — CONSORT-Compliant RCT</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case B-20 — Full CONSORT-Compliant Paper Audit">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case B-20 — Full CONSORT-Compliant Paper Audit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Execute a complete 6-stage paper audit on a published CONSORT-compliant clinical trial paper.</p>
+<p><strong>Execution steps:</strong></p>
+<ol type="1">
+<li><strong>Upload &amp; Storage:</strong> PDF ingested, stored at <code>papers/paper_b20.pdf</code>, SHA-256 hash verified.</li>
+<li><strong>Metadata Capture:</strong> Title, authors, DOI, trial registration (ClinicalTrials.gov), sample size (<span class="math inline">\(N=450\)</span>), arms, primary outcome recorded.</li>
+<li><strong>PDAI Generation:</strong> PDAI-compliant Markdown structure generated with explicit headers and YAML front-matter.</li>
+<li><strong>Preprocessing:</strong> Factors extracted (<span class="math inline">\(\mathcal{F} = \{\text{TRT}, \text{AGE}, \text{SEV}, \text{OUT}\}\)</span>), binarised, process order assigned (<span class="math inline">\(\text{AGE, SEV} \prec \text{TRT} \prec \text{OUT}\)</span>).</li>
+<li><strong>Causal Analysis:</strong>
+<ul>
+<li><em>Gate B:</em> Randomisation and double-blinding secure Gate B.</li>
+<li><em>Gate A:</em> <span class="math inline">\(C_E &gt; 0\)</span> (expected in clinical trial).</li>
+<li><em>Risk Difference:</em> <span class="math inline">\(\hat{\Delta} = -0.15\)</span> (<span class="math inline">\(p &lt; 0.001\)</span>).</li>
+<li><em>MSC Recovery:</em> <span class="math inline">\(\text{TRT} * \text{SEV} \Rightarrow \neg\text{OUT}\)</span> (<span class="math inline">\(\text{con} = 0.94\)</span>). Key: TRT = treatment; SEV = high severity; OUT = adverse outcome; <code>~OUT</code> = absence of the adverse outcome.</li>
+</ul></li>
+<li><strong>Report Generation:</strong> Complete audit report rendered with the warrants INF-01 and INF-04 and zero FALL violations; INF-02 requires consistency <span class="math inline">\(1.0\)</span> and is not met at <span class="math inline">\(\text{con} = 0.94\)</span>.</li>
+</ol>
+<div id="fig-trt-sev" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trt-sev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-trt-sev-out.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trt-sev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Minimal theory recovered by the audit: treatment combined with high-severity status produces the absence of the adverse outcome. In words: TRT and SEV are causally relevant to the absence of OUT.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-b-lk" class="level2">
+<h2 class="anchored" data-anchor-id="sec-b-lk">Case B-LK: LK-99 Ambient Superconductivity Audit</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case B-LK — LK-99 Ambient Superconductivity Claim Audit">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case B-LK — LK-99 Ambient Superconductivity Claim Audit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Does the material LK-99 exhibit ambient-pressure superconductivity (zero resistance, ZERO_R <span class="math inline">\(=1\)</span>)?</p>
+<p><strong>Background.</strong> Sukbae Lee et al.&nbsp;(2023) claimed zero resistance and levitation in <span class="math inline">\(\mathrm{Pb}_{10-x}\mathrm{Cu}_x(\mathrm{PO}_4)_6\mathrm{O}\)</span>.</p>
+<p><strong>Factor set &amp; Data setup.</strong> <span class="math inline">\(\mathcal{F} = \{\text{LK99}, \text{CU\_SUB}, \text{CU2S}, \text{ZERO\_R}, \text{DROP}\}\)</span>. <strong>Key.</strong> LK99 = sample of the LK-99 compound · CU_SUB = copper substituted on lead sites · CU2S = <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span> impurity present · ZERO_R = zero resistance · DROP = sharp drop in resistivity near <span class="math inline">\(377\text{ K}\)</span>.</p>
+<ul>
+<li>Original claim: <span class="math inline">\(\text{LK99} * \text{CU\_SUB} \Rightarrow \text{ZERO\_R}\)</span> — the compound with copper substitution is sufficient for zero resistance.</li>
+<li>Replication base: pure single crystals of LK-99 without <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span>, grown at the Max Planck Institute for Solid State Research, Stuttgart (Puphal et al., 2023); the identification of the <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span> phase transition as the source of the resistivity drop (Jain, University of Illinois Urbana-Champaign, 2023), and tests of samples with different <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span> content by a team at the Chinese Academy of Sciences (Zhu et al., 2023).</li>
+</ul>
+<p><strong>Gate A Analysis.</strong> Pure LK-99 single crystals (<span class="math inline">\(\text{CU2S}=0\)</span>) are insulators. Samples with <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span> impurities show a sharp resistivity drop near <span class="math inline">\(377\text{ K}\)</span> (<span class="math inline">\(104^\circ\text{C}\)</span>), the temperature of the known structural phase transition of <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span>. No sample shows zero resistance.</p>
+<p>Over the claim’s own factors <span class="math inline">\(\{\text{LK99}, \text{CU\_SUB}\}\)</span>, the configuration LK99 <span class="math inline">\(=1\)</span>, CU_SUB <span class="math inline">\(=1\)</span> occurs with the resistivity drop (impure samples) and without it (pure crystals): a contradictory configuration, <span class="math inline">\(C_E &gt; 0\)</span>. Adding CU2S to the factor set resolves it: the drop occurs exactly when CU2S <span class="math inline">\(=1\)</span>.</p>
+<p><strong>Licensed verdict — FALSIFIED.</strong> The claim <span class="math inline">\(\text{LK99} * \text{CU\_SUB} \Rightarrow \text{ZERO\_R}\)</span> is refuted by the replication record: the compound is present without zero resistance. The resistivity drop is accounted for by the <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span> phase transition, <span class="math inline">\(\text{CU2S} \Rightarrow \text{DROP}\)</span> (in words: the <span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span> impurity is causally relevant to the drop; one cluster, oriented by the process order of heating through the transition).</p>
+<div id="fig-lk99" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lk99-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cvl-lk99-pair.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lk99-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Claimed theory vs.&nbsp;replication verdict. Left: the original hypothesis is contradicted by replication data (pure samples without the Cu₂S impurity show no zero resistance). Right: the confirmed minimal theory assigns DROP to the Cu₂S phase transition alone.
+</figcaption>
+</figure>
+</div>
+<p><strong>FALL codes.</strong> FALL-03 (confounding: contradictory configuration in the replication record), FALL-02 (naive correlation: the drop was attributed to LK99 without a sufficient condition that survives the replication record).</p>
+</div>
+</div>
+</section>
+<section id="sec-b-op" class="level2">
+<h2 class="anchored" data-anchor-id="sec-b-op">Case B-OP: OPERA Faster-Than-Light Neutrino Audit</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Case B-OP — OPERA Faster-Than-Light Neutrino Speed Audit">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Case B-OP — OPERA Faster-Than-Light Neutrino Speed Audit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Query.</strong> Do muon neutrinos travel faster than light (<span class="math inline">\(v &gt; c\)</span>)?</p>
+<p><strong>Background.</strong> The OPERA Collaboration (2011) reported that neutrinos travelling from CERN to Gran Sasso arrived <span class="math inline">\(60.7\text{ ns}\)</span> earlier than light would.</p>
+<p><strong>Factor set &amp; Data setup.</strong> <span class="math inline">\(\mathcal{F} = \{\text{NEUTRINO}, \text{FIBER\_LOOSE}, \text{CLOCK\_CAL}, \text{SUPERLUMINAL}\}\)</span>. <strong>Key.</strong> NEUTRINO = a CNGS muon-neutrino event · FIBER_LOOSE = the optical fibre to the master clock improperly connected · CLOCK_CAL = the master-clock oscillator off its calibration · SUPERLUMINAL = an early arrival measured.</p>
+<p><strong>Gate A &amp; Diagnostic Analysis.</strong> In 2012 OPERA identified two instrumental effects of opposite sign:</p>
+<ol type="1">
+<li>An improperly connected optical fibre bringing the GPS time signal to the OPERA master clock, which added <span class="math inline">\(73.2\text{ ns}\)</span> to the timing chain and made the neutrinos appear to arrive early.</li>
+<li>A mis-calibrated 10 MHz oscillator of the master clock, running slightly above its specified frequency, which lengthened the measured time of flight.</li>
+</ol>
+<p>With both corrections the published result is an early arrival of <span class="math inline">\(\delta t = (6.5 \pm 7.4\,(\text{stat.})\,^{+8.3}_{-8.0}\,(\text{sys.}))\text{ ns}\)</span>, consistent with <span class="math inline">\(v = c\)</span>.</p>
+<p><strong>Licensed verdict — FALSIFIED / SYSTEMATIC ARTEFACT.</strong> Neutrinos do not exceed light speed. The <span class="math inline">\(60.7\text{ ns}\)</span> anomaly was an artefact of the timing chain, chiefly the improperly connected fibre.</p>
+<p><strong>FALL codes.</strong> The fallacy registry (FALL-01–10) has no inhibitor for a systematic measurement artefact; the case marks that gap.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-part-survey" class="level1">
+<h1>Part 5: Survey of Experimental Designs and ROADMAP</h1>
+<section id="sec-survey-designs" class="level2">
+<h2 class="anchored" data-anchor-id="sec-survey-designs">Theoretical Survey of Standard Experimental Designs</h2>
+<p>Every standard experimental design is an instance of the firing-rate identity under a specific Gate-B assignment and sampling mechanism. A randomised controlled trial (RCT) assigns <span class="math inline">\(T\)</span> independently of the latents; a cohort stratifies; a case-control samples on the outcome. The table states what each design identifies and which fallacy it typically risks, with the registry inhibitor where the registry has one.</p>
+<div id="tbl-design-survey" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-design-survey-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Theoretical survey of six standard experimental designs.
+</figcaption>
+<div aria-describedby="tbl-design-survey-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Design Type</th>
+<th>Table Structure</th>
+<th>Gate B Mechanism</th>
+<th>Identifiable Causal Object</th>
+<th>Primary risk (registry inhibitor)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>RCT</strong></td>
+<td>Replicated <span class="math inline">\(2\times 2\)</span> or <span class="math inline">\(2\times k\)</span> table</td>
+<td>Random assignment of <span class="math inline">\(T\)</span></td>
+<td>MSC-membership of <span class="math inline">\(T\)</span>; risk difference <span class="math inline">\(\Delta\)</span></td>
+<td>HARKing, subgroup claims (FALL-09)</td>
+</tr>
+<tr class="even">
+<td><strong>Factorial</strong></td>
+<td><span class="math inline">\(2^k\)</span> cross-tabulation</td>
+<td>Joint random assignment</td>
+<td>Interaction sign <span class="math inline">\(I\)</span>: conjunctive vs.&nbsp;disjunctive</td>
+<td>Ignoring the interaction sign (no registry inhibitor)</td>
+</tr>
+<tr class="odd">
+<td><strong>Cohort</strong></td>
+<td>Prospective follow-up table</td>
+<td>Stratification &amp; Cornfield bound</td>
+<td>Conditional MSC-membership</td>
+<td>Unmeasured confounder (FALL-03); Simpson’s reversal (FALL-04)</td>
+</tr>
+<tr class="even">
+<td><strong>Case-Control</strong></td>
+<td>Retrospective outcome-sampled table</td>
+<td>Rare-disease assumption</td>
+<td>Risk difference sign (polarity) via OR</td>
+<td>Claiming a magnitude from the odds ratio (no registry inhibitor)</td>
+</tr>
+<tr class="odd">
+<td><strong>Sequential</strong></td>
+<td>Longitudinal stream of <span class="math inline">\(n\)</span> trials</td>
+<td>Supermartingale e-process</td>
+<td>Anytime-valid evidence that a cluster’s success rate exceeds the base rate</td>
+<td>Optional stopping (no registry inhibitor)</td>
+</tr>
+<tr class="even">
+<td><strong>Meta-Analysis</strong></td>
+<td>Multi-study pooled table</td>
+<td>Random-effects <span class="math inline">\(\tau^2\)</span></td>
+<td>Heterogeneous MSC-partners across fields</td>
+<td>Pooling inhomogeneous fields (no registry inhibitor)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-survey-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="sec-survey-roadmap">The ROADMAP Survey Across Domains</h2>
+<section id="tranche-a-physics-materials-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="tranche-a-physics-materials-discovery">Tranche A: Physics &amp; Materials Discovery</h3>
+<div id="tbl-roadmap-tranche-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-roadmap-tranche-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: ROADMAP Tranche A — Physics &amp; Materials Discovery.
+</figcaption>
+<div aria-describedby="tbl-roadmap-tranche-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Domain / Case</th>
+<th>Factor Set <span class="math inline">\(\mathcal{F}\)</span></th>
+<th>Method / Design</th>
+<th>Status</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A-01</strong></td>
+<td>Warehouse Fire</td>
+<td>SC, OX, FL, SP</td>
+<td>Qualitative Coincidence</td>
+<td>Complete</td>
+<td>SC relevant; <span class="math inline">\(\text{SC}*\text{OX} + \text{FL}*\text{SP}*\text{OX} \Rightarrow \text{FI}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>B-LK</strong></td>
+<td>LK-99 Superconductivity</td>
+<td>LK99, CU_SUB, CU2S, ZERO_R, DROP</td>
+<td>Physical Replication Audit</td>
+<td>Complete</td>
+<td>Falsified (<span class="math inline">\(\mathrm{Cu}_2\mathrm{S}\)</span> artefact)</td>
+</tr>
+<tr class="odd">
+<td><strong>B-OP</strong></td>
+<td>OPERA Neutrino Speed</td>
+<td>NEUTRINO, FIBER_LOOSE, CLOCK_CAL, SUPERLUMINAL</td>
+<td>Systematic Error Audit</td>
+<td>Complete</td>
+<td>Falsified (timing-chain artefact)</td>
+</tr>
+<tr class="even">
+<td><strong>A-02</strong></td>
+<td>Room-Temp Hydride</td>
+<td>PRESS, TEMP, STRUCT, SC</td>
+<td>High-Pressure Diamond Anvil</td>
+<td>Ingest Pending</td>
+<td>Target: <span class="math inline">\(H_3S\)</span> / <span class="math inline">\(LaH_{10}\)</span> phase boundary</td>
+</tr>
+<tr class="odd">
+<td><strong>A-03</strong></td>
+<td>Metallic Hydrogen</td>
+<td>PRESS, SPECT, TRANS, MH</td>
+<td>Optical Absorption</td>
+<td>Ingest Pending</td>
+<td>Target: Phase transition boundary</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="tranche-b-clinical-trials-epidemiological-cohorts" class="level3">
+<h3 class="anchored" data-anchor-id="tranche-b-clinical-trials-epidemiological-cohorts">Tranche B: Clinical Trials &amp; Epidemiological Cohorts</h3>
+<div id="tbl-roadmap-tranche-b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-roadmap-tranche-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: ROADMAP Tranche B — Clinical Trials &amp; Epidemiological Cohorts.
+</figcaption>
+<div aria-describedby="tbl-roadmap-tranche-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Domain / Case</th>
+<th>Factor Set <span class="math inline">\(\mathcal{F}\)</span></th>
+<th>Method / Design</th>
+<th>Status</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>B-ST</strong></td>
+<td>Statin Trial</td>
+<td>STATIN, HBP, CVE</td>
+<td>Randomised Trial (RCT)</td>
+<td>Complete</td>
+<td>Protective: <span class="math inline">\(\text{STATIN}*\text{HBP} \Rightarrow \neg\text{CVE}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>B-16</strong></td>
+<td>Simpson’s Paradox</td>
+<td>T, SEV, E</td>
+<td>Stratified Cohort</td>
+<td>Complete</td>
+<td>Suspended (compositional confounding)</td>
+</tr>
+<tr class="odd">
+<td><strong>B-18</strong></td>
+<td>Underpowered Study</td>
+<td>T, E</td>
+<td>Low-power RCT</td>
+<td>Complete</td>
+<td>Inconclusive (FALL-07)</td>
+</tr>
+<tr class="even">
+<td><strong>B-20</strong></td>
+<td>CONSORT Paper Audit</td>
+<td>TRT, AGE, SEV, OUT</td>
+<td>Full Paperflow Audit</td>
+<td>Complete</td>
+<td>Automated 6-stage report</td>
+</tr>
+<tr class="odd">
+<td><strong>B-01</strong></td>
+<td>SGLT2 Inhibitor Trial</td>
+<td>SGLT2, CKD, T2D, RENAL</td>
+<td>Multicentre RCT</td>
+<td>Ingest Pending</td>
+<td>Renal protection MSC</td>
+</tr>
+<tr class="even">
+<td><strong>B-02</strong></td>
+<td>mRNA Vaccine Efficacy</td>
+<td>VAC, AGE, VAR, INF</td>
+<td>Phase III RCT + Cohort</td>
+<td>Ingest Pending</td>
+<td>Waning &amp; variant interaction</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Bibliography</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-andreas-guenther2019" class="csl-entry" role="listitem">
+Andreas, Holger, and Mario Günther. 2019. <span>“On the <span>Ramsey</span> Test Analysis of <span>‘Because’</span>.”</span> <em>Erkenntnis</em> 84 (6): 1229–62. <a href="https://doi.org/10.1007/s10670-018-0006-8">https://doi.org/10.1007/s10670-018-0006-8</a>.
+</div>
+<div id="ref-andreas-guenther2024a" class="csl-entry" role="listitem">
+Andreas, Holger, and Mario Günther. 2024a. <span>“A <span>Lewisian</span> Regularity Theory.”</span> <em>Philosophical Studies</em> 181: 2145–76. <a href="https://doi.org/10.1007/s11098-024-02149-z">https://doi.org/10.1007/s11098-024-02149-z</a>.
+</div>
+<div id="ref-andreas-guenther2024b" class="csl-entry" role="listitem">
+Andreas, Holger, and Mario Günther. 2024b. <span>“A Regularity Theory of Causation.”</span> <em>Pacific Philosophical Quarterly</em> 105 (1): 2–32. <a href="https://doi.org/10.1111/papq.12447">https://doi.org/10.1111/papq.12447</a>.
+</div>
+<div id="ref-andreas-guenther-sep" class="csl-entry" role="listitem">
+Andreas, Holger, and Mario Günther. 2026. <span>“Regularity and Inferential Theories of Causation.”</span> In <em>The <span>Stanford</span> Encyclopedia of Philosophy</em>, edited by Edward N. Zalta and Uri Nodelman. <a href="https://plato.stanford.edu/entries/causation-regularity/">https://plato.stanford.edu/entries/causation-regularity/</a>.
+</div>
+<div id="ref-baumgartner2008" class="csl-entry" role="listitem">
+Baumgartner, Michael. 2008. <span>“Regularity Theories Reassessed.”</span> <em>Philosophia</em> 36 (3): 327–54. <a href="https://doi.org/10.1007/s11406-007-9114-4">https://doi.org/10.1007/s11406-007-9114-4</a>.
+</div>
+<div id="ref-baumgartner2013regularity" class="csl-entry" role="listitem">
+Baumgartner, Michael. 2013. <span>“A Regularity Theoretic Approach to Actual Causation.”</span> <em>Erkenntnis</em> 78 (S1): 85–109. <a href="https://doi.org/10.1007/s10670-013-9438-3">https://doi.org/10.1007/s10670-013-9438-3</a>.
+</div>
+<div id="ref-baumgartner-falk2023" class="csl-entry" role="listitem">
+Baumgartner, Michael, and Christoph Falk. 2023. <span>“Boolean Difference-Making: A Modern Regularity Theory of Causation.”</span> <em>British Journal for the Philosophy of Science</em> 74 (1): 171–97. <a href="https://doi.org/10.1093/bjps/axz047">https://doi.org/10.1093/bjps/axz047</a>.
+</div>
+<div id="ref-baumgartner-grasshoff2004" class="csl-entry" role="listitem">
+Baumgartner, Michael, and Gerd Graßhoff. 2004. <em><span>Kausalit<span>ä</span>t und kausales Schliessen. Eine Einf<span>ü</span>hrung mit interaktiven <span>Ü</span>bungen</span></em>. Bern Studies in the History; Philosophy of Science.
+</div>
+<div id="ref-charig1986" class="csl-entry" role="listitem">
+Charig, C. R., D. R. Webb, S. R. Payne, and J. E. Wickham. 1986. <span>“Comparison of Treatment of Renal Calculi by Open Surgery, Percutaneous Nephrolithotomy, and Extracorporeal Shockwave Lithotripsy.”</span> <em>British Medical Journal (Clinical Research Edition)</em> 292 (6524): 879–82. <a href="https://doi.org/10.1136/bmj.292.6524.879">https://doi.org/10.1136/bmj.292.6524.879</a>.
+</div>
+<div id="ref-grasshoff2001causal" class="csl-entry" role="listitem">
+Graßhoff, Gerd, and Michael May. 2001. <span>“Causal Regularities.”</span> In <em>Current Issues in Causation</em>, edited by Wolfgang Spohn, Marion Ledwig, and Michael Esfeld. Mentis.
+</div>
+<div id="ref-mackie1965" class="csl-entry" role="listitem">
+Mackie, John L. 1965. <span>“Causes and Conditions.”</span> <em>American Philosophical Quarterly</em> 2 (4): 245–64.
+</div>
+<div id="ref-mackie1974cement" class="csl-entry" role="listitem">
+Mackie, John L. 1974. <em>The Cement of the Universe: A Study of Causation</em>. Oxford University Press.
+</div>
+<div id="ref-may1999" class="csl-entry" role="listitem">
+May, Michael. 1999. <span>“<span>Kausales Schliessen. Eine Untersuchung <span>ü</span>ber kausale Erkl<span>ä</span>rungen und Theorienbildung</span>.”</span> PhD thesis, Universit<span>ä</span>t Hamburg.
+</div>
+<div id="ref-russell1921analysis" class="csl-entry" role="listitem">
+Russell, Bertrand. 1921. <em>The Analysis of Mind</em>. George Allen &amp; Unwin.
+</div>
+</div>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

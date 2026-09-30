@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="430" viewBox="0 0 760 430" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333333"/>
+    </marker>
+  </defs>
+
+  <!-- ============ LEFT: homogeneous field ============ -->
+  <text x="180" y="30" font-size="14" font-weight="bold" text-anchor="middle" fill="#2e7d32">Homogeneous causal field</text>
+
+  <g font-size="14" font-family="Charter, 'Source Serif 4', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif">
+    <!-- table frame -->
+    <rect x="80" y="45" width="200" height="150" fill="#ffffff" stroke="#333333" stroke-width="1.2"/>
+    <line x1="80" y1="75" x2="280" y2="75" stroke="#333333" stroke-width="1.2"/>
+    <line x1="146" y1="45" x2="146" y2="195" stroke="#999999" stroke-width="1"/>
+    <line x1="230" y1="45" x2="230" y2="195" stroke="#333333" stroke-width="1.2"/>
+    <!-- header -->
+    <text x="113" y="65" text-anchor="middle" font-style="italic">A</text>
+    <text x="188" y="65" text-anchor="middle" font-style="italic">B</text>
+    <text x="255" y="65" text-anchor="middle" font-style="italic">E</text>
+    <!-- rows: A B | E -->
+    <text x="113" y="95" text-anchor="middle">1</text><text x="188" y="95" text-anchor="middle">1</text><text x="255" y="95" text-anchor="middle">1</text>
+    <text x="113" y="125" text-anchor="middle">1</text><text x="188" y="125" text-anchor="middle">0</text><text x="255" y="125" text-anchor="middle">0</text>
+    <text x="113" y="155" text-anchor="middle">0</text><text x="188" y="155" text-anchor="middle">1</text><text x="255" y="155" text-anchor="middle">0</text>
+    <text x="113" y="185" text-anchor="middle">0</text><text x="188" y="185" text-anchor="middle">0</text><text x="255" y="185" text-anchor="middle">0</text>
+  </g>
+
+  <text x="180" y="222" font-size="12.5" text-anchor="middle" fill="#2e7d32">No contradictory configuration:</text>
+  <text x="180" y="238" font-size="12.5" text-anchor="middle" fill="#2e7d32">the observed factors fix E.</text>
+  <text x="180" y="262" font-size="12.5" text-anchor="middle" fill="#333333">Sufficiency and necessity can be</text>
+  <text x="180" y="278" font-size="12.5" text-anchor="middle" fill="#333333">read off the table (rules SUF, NEC);</text>
+  <text x="180" y="294" font-size="12.5" text-anchor="middle" fill="#333333">here: A * B &#8596; E.</text>
+
+  <!-- divider -->
+  <line x1="380" y1="40" x2="380" y2="300" stroke="#d0ccc0" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- ============ RIGHT: violation ============ -->
+  <text x="565" y="30" font-size="14" font-weight="bold" text-anchor="middle" fill="#c62828">Violation: contradictory configuration</text>
+
+  <g font-size="14" font-family="Charter, 'Source Serif 4', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif">
+    <rect x="465" y="45" width="200" height="120" fill="#ffffff" stroke="#333333" stroke-width="1.2"/>
+    <line x1="465" y1="75" x2="665" y2="75" stroke="#333333" stroke-width="1.2"/>
+    <line x1="531" y1="45" x2="531" y2="165" stroke="#999999" stroke-width="1"/>
+    <line x1="615" y1="45" x2="615" y2="165" stroke="#333333" stroke-width="1.2"/>
+    <text x="498" y="65" text-anchor="middle" font-style="italic">A</text>
+    <text x="590" y="65" text-anchor="middle" font-style="italic">B</text>
+    <text x="640" y="65" text-anchor="middle" font-style="italic">E</text>
+    <!-- contradictory pair highlighted -->
+    <rect x="466" y="77" width="198" height="56" fill="#f7e8e8"/>
+    <text x="498" y="97" text-anchor="middle">1</text><text x="590" y="97" text-anchor="middle">1</text><text x="640" y="97" text-anchor="middle" fill="#c62828" font-weight="bold">1</text>
+    <text x="498" y="125" text-anchor="middle">1</text><text x="590" y="125" text-anchor="middle">1</text><text x="640" y="125" text-anchor="middle" fill="#c62828" font-weight="bold">0</text>
+    <text x="498" y="155" text-anchor="middle">0</text><text x="590" y="155" text-anchor="middle">0</text><text x="640" y="155" text-anchor="middle">0</text>
+  </g>
+  <line x1="686" y1="94" x2="686" y2="128" stroke="#c62828" stroke-width="1.8" marker-start="url(#arrh)" marker-end="url(#arrh)"/>
+
+  <text x="565" y="190" font-size="12.5" text-anchor="middle" fill="#c62828">Same assignment of observed factors,</text>
+  <text x="565" y="206" font-size="12.5" text-anchor="middle" fill="#c62828">opposite outcome &#8658; a difference-maker L</text>
+  <text x="565" y="222" font-size="12.5" text-anchor="middle" fill="#c62828">of E varies outside F = {A, B, E}.</text>
+
+  <!-- EXPAND arrow -->
+  <line x1="565" y1="238" x2="565" y2="268" stroke="#333333" stroke-width="1.6" marker-end="url(#arrh)"/>
+  <text x="578" y="258" font-size="12.5" fill="#333333" font-weight="bold">EXPAND: <tspan font-style="italic" font-family="Charter, 'Source Serif 4', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif">F</tspan> &#8746; {L}</text>
+
+  <g font-size="14" font-family="Charter, 'Source Serif 4', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif">
+    <rect x="440" y="278" width="250" height="90" fill="#ffffff" stroke="#2e7d32" stroke-width="1.4"/>
+    <line x1="440" y1="306" x2="690" y2="306" stroke="#2e7d32" stroke-width="1.2"/>
+    <line x1="620" y1="278" x2="620" y2="368" stroke="#2e7d32" stroke-width="1.2"/>
+    <text x="478" y="298" text-anchor="middle" font-style="italic">A</text>
+    <text x="530" y="298" text-anchor="middle" font-style="italic">B</text>
+    <text x="582" y="298" text-anchor="middle" font-style="italic">L</text>
+    <text x="655" y="298" text-anchor="middle" font-style="italic">E</text>
+    <text x="478" y="328" text-anchor="middle">1</text><text x="530" y="328" text-anchor="middle">1</text><text x="582" y="328" text-anchor="middle" fill="#2e7d32" font-weight="bold">1</text><text x="655" y="328" text-anchor="middle">1</text>
+    <text x="478" y="356" text-anchor="middle">1</text><text x="530" y="356" text-anchor="middle">1</text><text x="582" y="356" text-anchor="middle" fill="#2e7d32" font-weight="bold">0</text><text x="655" y="356" text-anchor="middle">0</text>
+  </g>
+
+  <text x="565" y="392" font-size="12.5" text-anchor="middle" fill="#2e7d32">Homogeneity restored by expansion: the contradiction</text>
+  <text x="565" y="408" font-size="12.5" text-anchor="middle" fill="#2e7d32">is resolved, and L enters the minimal-theory search.</text>
+
+  <text x="180" y="392" font-size="12.5" text-anchor="middle" fill="#5a6672">A contradictory configuration is not noise:</text>
+  <text x="180" y="408" font-size="12.5" text-anchor="middle" fill="#5a6672">it is the theory&#8217;s built-in detector of confounding.</text>
+</svg>

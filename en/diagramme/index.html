@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading the diagrams · Kausalität 2026</title>
+  <meta name="description" content="Arrow, arc, alternative, absence, hollow and filled head: six signs with which every diagram can be read.">
+  <meta name="author" content="Gerd Graßhoff">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,460;0,9..144,560;1,9..144,460&family=Source+Sans+3:ital,wght@0,400;0,560;0,650;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,560;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/kausal.css?v=20260930133553">
+</head>
+<body>
+  <a class="skip" href="#inhalt">Skip to content</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <p class="brand"><a href="../"><span>Kausalität</span> 2026</a></p>
+      <nav aria-label="Pages">
+        <a href="../#erzaehlungen">Narratives</a>
+        <a href="../#definition">Definition</a>
+        <a href="../#baende">Volumes</a>
+        <span class="lang-switch"><a href="../../diagramme/" hreflang="de">DE</a><a href="../../en/diagramme/" hreflang="en" aria-current="true">EN</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <div class="wrap">
+      <section class="story-hero">
+        <p class="kicker">Narrative · The visual language</p>
+        <h1>Reading the <em>diagrams</em></h1>
+        <div class="lead"><p>Every diagram on this site renders a minimal theory just as its formula does, sign for sign. Six short chapters introduce the signs: the arrow, the arc, the alternative, absence, and the hollow and the filled head.</p></div>
+        <p class="home-back"><a href="../#card-diagramme">↑ Back to the card on the home page</a></p>
+        <ol class="toc"><li><a href="#k1"><span class="n">1</span>The arrow</a></li><li><a href="#k2"><span class="n">2</span>The arc</a></li><li><a href="#k3"><span class="n">3</span>The alternative</a></li><li><a href="#k4"><span class="n">4</span>Absence</a></li><li><a href="#k5"><span class="n">5</span>Hollow and filled heads</a></li><li><a href="#k6"><span class="n">6</span>From diagram to formula</a></li></ol>
+      </section>
+      <section class="chapter" id="k1" data-scene="preempt"><div class="chapter-text"><p class="chapter-num">Chapter 1</p><h2>The arrow</h2><div class="step" data-step="0"><p>A diagram shows factors as boxes. Each box carries a letter and, beneath it, the name of the factor. A factor is present or absent in a case.</p>
+<div class="key"><p><b>S</b> Suzie throws · <b>ST</b> Suzie's stone hits the bottle.</p></div></div><div class="step" data-step="1"><p>An arrow runs from a factor to the effect. The arrow from S to ST stands for a cluster of a single condition: in every case in which Suzie throws, her stone hits.</p>
+<div class="fm">S ⇒ ST<span class="rd">S is causally relevant to ST.</span></div></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"nodes": ["S", "ST"], "clusters": []}, {"nodes": ["S", "ST"], "clusters": ["st"]}]</script></section><section class="chapter" id="k2" data-scene="fire"><div class="chapter-text"><p class="chapter-num">Chapter 2</p><h2>The arc</h2><div class="step" data-step="0"><p>Here two arrows lead to the effect, from the short circuit and from oxygen. A golden arc ties them into one cluster: only both conditions together are sufficient for the fire.</p>
+<div class="key"><p><b>SC</b> short circuit · <b>OX</b> oxygen present · <b>FI</b> fire.</p></div>
+
+<div class="fm">SC * OX ⇒ FI<span class="rd">The star reads "and". Read: short circuit and oxygen together are sufficient for the fire.</span></div></div><div class="step" data-step="1"><p>A cluster can have more than two conditions. Here flammable liquid, spark and oxygen stand under one arc: only all three together are sufficient. The arc spans all arrows of the cluster and only these. An arrow without an arc is, as in the first chapter, a cluster of a single condition.</p>
+<div class="key"><p><b>FL</b> flammable liquid · <b>SP</b> spark.</p></div>
+
+<div class="fm">FL * SP * OX ⇒ FI<span class="rd">Read: flammable liquid, spark and oxygen together are sufficient for the fire.</span></div></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"nodes": ["SC", "OX", "FI"], "clusters": ["c1"], "table": false}, {"nodes": ["FL", "SP", "OX", "FI"], "clusters": ["c2"], "table": false}]</script></section><section class="chapter" id="k3" data-scene="fire"><div class="chapter-text"><p class="chapter-num">Chapter 3</p><h2>The alternative</h2><div class="step" data-step="0"><p>Both clusters now stand in one diagram. There is no arc between them: different clusters are alternatives. Each is sufficient for the fire on its own, and the fire can occur through the one or the other.</p>
+<div class="fm">SC * OX + FL * SP * OX ⇒ FI<span class="rd">The plus reads "or". Read: among the recorded factors, a fire occurs exactly when (short circuit and oxygen) or (flammable liquid, spark and oxygen) are present.</span></div></div><div class="step" data-step="1"><p>This or-combination is the minimal theory of the fire: in every case with a fire at least one cluster holds, and neither cluster can be struck out. The diagram shows it completely: one arc per cluster, no arc in between.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"nodes": ["SC", "OX", "FL", "SP", "FI"], "clusters": ["c1", "c2"], "table": false}, {"nodes": ["SC", "OX", "FL", "SP", "FI"], "clusters": ["c1", "c2"], "focus": ["c1", "c2"], "table": false}]</script></section><section class="chapter" id="k4" data-scene="preempt"><div class="chapter-text"><p class="chapter-num">Chapter 4</p><h2>Absence</h2><div class="step" data-step="0"><p>A condition of a cluster can also be the absence of a factor. Billy's stone hits the bottle only if Billy throws and Suzie's stone has not already hit it. The box with <strong>¬</strong> on the arrow from ST shows that the condition here is not the presence of ST but its absence.</p>
+<div class="key"><p><b>B</b> Billy throws · <b>ST</b> Suzie's stone hits · <b>BT</b> Billy's stone hits.</p></div></div><div class="step" data-step="1"><p>The box belongs to exactly one arrow. The other conditions of the cluster, here B, are ordinary arrows under the same arc.</p>
+<div class="fm">B * ¬ST ⇒ BT<span class="rd">Read: Billy's stone hits if Billy throws and Suzie's stone has not hit, and only then.</span></div></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"nodes": ["B", "ST", "BT"], "clusters": ["bt"]}, {"nodes": ["B", "ST", "BT"], "clusters": ["bt"], "focus": ["bt"]}]</script></section><section class="chapter" id="k5" data-scene="preempt"><div class="chapter-text"><p class="chapter-num">Chapter 5</p><h2>Hollow and filled heads</h2><div class="step" data-step="0"><p>All heads are hollow. A hollow head stands for a regularity over kinds of events: if Suzie throws, her stone hits; if either stone hits, the bottle shatters. This holds on every day, not on a particular one.</p>
+<div class="key"><p><b>E</b> the bottle shatters.</p></div>
+
+<div class="fm">S ⇒ ST &nbsp;·&nbsp; B * ¬ST ⇒ BT &nbsp;·&nbsp; ST + BT ⇒ E<span class="rd">S is causally relevant to ST; (B and not ST) are causally relevant to BT; ST or BT are causally relevant to E.</span></div></div><div class="step" data-step="1"><p>Now a single day: Suzie and Billy both throw. The shaded boxes are present on this day, the dashed box is absent: Billy's stone does not hit.</p></div><div class="step" data-step="2"><p>Filled heads show the case. They mark the clusters whose conditions are all met on this day: Suzie's throw, her hit and, through it, the shattering. Billy's cluster does not belong to them, because the condition "Suzie's stone has not hit" is missing. Hollow means: kinds of events. Filled means: this case.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 3</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["st", "bt", "eS", "eB"]}, {"clusters": ["st", "bt", "eS", "eB"], "token": {"S": 1, "B": 1, "ST": 1, "BT": 0, "E": 1}}, {"clusters": ["st", "bt", "eS", "eB"], "token": {"S": 1, "B": 1, "ST": 1, "BT": 0, "E": 1}, "active": ["st", "eS"]}]</script></section><section class="chapter" id="k6" data-scene="fire"><div class="chapter-text"><p class="chapter-num">Chapter 6</p><h2>From diagram to formula</h2><div class="step" data-step="0"><p>Every diagram can be translated into a formula and every formula into a diagram. Each arc is a cluster, the arrows beneath it are its conditions, joined by stars. The clusters stand side by side, joined by plus signs, and the arrow ⇒ leads to the effect.</p>
+<div class="fm">SC * OX + FL * SP * OX ⇒ FI</div></div><div class="step" data-step="1"><p>The diagram also shows which factors are causally relevant for the recorded set of factors: each one whose presence or absence is a condition of a cluster of the minimal theory. In the picture that is every factor from which an arrow starts. The short circuit, oxygen, flammable liquid and spark are such factors.</p></div><div class="step" data-step="2"><p>What the picture does not show: it draws the minimal theory for the recorded factors. Whether a factor is causally relevant requires more, namely that for every set of factors that contains it and the effect there is such a theory. That is what the <a href="../#definition">definition on the home page</a> says, not the single diagram.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Step <span class="step-count">1 / 3</span></span><span class="step-nav"><button type="button" data-dir="prev">back</button><button type="button" data-dir="next">next</button></span></div></div></div><script type="application/json" class="states">[{"nodes": ["SC", "OX", "FL", "SP", "FI"], "clusters": ["c1", "c2"], "table": false}, {"nodes": ["SC", "OX", "FL", "SP", "FI"], "clusters": ["c1", "c2"], "focus": ["SC", "OX", "FL", "SP"], "table": false}, {"nodes": ["SC", "OX", "FL", "SP", "FI"], "clusters": ["c1", "c2"], "table": false}]</script></section>
+    </div>
+    <div class="wrap next-case"><a href="../#card-diagramme">↑ Back to the card on the home page</a><a href="../brand/">Next case: The warehouse fire →</a></div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <p>Kausalität 2026</p>
+        <p>Gerd Graßhoff, Humboldt-Universität zu Berlin, Research Institute of the Deutsches Museum</p>
+      </div>
+      <div>
+        <p>Regularity theory of causal relevance after Graßhoff and May (2001)</p>
+        <p>Text CC BY 4.0 · <a href="../../data/manifest.json">Data manifest</a> · Built 30 September 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/vendor/d3.v7.min.js?v=20260930133553"></script>
+  <script src="../../data/scenes.js?v=20260930133553"></script>
+  <script src="../../assets/js/cvl-stage.js?v=20260930133553"></script>
+  <script src="../../assets/js/scrolly.js?v=20260930133553"></script>
+</body>
+</html>

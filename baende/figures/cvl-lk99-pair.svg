@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="781" height="220" viewBox="0 0 781 220" role="img" aria-label="LK-99: claimed theory vs. replication verdict"><rect width="781" height="220" fill="#ffffff"/><text x="14.0" y="20.0" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" fill="#002147" text-anchor="start">LK-99: claimed theory vs. replication verdict</text><g transform="translate(0.0,30.0)"><text x="22.0" y="24.0" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" fill="#002147" text-anchor="start">Claimed — contradicted in replication</text>
+<line x1="22" y1="31" x2="118" y2="31" stroke="#cfb53b" stroke-width="2.5"/>
+<line x1="96.0" y1="128.7" x2="239.5" y2="103.7" stroke="#334e68" stroke-width="1.6"/>
+<polygon points="249.4,102.0 240.1,107.2 238.9,100.3" fill="#ffffff" stroke="#334e68" stroke-width="1.3"/>
+<line x1="104.4" y1="75.4" x2="239.6" y2="100.2" stroke="#334e68" stroke-width="1.6"/>
+<polygon points="249.4,102.0 238.9,103.6 240.2,96.8" fill="#ffffff" stroke="#334e68" stroke-width="1.3"/>
+<path d="M 167.8 87.0 Q 172.9 101.6 167.9 116.2" fill="none" stroke="#b3902a" stroke-width="2.2" stroke-linecap="round"/>
+<rect x="22.0" y="58.0" width="80.4" height="34.0" rx="6" fill="#ffffff" stroke="#002147" stroke-width="1.6"/>
+<text x="62.2" y="79.6" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0d1b2a" text-anchor="middle">CU_SUB</text>
+<rect x="30.4" y="112.0" width="63.6" height="34.0" rx="6" fill="#ffffff" stroke="#002147" stroke-width="1.6"/>
+<text x="62.2" y="133.6" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0d1b2a" text-anchor="middle">LK99</text>
+<rect x="252.4" y="85.0" width="88.8" height="34.0" rx="6" fill="#ffffff" stroke="#002147" stroke-width="1.6"/>
+<text x="296.8" y="106.6" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0d1b2a" text-anchor="middle">ZERO_R!</text>
+<rect x="60.7" y="64.2" width="214.4" height="14.8" rx="3" fill="#ffffff" opacity="0.92"/><text x="167.9" y="73.0" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="600" fill="#334e68" text-anchor="middle" font-style="italic">contradicted: LK99=1, CU2S=0 → ZERO_R=0</text>
+<text x="22.0" y="178.0" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="400" fill="#5a6672" text-anchor="start" font-style="italic">LK-99 with copper substitution yields zero resistance.</text></g><line x1="376.2" y1="48.0" x2="376.2" y2="206.0" stroke="#d0ccc0" stroke-width="1"/><g transform="translate(389.2,30.0)"><text x="22.0" y="24.0" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" fill="#002147" text-anchor="start">Real cause — Cu₂S impurity</text>
+<line x1="22" y1="31" x2="118" y2="31" stroke="#cfb53b" stroke-width="2.5"/>
+<line x1="87.6" y1="75.0" x2="222.6" y2="75.0" stroke="#334e68" stroke-width="1.6"/>
+<polygon points="232.6,75.0 222.6,78.5 222.6,71.5" fill="#ffffff" stroke="#334e68" stroke-width="1.3"/>
+<rect x="22.0" y="58.0" width="63.6" height="34.0" rx="6" fill="#ffffff" stroke="#002147" stroke-width="1.6"/>
+<text x="53.8" y="79.6" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0d1b2a" text-anchor="middle">CU2S</text>
+<rect x="235.6" y="58.0" width="63.6" height="34.0" rx="6" fill="#ffffff" stroke="#002147" stroke-width="1.6"/>
+<text x="267.4" y="79.6" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0d1b2a" text-anchor="middle">DROP</text>
+<text x="22.0" y="178.0" font-family="'Source Sans 3', 'Source Sans Pro', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="400" fill="#5a6672" text-anchor="start" font-style="italic">The resistivity drop is a Cu₂S phase transition, not superconductivity.</text></g></svg>

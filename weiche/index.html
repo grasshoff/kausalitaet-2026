@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,460;0,9..144,560;1,9..144,460&family=Source+Sans+3:ital,wght@0,400;0,560;0,650;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,560;1,8..60,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/kausal.css?v=20260930113044">
+  <link rel="stylesheet" href="../assets/kausal.css?v=20260930133553">
 </head>
 <body>
   <a class="skip" href="#inhalt">Zum Inhalt</a>
@@ -18,8 +18,8 @@
     <div class="mast-inner">
       <p class="brand"><a href="../"><span>Kausalität</span> 2026</a></p>
       <nav aria-label="Seiten">
-        <a href="../">Start</a>
-        <a href="../#faelle">Fälle</a>
+        <a href="../#erzaehlungen">Erzählungen</a>
+        <a href="../#definition">Definition</a>
         <a href="../#baende">Bände</a>
         <span class="lang-switch"><a href="../weiche/" hreflang="de" aria-current="true">DE</a><a href="../en/weiche/" hreflang="en">EN</a></span>
       </nav>
@@ -32,7 +32,7 @@
         <p class="kicker">Erzählung · Kein Unterschied im Ergebnis</p>
         <h1>Die <em>Weiche</em></h1>
         <div class="lead"><p>Die Weiche entscheidet, auf welchem Gleis der Zug fährt, aber nicht, ob er ankommt. Die minimale Theorie der Ankunft enthält sie nicht.</p></div>
-        <p class="home-back"><a href="../index.html">Zur Startseite</a></p>
+        <p class="home-back"><a href="../#card-weiche">↑ Zur Karte auf der Startseite</a></p>
         <ol class="toc"><li><a href="#k1"><span class="n">1</span>Zwei Gleise, ein Ziel</a></li><li><a href="#k2"><span class="n">2</span>Die Theorie der Ankunft</a></li><li><a href="#k3"><span class="n">3</span>Diese Fahrt</a></li></ol>
       </section>
       <section class="chapter" id="k1" data-scene="switch"><div class="chapter-text"><p class="chapter-num">Kapitel 1</p><h2>Zwei Gleise, ein Ziel</h2><div class="step" data-step="0"><p>Ein Zug nähert sich einer Weiche. Steht sie auf rechts, fährt er auf dem rechten Gleis weiter, sonst auf dem linken. Beide Gleise führen zum selben Bahnhof.</p>
@@ -40,7 +40,7 @@
 
 <div class="fm">A ⇒ B &nbsp;·&nbsp; B * F ⇒ C &nbsp;·&nbsp; B * ¬F ⇒ D &nbsp;·&nbsp; C + D ⇒ E<span class="rd">A ist kausal relevant für B; (B und F) sind kausal relevant für C; (B und nicht F) sind kausal relevant für D; C oder D sind kausal relevant für E.</span></div></div><div class="step" data-step="1"><p>Die Weiche ist kausal relevant dafür, welches Gleis der Zug nimmt: Sie ist Teil des Clusters für das rechte Gleis, ihr Fehlen Teil des Clusters für das linke. In der Literatur zum Verursachen im Einzelfall ist das Beispiel ein Prüfstein (Baumgartner 2013) <span class="cite">(Bd. III, Abschn. 6)</span>.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Schritt <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">zurück</button><button type="button" data-dir="next">weiter</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["bA", "cBF", "dBnF", "eC", "eD"]}, {"clusters": ["bA", "cBF", "dBnF", "eC", "eD"], "focus": ["cBF", "dBnF"]}]</script></section><section class="chapter" id="k2" data-scene="switch"><div class="chapter-text"><p class="chapter-num">Kapitel 2</p><h2>Die Theorie der Ankunft</h2><div class="step" data-step="0"><p>Kommt der Zug an? Drückt man die Ankunft durch die Faktoren vor der Weiche aus, so reicht zweierlei hin: der Zug an der Weiche bei Stellung rechts, oder der Zug an der Weiche bei Stellung nicht rechts.</p></div><div class="step" data-step="1"><p>Keine der beiden Bedingungen ist minimal hinreichend. Der Zug an der Weiche reicht allein hin, denn die Weiche steht entweder auf rechts oder nicht, und beide Gleise führen zum Ziel. In beiden Bedingungen ist das Glied der Weiche überflüssig; die minimale Hinreichendheit streicht es.</p></div><div class="step" data-step="2"><p>Übrig bleibt <span class="f">B ⇒ E</span>. Die Weiche kommt in der minimalen Theorie der Ankunft nicht vor. Sie ist nicht kausal relevant dafür, dass der Zug ankommt.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Schritt <span class="step-count">1 / 3</span></span><span class="step-nav"><button type="button" data-dir="prev">zurück</button><button type="button" data-dir="next">weiter</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["bA", "eBF", "eBnF"], "nodes": ["A", "B", "F", "E"]}, {"clusters": ["bA", "eBF", "eBnF"], "nodes": ["A", "B", "F", "E"], "struck": ["eBF", "eBnF"]}, {"clusters": ["bA", "eB"], "nodes": ["A", "B", "F", "E"], "focus": ["eB"]}]</script></section><section class="chapter" id="k3" data-scene="switch"><div class="chapter-text"><p class="chapter-num">Kapitel 3</p><h2>Diese Fahrt</h2><div class="step" data-step="0"><p>Heute steht die Weiche auf rechts. Der aktive Cluster führt vom sich nähernden Zug über die Weiche und das rechte Gleis zur Ankunft; die gefüllten Spitzen zeigen ihn. Das linke Gleis bleibt leer.</p></div><div class="step" data-step="1"><p>Die Weiche liegt auf diesem aktiven Cluster, und doch hat sie für die Ankunft keinen Unterschied gemacht: Hätte sie auf links gestanden, wäre der Zug ebenso angekommen. Die Regularitätstheorie gibt dieser Intuition recht, ohne sie kontrafaktisch zu begründen, weil ihr Urteil über den Einzelfall an die minimale Theorie gebunden bleibt: Wer in der Theorie der Ankunft nicht vorkommt, ist auch in diesem Fall keine Ursache der Ankunft.</p></div></div><div class="chapter-figure"><div class="sticky"><div class="fig"></div><div class="step-bar"><span>Schritt <span class="step-count">1 / 2</span></span><span class="step-nav"><button type="button" data-dir="prev">zurück</button><button type="button" data-dir="next">weiter</button></span></div></div></div><script type="application/json" class="states">[{"clusters": ["bA", "cBF", "dBnF", "eC", "eD"], "token": {"A": 1, "B": 1, "F": 1, "C": 1, "D": 0, "E": 1}, "active": ["bA", "cBF", "eC"]}, {"clusters": ["bA", "cBF", "dBnF", "eC", "eD"], "token": {"A": 1, "B": 1, "F": 1, "C": 1, "D": 0, "E": 1}, "active": ["bA", "cBF", "eC"], "focus": ["F"]}]</script></section>
     </div>
-    <div class="wrap next-case"><a href="../">Zur Übersicht</a><a href="../sirenen/">Nächster Fall: Die Sirenen von Manchester →</a></div>
+    <div class="wrap next-case"><a href="../#card-weiche">↑ Zur Karte auf der Startseite</a><a href="../homogenitaet/">Nächster Fall: Eine fehlende Bedingung genügt →</a></div>
   </main>
 
   <footer>
@@ -51,14 +51,14 @@
       </div>
       <div>
         <p>Regularitätstheorie der kausalen Relevanz nach Graßhoff und May (2001)</p>
-        <p>Text CC BY 4.0 · <a href="../data/manifest.json">Datenmanifest</a> · Stand 29.09.2026</p>
+        <p>Text CC BY 4.0 · <a href="../data/manifest.json">Datenmanifest</a> · Stand 30.09.2026</p>
       </div>
     </div>
   </footer>
 
-  <script src="../assets/vendor/d3.v7.min.js?v=20260930113044"></script>
-  <script src="../data/scenes.js?v=20260930113044"></script>
-  <script src="../assets/js/cvl-stage.js?v=20260930113044"></script>
-  <script src="../assets/js/scrolly.js?v=20260930113044"></script>
+  <script src="../assets/vendor/d3.v7.min.js?v=20260930133553"></script>
+  <script src="../data/scenes.js?v=20260930133553"></script>
+  <script src="../assets/js/cvl-stage.js?v=20260930133553"></script>
+  <script src="../assets/js/scrolly.js?v=20260930133553"></script>
 </body>
 </html>
