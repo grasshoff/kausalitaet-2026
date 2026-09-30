@@ -1,0 +1,92 @@
+{
+ "slug": "kausalitaet",
+ "facts": {
+  "pages_vol1": {
+   "value": 34,
+   "source": "causal-architect/paper/vol1-qualitative.pdf: pdfinfo Pages"
+  },
+  "pages_vol2": {
+   "value": 32,
+   "source": "causal-architect/paper/vol2-experimental.pdf: pdfinfo Pages"
+  },
+  "pages_vol3": {
+   "value": 30,
+   "source": "causal-architect/paper/vol3-casebook.pdf: pdfinfo Pages"
+  },
+  "pages_causal": {
+   "value": 9,
+   "source": "causal-architect/paper/causal-visuals.pdf: pdfinfo Pages"
+  },
+  "pages_bundle": {
+   "value": 9,
+   "source": "causal-architect/paper/bundle-hybrid-publication.pdf: pdfinfo Pages"
+  },
+  "ca_pages": {
+   "value": 114,
+   "source": "causal-architect/paper: fünf PDF, Summe der Seiten"
+  },
+  "bell_pages": {
+   "value": 20,
+   "source": "data/arxiv/papers.json: BellsUngleichung"
+  },
+  "std_warrants": {
+   "value": 11,
+   "source": "causal-architect/standards/causal-standard.yaml: warrants"
+  },
+  "std_inhibitors": {
+   "value": 10,
+   "source": "causal-architect/standards/causal-standard.yaml: inhibitors"
+  },
+  "std_rules": {
+   "value": 8,
+   "source": "causal-architect/standards/causal-standard.yaml: rules"
+  },
+  "cvl_entries": {
+   "value": 43,
+   "source": "causal-architect/paper/cvl-cases.json: Einträge"
+  },
+  "cvl_types": {
+   "value": 22,
+   "source": "causal-architect/paper/cvl-cases.json: Einträge ohne __instance und legend"
+  },
+  "cvl_instances": {
+   "value": 15,
+   "source": "causal-architect/paper/cvl-cases.json: Einträge mit __instance, ohne legend*"
+  },
+  "cvl_legend": {
+   "value": 6,
+   "source": "causal-architect/paper/cvl-cases.json: Einträge legend* (einschließlich legend_level__instance)"
+  },
+  "cvl_max_nodes": {
+   "value": 6,
+   "source": "causal-architect/paper/cvl-cases.json: nodes"
+  },
+  "svg_figs": {
+   "value": 26,
+   "source": "causal-architect/paper/figures: *.svg"
+  },
+  "examples": {
+   "value": 20,
+   "source": "causal-architect/examples/casebook: case_*.py"
+  },
+  "tests": {
+   "value": 290,
+   "source": "causal-architect/tests: Zeilen 'def test_' (Testfunktionen, parametrisierte Läufe nicht gezählt)"
+  },
+  "mcp_tools": {
+   "value": 16,
+   "source": "causal-architect/src/causal_architect/mcp_server/tools_*.py: mcp.tool()"
+  },
+  "caus_docs": {
+   "value": 16,
+   "source": "PDAI causality: Ordner mit pdai-config.json oder biblio.xml"
+  },
+  "caus_pages": {
+   "value": 353,
+   "source": "PDAI causality: Seitenordner"
+  }
+ },
+ "notes": [
+  "Namen der Trugschlüsse stehen englisch im Standard; die Karte zeigt sie unübersetzt."
+ ]
+}

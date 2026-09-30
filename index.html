@@ -3,26 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kausalität 2026 — die Regularitätstheorie in acht Fällen</title>
-  <meta name="description" content="Die Regularitätstheorie der kausalen Relevanz von Graßhoff und May, erzählt an acht Fällen mit animierten Diagrammen, dazu die drei Bände.">
+  <title>Kausalität — Regularitätstheorie, Bildsprache und Fallbuch</title>
+  <meta name="description" content="Portal zur Regularitätstheorie der kausalen Relevanz von Graßhoff und May, zu ihrer Bildsprache, zum Fallbuch und zum zugehörigen Programm.">
   <meta name="author" content="Gerd Graßhoff">
+  <meta property="og:title" content="Kausalität — Regularitätstheorie, Bildsprache und Fallbuch">
+  <meta property="og:description" content="Portal zur Regularitätstheorie der kausalen Relevanz von Graßhoff und May, zu ihrer Bildsprache, zum Fallbuch und zum zugehörigen Programm.">
+  <meta property="og:type" content="website">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,460;0,9..144,560;1,9..144,460&family=Source+Sans+3:ital,wght@0,400;0,560;0,650;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,560;1,8..60,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/kausal.css?v=20260930133553">
+  <link rel="stylesheet" href="assets/landing.css?v=20260930125332">
 </head>
 <body>
   <a class="skip" href="#inhalt">Zum Inhalt</a>
   <header class="mast">
     <div class="mast-inner">
-      <p class="brand"><a href="./"><span>Kausalität</span> 2026</a></p>
-      <nav aria-label="Seiten">
-        <a href="#definition">Definition</a>
-        <a href="#erzaehlungen">Erzählungen</a>
+      <p class="brand"><a href="./"><span>Kausalität</span> Regularitätstheorie</a></p>
+      <nav aria-label="Abschnitte">
+        <a href="theorie/">Theorie</a>
+        <a href="#galerie">Blätter</a>
         <a href="#baende">Bände</a>
         <a href="#quellen">Quellen</a>
-        <span class="lang-switch"><a href="" hreflang="de" aria-current="true">DE</a><a href="en/" hreflang="en">EN</a></span>
       </nav>
     </div>
   </header>
@@ -30,60 +32,82 @@
   <main id="inhalt">
     <div class="wrap">
       <section class="hero">
-        <p class="kicker">Regularitätstheorie der kausalen Relevanz · Erzählungen</p>
-        <h1>Kausalität.<br><em>Acht Fälle</em>, eine Definition.</h1>
-        <div class="lead"><p>Die Sirenen von Manchester heulen jeden Tag um fünf, und in London geht man heim; Eisverkauf und Ertrinken steigen zusammen; man sagt, ein Kurzschluss habe einen Brand verursacht, obwohl Kurzschlüsse für Brände weder hinreichend noch notwendig sind. Die Regularitätstheorie der kausalen Relevanz nach Graßhoff und May unterscheidet mit einer einzigen Definition die Faktoren, die für eine Wirkung kausal relevant sind, von denen, die nur regelmäßig mit ihr zusammen auftreten.</p></div>
+        <p class="kicker">Digitale Edition · Portal</p>
+        <h1>Kausalität.<br>Eine Definition, drei Bände.</h1>
+        <p class="lead">Ein Kurzschluss verursacht einen Brand, obwohl er weder für den Brand hinreicht noch für ihn notwendig ist; Eiscreme-Verkäufe sagen Ertrinkungen voraus und verursachen keine. Die Regularitätstheorie der kausalen Relevanz von Graßhoff und May trennt beide Fälle mit einer einzigen Definition. Die Arbeit umfasst 34, 32 und 30 Seiten in drei Bänden, eine Bildsprache mit 22 Katalogdiagrammen und ein Programm mit 290 Testfunktionen.</p>
         <p class="byline">Gerd Graßhoff, Humboldt-Universität zu Berlin, Forschungsinstitut des Deutschen Museums</p>
-        <div class="credit"><p>Die Theorie geht auf Graßhoff und May (2001) und May (1999) zurück. Die drei Bände sind Arbeitsfassungen (Stand 29.09.2026) und werden hier zur Diskussion bereitgestellt.</p></div>
+        <p class="credit">Die Bände liegen als Arbeitsfassungen vom September 2026 vor. Der Text steht unter der Lizenz CC BY 4.0, der Programmcode unter der MIT-Lizenz (Lizenzdateien im Arbeitsbereich).</p>
+        
+        <div class="figures" style="--cols:6" aria-label="Der Bestand in Zahlen"><div><span class="v">114</span><span class="k">Seiten in fünf Dokumenten</span></div><div><span class="v">22</span><span class="k">Katalogdiagramme</span></div><div><span class="v">20</span><span class="k">Beispiele im Programm</span></div><div><span class="v">11</span><span class="k">Schlussregeln im Standard</span></div><div><span class="v">10</span><span class="k">Trugschluss-Sperren</span></div><div><span class="v">290</span><span class="k">Testfunktionen</span></div></div>
       </section>
 
-      <section class="band" id="definition">
-        <h2>Eine Definition</h2>
-        <p class="section-lead">Vier Begriffe, jeder setzt den vorigen voraus.</p>
-        <ol class="terms"><li><span class="t-num">1</span><h3>Faktor</h3><p>Eine Art von Umstand, die in jedem einzelnen Fall entweder vorliegt oder fehlt. Auch die Wirkung ist ein Faktor.</p><p class="t-ex"><b>Beispiel</b> »Kurzschluss«, »Sauerstoff vorhanden«, »Brand«</p></li><li><span class="t-num">2</span><h3>Cluster</h3><p>Eine Und-Verbindung von Bedingungen (»Faktor liegt vor« oder »Faktor fehlt«), die für die Wirkung hinreichend ist. Streicht man eine Bedingung, ist sie es nicht mehr.</p><p class="t-ex"><b>Beispiel</b> Kurzschluss und Sauerstoff vorhanden, für den Brand</p></li><li><span class="t-num">3</span><h3>Minimale Theorie</h3><p>Eine Oder-Verbindung von Clustern, die für die Wirkung notwendig ist: In jedem Fall mit der Wirkung ist ein Cluster erfüllt. Streicht man einen Cluster, bleibt ein Fall mit der Wirkung, in dem kein übriger erfüllt ist.</p><p class="t-ex"><b>Beispiel</b> Kurzschluss mit Sauerstoff, oder brennbare Flüssigkeit mit Funke und Sauerstoff</p></li></ol>
-        <div class="def-final">
-          <span class="t-num">4</span>
-          <div class="definition"><p>Ein Faktor ist <em>kausal relevant</em> für eine Wirkung genau dann, wenn es für jede Menge von Faktoren, die ihn und die Wirkung enthält, eine aus dieser Menge gebildete minimale Theorie der Wirkung gibt, in der sein Vorliegen oder sein Fehlen Bedingung eines Clusters ist.</p></div>
-          <p class="def-note">Ein Befund über die erfassten Faktoren stützt die Aussage, ein Faktor sei kausal relevant, beweist sie aber nicht: Weitere Faktoren können sie widerlegen. Kausale Relevanz ist kein Grad.</p>
-          <a class="def-pointer" href="eiscreme/">Wie ein Faktor bei erweiterter Faktorenmenge ausscheidet: Eiscreme und Ertrinken →</a>
+      <section class="portals" aria-label="Einstiege">
+<article class="portal lead-card" id="kausalitaet2026">
+<p class="mark">Erzählungen</p>
+<h2>Kausalität 2026</h2>
+<p>Acht Fälle, jeder als eigene Erzählung mit animierten Diagrammen und Tabellen: die Sirenen von Manchester, an denen Mackies INUS-Analyse scheiterte und die die minimale Notwendigkeit von May und von Graßhoff und May löst, dazu das Lagerhaus-Feuer, Eiscreme und Ertrinken, die Homogenität, die Statin-Studie, die Nierensteine, Suzie und Billy und die Weiche. Deutsch und Englisch.</p>
+<p class="go-row"><a class="go" href="https://grasshoff.github.io/kausalitaet-2026/erzaehlungen.html" target="_blank" rel="noopener">Zu den Erzählungen</a><a class="go quiet" href="https://grasshoff.github.io/kausalitaet-2026/en/" target="_blank" rel="noopener">English</a></p>
+</article>
+<article class="portal" id="theorie">
+<p class="mark">Erzählung</p>
+<h2>Was Kausalität hier heißt</h2>
+<p>Vier Kapitel: ein Brand als Beispiel, was die Theorie verweigert, die Bildsprache und das Fallbuch. Der Standard des Programms enthält 11 Schlussregeln und 10 Trugschluss-Sperren.</p>
+<div class="spark fig" data-chart="fallacies" style="min-height:0"></div>
+<p class="go-row"><a class="go" href="theorie/">Erzählung lesen</a></p>
+</article>
+<article class="portal" id="baende">
+<p class="mark">Bände</p>
+<h2>Drei Bände</h2>
+<p>Band I stellt die qualitative Theorie dar, Band II die Schlussfolgerung aus experimentellen Daten, Band III das Fallbuch mit vierundzwanzig Sprachspielen. Zusammen 34 + 32 + 30 Seiten.</p>
+<p class="go-row"><a class="go" href="#baende">Zur Übersicht</a></p>
+</article>
+<article class="portal" id="bild">
+<p class="mark">Bildsprache</p>
+<h2>22 Diagramme</h2>
+<p>Die Diagramme entsprechen den Formeln der minimalen Theorien Element für Element. Jedes Diagramm im Katalog hat eine Lesung in Worten; für 15 gibt es eine Fassung für den Einzelfall.</p>
+<p class="go-row"><a class="go" href="#galerie">Zu den Blättern</a></p>
+</article>
+<article class="portal" id="bell">
+<p class="mark">Anwendung</p>
+<h2>Die Bellsche Ungleichung</h2>
+<p>Ein Aufsatzentwurf von 20 Seiten untersucht, welche Annahmen der minimalen Herleitung der Bellschen Ungleichung unter einer Feldontologie nicht gelten.</p>
+</article>
+<article class="portal method" id="ansatz">
+<p class="mark">Erläuterung des methodischen Ansatzes</p>
+<h2><span>Famulus</span></h2>
+<div class="method-cols"><p>Jede Zahl auf dieser Seite wird beim Bauen aus den Dateien des Arbeitsbereichs gelesen. Fehlt eine Quelle, bricht der Bau ab.</p><p>Die Theorie bleibt eine einzige Regularitätstheorie. Die Seite stellt sie nicht neben andere Theorien der Kausalität.</p></div>
+<p class="go-row"><a class="go" href="https://grasshoff.github.io/kepleriana-2026/famulus/famulus-plattform.html" target="_blank" rel="noopener">Famulus lesen</a></p>
+</article>
+      </section>
+
+      <section class="band" aria-labelledby="galerie">
+        <h2 id="galerie">Sechs Diagramme</h2>
+        <p class="section-lead">Aus dem Katalog der Bildsprache, mit der Lesung, die das Diagramm selbst trägt. Die Beschriftungen der Diagramme sind englisch.</p>
+        <div class="facsimiles"><a class="facsimile" href="files/vol1-qualitative.pdf" target="_blank" rel="noopener"><img src="img/fire.jpg" alt="" loading="lazy"><span class="d">Das Lagerhaus-Feuer</span><span class="c">Zwei Cluster für den Brand: (SC und OX) oder (FL und SP und OX). Sauerstoff ist in beiden Partner.</span></a><a class="facsimile" href="files/causal-visuals.pdf" target="_blank" rel="noopener"><img src="img/or-vs-and.jpg" alt="" loading="lazy"><span class="d">Oder gegen Und</span><span class="c">Ohne Bogen sind A und B alternative Ursachen; mit Bogen wirken beide nur zusammen.</span></a><a class="facsimile" href="files/causal-visuals.pdf" target="_blank" rel="noopener"><img src="img/negation.jpg" alt="" loading="lazy"><span class="d">Abwesenheit und Ebene</span><span class="c">Eine Abwesenheit wirkt mit: warm und nicht gegossen. Die hohle Spitze steht für eine Behauptung über Ereignistypen.</span></a><a class="facsimile" href="files/vol3-casebook.pdf" target="_blank" rel="noopener"><img src="img/hooters-before.jpg" alt="" loading="lazy"><span class="d">Manchester-Sirenen, vorher</span><span class="c">Der Test von Mackie lässt den Sirenen-Cluster zu.</span></a><a class="facsimile" href="files/vol3-casebook.pdf" target="_blank" rel="noopener"><img src="img/hooters-after.jpg" alt="" loading="lazy"><span class="d">Manchester-Sirenen, nachher</span><span class="c">Die minimale Notwendigkeit streicht ihn: T oder B genügt.</span></a><a class="facsimile" href="files/vol1-qualitative.pdf" target="_blank" rel="noopener"><img src="img/icecream.jpg" alt="" loading="lazy"><span class="d">Eiscreme und Ertrinken</span><span class="c">Auf der erweiterten Faktorenmenge laufen beide Wirkungen aus dem heißen Wetter; zwischen ihnen liegt kein Pfeil.</span></a></div>
+      </section>
+      <section class="band " id="baende"><h2>Die Bände und Entwürfe</h2><p class=section-lead>Arbeitsfassungen vom September 2026; die PDF-Dateien liegen dieser Seite bei.</p><div class="band-body"><div class="table-scroll"><table class="doc-table"><thead><tr><th>Stand</th><th>Titel</th><th>Jahr</th><th class="n">Seiten</th></tr></thead><tbody><tr><td>Band I</td><td><a href="files/vol1-qualitative.pdf" target="_blank" rel="noopener">Causal Regularity Theory I: Qualitative Inference</a></td><td>2026</td><td class="n">34</td></tr><tr><td>Band II</td><td><a href="files/vol2-experimental.pdf" target="_blank" rel="noopener">Causal Regularity Theory II: Experimental Inference</a></td><td>2026</td><td class="n">32</td></tr><tr><td>Band III</td><td><a href="files/vol3-casebook.pdf" target="_blank" rel="noopener">Causal Regularity Theory III: Casebook of Causal Regularities and Benchmarks</a></td><td>2026</td><td class="n">30</td></tr><tr><td>Entwurf</td><td><a href="files/causal-visuals.pdf" target="_blank" rel="noopener">CVL: A Causal Visual Language Isomorphic to Minimal Theories</a></td><td>2026</td><td class="n">9</td></tr><tr><td>Entwurf</td><td><a href="files/bundle-hybrid-publication.pdf" target="_blank" rel="noopener">The Causal Regularity Bundle: A Hybrid Publication for Human Scholars and AI Agents</a></td><td>2026</td><td class="n">9</td></tr><tr><td>Entwurf</td><td>Causal Boundaries of Bell&#x27;s Inequality</td><td>2026</td><td class="n">20</td></tr></tbody></table></div></div></section>
+      <section class="band" id="quellen" aria-labelledby="quellen-t">
+        <h2 id="quellen-t">Quellen und Bedingungen</h2>
+        <p class="section-lead">Was diese Seite zeigt, stammt aus den folgenden Quellen.</p>
+        <div class="sources">
+          <div><div class="source-item"><h3>Arbeitsbereich causal-architect</h3><p>Die Bände, der Standard mit Schlussregeln und Trugschluss-Sperren, der Katalog der Diagramme und das Programm mit seinen Beispielen und Tests.</p><p class="meta">114 Seiten · 43 Katalogeinträge · 290 Testfunktionen</p></div><div class="source-item"><h3>Literatur in der PDAI-Sammlung causality</h3><p>Aufsätze und Kapitel zur Kausalität, die das Programm als Bezugstexte nutzt.</p><p class="meta">16 Werke · 353 Seiten</p></div><div class="source-item"><h3>Entwurf zur Bellschen Ungleichung</h3><p>Im Ordner publication/arxiv, gesetzt als PDF.</p><p class="meta">20 Seiten</p></div></div>
+          <div class="source-item"><h3>Offene Punkte</h3><ol class="admission"><li>Die Bände sind Arbeitsfassungen. Sie liegen mit den acht Erzählungen auf der öffentlichen Seite Kausalität 2026; das Code-Repositorium ist nicht öffentlich und wird hier nicht verlinkt.</li><li>Der Dienst des Programms (Fallbuch im Browser, MCP-Zugang, Port 5195) ist hier nicht verlinkt; ob er läuft, wurde für diese Seite nicht geprüft.</li><li>Die Zahl 290 zählt Testfunktionen; parametrisierte Läufe sind nicht mitgezählt.</li><li>Die Namen der Schlussregeln und Trugschluss-Sperren stehen im Standard englisch und sind hier nicht übersetzt.</li></ol></div>
         </div>
-      </section>
-
-      <section class="band" id="erzaehlungen">
-        <h2>Erzählungen</h2>
-        <div class="section-lead"><p>Jede Karte öffnet eine Erzählung mit animierten Diagrammen und Tabellen. Die Zahlen stammen aus den Bänden.</p></div>
-        <div class="group" id="group-grundbegriffe"><div class="group-head"><h3>Grundbegriffe</h3><p>Die Bildsprache, die Definition an einem Beispiel und der Unterschied zwischen einer Regularität und einem Einzelfall.</p></div><div class="cases"><a class="case" id="card-diagramme" href="diagramme/"><p class="mark">Die Bildsprache</p><h3>Die Diagramme lesen</h3><div class="fig thumb-fig small" data-scene="preempt" data-state='{&quot;clusters&quot;: [&quot;st&quot;, &quot;bt&quot;, &quot;eS&quot;, &quot;eB&quot;], &quot;token&quot;: {&quot;S&quot;: 1, &quot;B&quot;: 1, &quot;ST&quot;: 1, &quot;BT&quot;: 0, &quot;E&quot;: 1}, &quot;active&quot;: [&quot;st&quot;, &quot;eS&quot;]}'></div><p>Pfeil, Bogen, Alternative, Fehlen, hohle und gefüllte Spitze: sechs Zeichen, mit denen sich jedes Diagramm lesen lässt.</p><span class="more">Erzählung lesen →</span></a><a class="case" id="card-brand" href="brand/"><p class="mark">Cluster und minimale Theorie</p><h3>Das Lagerhaus-Feuer</h3><div class="fig thumb-fig small" data-scene="fire" data-state='{&quot;clusters&quot;: [&quot;c1&quot;, &quot;c2&quot;]}'></div><p>Weder hinreichend noch notwendig und doch kausal relevant: der Kurzschluss als Bedingung eines Clusters.</p><span class="more">Erzählung lesen →</span></a><a class="case" id="card-suzie-billy" href="suzie-billy/"><p class="mark">Der Einzelfall</p><h3>Suzie und Billy</h3><div class="fig thumb-fig small" data-scene="preempt" data-state='{&quot;token&quot;: {&quot;S&quot;: 1, &quot;ST&quot;: 1, &quot;B&quot;: 1, &quot;BT&quot;: 0, &quot;E&quot;: 1}, &quot;active&quot;: [&quot;st&quot;, &quot;eS&quot;]}'></div><p>Regularität und Einzelfall: Welcher Wurf die Flasche zerbrochen hat, zeigt der aktive Cluster, derjenige, dessen Bedingungen in diesem Fall alle erfüllt waren.</p><span class="more">Erzählung lesen →</span></a></div></div><div class="group" id="group-begleiter"><div class="group-head"><h3>Kausal relevant oder nur begleitend?</h3><p>Drei Fälle, in denen ein Faktor kausal relevant scheint und es nicht ist.</p></div><div class="cases"><a class="case lead-card" id="card-sirenen" href="sirenen/"><p class="mark">Der paradigmatische Fall</p><h3>Die Sirenen von Manchester</h3><div class="fig thumb-fig small" data-scene="hooters" data-state='{&quot;clusters&quot;: [&quot;mT&quot;, &quot;mD&quot;, &quot;lT&quot;, &quot;lB&quot;, &quot;lMD&quot;], &quot;struck&quot;: [&quot;lMD&quot;]}'></div><p>Wie ein Fall, an dem die Regularitätstheorie zu scheitern schien, durch die minimale Notwendigkeit gelöst wird.</p><span class="more">Erzählung lesen →</span></a><a class="case" id="card-eiscreme" href="eiscreme/"><p class="mark">Gemeinsame Ursache</p><h3>Eiscreme und Ertrinken</h3><div class="fig thumb-fig small" data-scene="icecream" data-state='{&quot;clusters&quot;: [&quot;ic&quot;, &quot;dr&quot;]}'></div><p>Regelmäßig zusammen, aber nicht kausal verbunden: Heißes Wetter ist für beide Wirkungen kausal relevant, der Eisverkauf nicht für das Ertrinken.</p><span class="more">Erzählung lesen →</span></a><a class="case" id="card-weiche" href="weiche/"><p class="mark">Kein Unterschied im Ergebnis</p><h3>Die Weiche</h3><div class="fig thumb-fig small" data-scene="switch" data-state='{&quot;clusters&quot;: [&quot;bA&quot;, &quot;cBF&quot;, &quot;dBnF&quot;, &quot;eC&quot;, &quot;eD&quot;]}'></div><p>Ein Faktor, der das Gleis bestimmt und das Ergebnis nicht: warum die Weiche nicht kausal relevant für die Ankunft ist.</p><span class="more">Erzählung lesen →</span></a></div></div><div class="group" id="group-daten"><div class="group-head"><h3>Daten und Experimente</h3><p>Wann ein Vergleich ein Urteil trägt, wann nicht, und was die Theorie dann verlangt.</p></div><div class="cases"><a class="case" id="card-homogenitaet" href="homogenitaet/"><p class="mark">Homogenität</p><h3>Eine fehlende Bedingung genügt</h3><div class="fig thumb-fig small" data-scene="homogeneity" data-state='{&quot;false&quot;: [&quot;sp&quot;], &quot;token&quot;: {&quot;SPON&quot;: 0}}'></div><p>Warum ein Experiment nicht alles konstant halten muss: Fehlt eine einzige Bedingung eines Clusters in allen verglichenen Fällen, so ist der Cluster in keinem von ihnen erfüllt.</p><span class="more">Erzählung lesen →</span></a><a class="case" id="card-statin" href="statin/"><p class="mark">Experimentelle Daten</p><h3>Die Statin-Studie</h3><div class="fig thumb-fig small" data-scene="statin" data-state='{}'></div><p>Was eine randomisierte Studie zu schließen berechtigt: Das Vorzeichen der Risikodifferenz entscheidet, ob das Statin Bedingung eines Clusters für das Ereignis oder für sein Ausbleiben ist.</p><span class="more">Erzählung lesen →</span></a><a class="case" id="card-nierensteine" href="nierensteine/"><p class="mark">Simpsons Paradox</p><h3>Nierensteine</h3><div class="fig thumb-fig small" data-scene="simpson" data-state='{&quot;rows&quot;: [5, 6]}'></div><p>Das Urteil wird ausgesetzt: Die Größe des Steins bestimmt mit, welche Behandlung ein Patient erhält.</p><span class="more">Erzählung lesen →</span></a></div></div>
-      </section>
-
-      <section class="band" id="baende">
-        <h2>Die Bände</h2>
-        <div class="section-lead"><p>Drei Bände mit zusammen 96 Seiten, auf Englisch, als Arbeitsfassungen. Jeder Band ist online lesbar und als PDF verfügbar.</p></div>
-        <div class="vols"><div class="vol" id="card-vol1"><div class="n">I</div><h3>Qualitative Theorie</h3><p>Minimale Theorien, Homogenität, der deduktive Weg zur kausalen Hypothese, kausale Hypergraphen und Fehlschlüsse.</p><p class="meta">34 Seiten · Stand 29.09.2026</p><div class="vol-links"><a class="go" href="baende/vol1-qualitative.html?from=de">Online lesen</a><a class="go quiet" href="files/vol1-qualitative.pdf">PDF</a></div></div><div class="vol" id="card-vol2"><div class="n">II</div><h3>Experimentelle Daten</h3><p>Die beiden Homogenitätsprüfungen Gate A und Gate B, die Zerlegung der Risikodifferenz nach den Clustern der vollständigen Theorie, die Versuchspläne als Fälle derselben Schlussweise.</p><p class="meta">32 Seiten · Stand 29.09.2026</p><div class="vol-links"><a class="go" href="baende/vol2-experimental.html?from=de">Online lesen</a><a class="go quiet" href="files/vol2-experimental.pdf">PDF</a></div></div><div class="vol" id="card-vol3"><div class="n">III</div><h3>Fallbuch</h3><p>Die Sirenen von Manchester, Sprachspiele der Literatur, qualitative und experimentelle Fälle, Prüfungen ganzer Aufsätze.</p><p class="meta">30 Seiten · Stand 29.09.2026</p><div class="vol-links"><a class="go" href="baende/vol3-casebook.html?from=de">Online lesen</a><a class="go quiet" href="files/vol3-casebook.pdf">PDF</a></div></div></div>
-      </section>
-
-      <section class="band" id="quellen">
-        <h2>Quellen</h2>
-        <div class="sources"><div class="source-item"><h3>Die Theorie</h3><p>Graßhoff, G. und M. May (2001): Causal Regularities. In: W. Spohn, M. Ledwig und M. Esfeld (Hg.), <em>Current Issues in Causation</em>, Münster: Mentis, S. 85–114. — May, M. (1999): <em>Kausales Schliessen</em>. Dissertation, Universität Hamburg. — Baumgartner, M. und G. Graßhoff (2004): <em>Kausalität und kausales Schliessen</em>. Bern.</p></div><div class="source-item"><h3>Die Fälle</h3><p>Jede Erzählung folgt einem Fall aus Band I oder Band III; die Tabellen und Formeln sind die der Bände. Die Diagramme verwenden die Bildsprache der Bände.</p></div></div>
       </section>
     </div>
   </main>
 
   <footer>
     <div class="wrap">
-      <div>
-        <p>Kausalität 2026</p>
-        <p>Gerd Graßhoff, Humboldt-Universität zu Berlin, Forschungsinstitut des Deutschen Museums</p>
-      </div>
-      <div>
-        <p>Regularitätstheorie der kausalen Relevanz nach Graßhoff und May (2001)</p>
-        <p>Text CC BY 4.0 · <a href="data/manifest.json">Datenmanifest</a> · Stand 30.09.2026</p>
-      </div>
+      <div><p>Kausalität Regularitätstheorie</p><p>Gerd Graßhoff, Humboldt-Universität zu Berlin, Forschungsinstitut des Deutschen Museums</p></div>
+      <div><p><a href="data/portal-manifest.json">Datenmanifest</a> · Stand 30. September 2026</p></div>
     </div>
+    <div class="wrap"></div>
   </footer>
 
-  <script src="assets/vendor/d3.v7.min.js?v=20260930133553"></script>
-  <script src="data/scenes.js?v=20260930133553"></script>
-  <script src="assets/js/cvl-stage.js?v=20260930133553"></script>
-  <script src="assets/js/thumbs.js?v=20260930133553"></script>
+  <script src="assets/vendor/d3.v7.min.js?v=20260930125332"></script>
+  <script src="data/bundle.js?v=20260930125332"></script>
+  <script src="assets/js/charts.js?v=20260930125332"></script>
+  <script src="assets/portal/scrolly.js?v=20260930125332"></script>
 </body>
 </html>
